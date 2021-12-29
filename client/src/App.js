@@ -51,6 +51,7 @@ function App() {
   }
 
   useEffect(()=>{
+    console.log(process.env.REACT_APP_SERVER_URL);
     getTest();
     postTest();
     putTest();
