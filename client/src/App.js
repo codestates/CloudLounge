@@ -9,6 +9,7 @@ function App() {
     axios({
       method:'GET',
       url:process.env.REACT_APP_SERVER_URL,
+      withCredentials:true
     }).then((res)=>{
       console.log(res.data);
     })

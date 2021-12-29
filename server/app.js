@@ -6,7 +6,7 @@ const PORT=80;
 
 app.use(
   cors({
-    origin: true,
+    origin: "https://cloudlounge.tk",
     credentials: true,
     methods:'*'
   })
