@@ -12,6 +12,14 @@ function App() {
       withCredentials:true
     }).then((res)=>{
       console.log(res.data);
+    }).then(()=>{
+      axios({
+        method:'GET',
+        url:`${process.env.REACT_APP_SERVER_URL}/cookietest`,
+        withCredentials:true
+      }).then((res)=>{
+        console.log('cookie test: ',res.data);
+      })
     })
   }
 
