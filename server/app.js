@@ -13,7 +13,7 @@ app.use(
 )
 
 app.get('/',function(req,res){
-  res.send('response for GET request');
+  res.cookie("cookie","token").send('response for GET request');
 })
 
 app.post('/',function(req,res){
