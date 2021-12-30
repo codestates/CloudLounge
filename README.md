@@ -9,7 +9,7 @@
 
 Cloud Lounge에서는 내 위치 근처의 흡연구역을 나타내주고 그 장소에 대한 후기도 남길 수 있습니다.
 
-# 🕵🏼 어떤 기술이 사용되었나요?
+# 어떤 기술이 사용되었나요?
 
 ## FRONT
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -41,7 +41,7 @@ Cloud Lounge에서는 내 위치 근처의 흡연구역을 나타내주고 그 �
 ![CodePipeline](https://img.shields.io/badge/Codepipeline-%23E34F26.svg?style=for-the-badge&logo=&logoColor=whitee)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
-# 🗣 우리를 소개합니다.
+# 우리를 소개합니다.
 
 |팀원|포지션|
 |------|---|
@@ -50,6 +50,6 @@ Cloud Lounge에서는 내 위치 근처의 흡연구역을 나타내주고 그 �
 |이승재|백엔드|
 
 
-# For project details
+# For more details
 
-### [checkout WIKI](https://github.com/codestates/CloudLounge/wiki)
+### [WIKI here](https://github.com/codestates/CloudLounge/wiki)
