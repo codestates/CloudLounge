@@ -52,4 +52,4 @@ Cloud Lounge에서는 내 위치 근처의 흡연구역을 나타내주고 그 �
 
 # For more details
 
-### [WIKI here](https://github.com/codestates/CloudLounge/wiki)
+### [CLOUD LOUNGE WIKI](https://github.com/codestates/CloudLounge/wiki)
