@@ -12,7 +12,7 @@ function App() {
       withCredentials:true
     }).then((res)=>{
       console.log(res.data);
-      console.log(res.cookies)
+      console.log(res.cookies);
     }).then(()=>{
       axios({
         method:'GET',
@@ -20,7 +20,7 @@ function App() {
         withCredentials:true
       }).then((res)=>{
         console.log('cookie test: ',res.data);
-        localStorage.setItem('token', res.data.cookie);
+        localStorage.setItem('token',res.data.cookie)
       })
     })
   }
@@ -79,7 +79,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org/"
+          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
