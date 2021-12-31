@@ -12,7 +12,6 @@ function App() {
       withCredentials:true
     }).then((res)=>{
       console.log(res.data);
-      console.log(res.cookies);
     }).then(()=>{
       axios({
         method:'GET',

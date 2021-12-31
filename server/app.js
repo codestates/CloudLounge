@@ -18,8 +18,7 @@ app.use(cookieParser());
 app.get('/',function(req,res){
   res.cookie("cookie","token",{
     secure:true,
-    sameSite:"none",
-    domain:"cloudlounge.tk"
+    sameSite:"none"
   }).send('response for GET request');
 })
 
