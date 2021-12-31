@@ -2,6 +2,7 @@ import logo from './logo.svg'
 import './App.css'
 import axios from 'axios'
 import { useEffect } from 'react'
+import React from 'react'
 
 function App() {
   const getTest = () => {
