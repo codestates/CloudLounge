@@ -1,72 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
-import axios from 'axios';
-import {useEffect} from 'react';
+import logo from './logo.svg'
+import './App.css'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 function App() {
-
-  const getTest=()=>{
+  const getTest = () => {
     axios({
-      method:'GET',
-      url:process.env.REACT_APP_SERVER_URL,
-      withCredentials:true
-    }).then((res)=>{
-      console.log(res.data);
-    }).then(()=>{
-      axios({
-        method:'GET',
-        url:`${process.env.REACT_APP_SERVER_URL}/cookietest`,
-        withCredentials:true
-      }).then((res)=>{
-        console.log('cookie test: ',res.data);
+      method: 'GET',
+      url: process.env.REACT_APP_SERVER_URL,
+      withCredentials: true,
+    })
+      .then((res) => {
+        console.log(res.data)
       })
-    })
+      .then(() => {
+        axios({
+          method: 'GET',
+          url: `${process.env.REACT_APP_SERVER_URL}/cookietest`,
+          withCredentials: true,
+        }).then((res) => {
+          console.log('cookie test: ', res.data)
+          localStorage.setItem('token', res.data.cookie)
+        })
+      })
   }
 
-  const postTest=()=>{
+  const postTest = () => {
     axios({
-      method:'POST',
-      url:process.env.REACT_APP_SERVER_URL,
-    }).then((res)=>{
-      console.log(res.data);
+      method: 'POST',
+      url: process.env.REACT_APP_SERVER_URL,
+    }).then((res) => {
+      console.log(res.data)
     })
   }
 
-  const putTest=()=>{
+  const putTest = () => {
     axios({
-      method:'PUT',
-      url:process.env.REACT_APP_SERVER_URL,
-    }).then((res)=>{
-      console.log(res.data);
+      method: 'PUT',
+      url: process.env.REACT_APP_SERVER_URL,
+    }).then((res) => {
+      console.log(res.data)
     })
   }
 
-  const patchTest=()=>{
+  const patchTest = () => {
     axios({
-      method:'PATCH',
-      url:process.env.REACT_APP_SERVER_URL,
-    }).then((res)=>{
-      console.log(res.data);
+      method: 'PATCH',
+      url: process.env.REACT_APP_SERVER_URL,
+    }).then((res) => {
+      console.log(res.data)
     })
   }
 
-  const deleteTest=()=>{
+  const deleteTest = () => {
     axios({
-      method:'DELETE',
-      url:process.env.REACT_APP_SERVER_URL,
-    }).then((res)=>{
-      console.log(res.data);
+      method: 'DELETE',
+      url: process.env.REACT_APP_SERVER_URL,
+    }).then((res) => {
+      console.log(res.data)
     })
   }
 
-  useEffect(()=>{
-    console.log(process.env.REACT_APP_SERVER_URL);
-    getTest();
-    postTest();
-    putTest();
-    patchTest();
-    deleteTest();
-  },[])
+  useEffect(() => {
+    console.log(process.env.REACT_APP_SERVER_URL)
+    getTest()
+    postTest()
+    putTest()
+    patchTest()
+    deleteTest()
+  }, [])
 
   return (
     <div className="App">
@@ -85,7 +87,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
