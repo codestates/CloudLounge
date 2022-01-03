@@ -1,6 +1,9 @@
+require('dotenv').config()
 const express = require('express')
+const logger = require('morgan')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const indexRouter = require('./routes')
 
 const app = express()
 const PORT = 80
@@ -14,36 +17,10 @@ app.use(
 )
 
 app.use(cookieParser())
+app.use(logger('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
-app.get('/', function (req, res) {
-  res
-    .cookie('cookie', 'token', {
-      secure: true,
-      sameSite: 'none',
-    })
-    .send('response for GET request')
-})
+app.use('/', indexRouter)
 
-app.get('/cookietest', function (req, res) {
-  res.send(req.cookies)
-})
-
-app.post('/', function (req, res) {
-  res.send('response for POST request')
-})
-
-app.patch('/', function (req, res) {
-  res.send('response for PATCH request')
-})
-
-app.put('/', function (req, res) {
-  res.send('response for PUT request')
-})
-
-app.delete('/', function (req, res) {
-  res.send('response for DELETE request')
-})
-
-app.listen(PORT, () => {
-  console.log('server running')
-})
+app.listen(PORT, () => console.log(`🚀🚀🚀🚀🚀🚀🚀 Server is runnning on PORT:${PORT}`))
