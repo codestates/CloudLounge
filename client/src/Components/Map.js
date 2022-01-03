@@ -5,7 +5,6 @@ import loungeInfo from '../dummy/sampledata'
 import createContent from './Overlay'
 
 const MapComponent = () => {
-
   const mapContainer = useRef()
   const logAddress = () => {
     console.log('click!')
