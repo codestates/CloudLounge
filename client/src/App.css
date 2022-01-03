@@ -6,21 +6,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 200vh;
   border: solid 1px black;
 }
 
 .map {
   margin-top: 50px;
-  width: 600px;
-  height: 600px;
+  width: 90%;
+  height: 80vh;
 }
 
 .navBar {
   box-sizing: border-box;
   position: fixed;
   display: flex;
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   height: 100px;
   justify-content: space-around;
   bottom: 0;
@@ -35,4 +35,43 @@
   border-radius: 10px;
   font-size: 30px;
   border: solid 1px black;
+}
+
+/*지도 overlay*/
+.container {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px black;
+  width: 250px;
+  background-color: white;
+  position: absolute;
+  left: -125px;
+  bottom: 40px;
+}
+
+.top {
+  text-align: right;
+}
+
+.info {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+img.lounge {
+  width: 180px;
+  height: 180px;
+}
+
+.address {
+  width: 100%;
+  overflow: visible;
+  word-wrap: break-word;
+  white-space: normal;
+  font-size: 13px;
+}
+
+button {
+  /* font-size: 20px; */
 }
