@@ -1,29 +1,25 @@
 'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      email: {
+      userId: {
+        type: Sequelize.INTEGER,
+      },
+      contents: {
         type: Sequelize.STRING,
       },
-      password: {
-        type: Sequelize.STRING,
+      loungeId: {
+        type: Sequelize.INTEGER,
       },
-      username: {
-        type: Sequelize.STRING,
-      },
-      oauth: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-      },
-      admin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
+      rating: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +32,6 @@ module.exports = {
     })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users')
+    await queryInterface.dropTable('comments')
   },
 }
