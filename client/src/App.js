@@ -3,7 +3,7 @@ import './App.css'
 import axios from 'axios'
 import { useEffect } from 'react'
 import React from 'react'
-import './store/store.js'
+import Login from './Pages/Login/Login'
 import MapComponent from './Pages/Map/Map'
 import LoungeDetail from './Pages/LoungeDetail/LoungeDetail'
 import Report from './Pages/Report/Report'
@@ -14,12 +14,15 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<MapComponent />} />
-          <Route path="/details" element={<LoungeDetail />} />
-          <Route path="/report" element={<Report />} />
-        </Routes>
-        <NavBar />
+        <main className="features">
+          <Routes>
+            <Route exact path="/" element={<MapComponent />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/details" element={<LoungeDetail />} />
+            <Route path="/report" element={<Report />} />
+          </Routes>
+        </main>
+        <NavBar className="bottom-component" />
       </BrowserRouter>
     </div>
   )
