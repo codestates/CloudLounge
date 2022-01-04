@@ -1,0 +1,33 @@
+.details {
+  margin-top: 4vh;
+  width: 100%;
+  border: solid 1px black;
+  font-size: 30px;
+}
+
+img.detailPic {
+  width: 400px;
+  height: 400px;
+}
+
+div.detailRating {
+  position: relative;
+  width: max-content;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 30px;
+}
+
+.commentWrapper {
+  width: 70%;
+  border: solid 1px black;
+  transform: translate(21%, 0);
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentContent {
+}

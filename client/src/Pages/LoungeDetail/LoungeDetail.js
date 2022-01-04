@@ -1,13 +1,15 @@
 import React from 'react'
+import './LoungeDetail.css'
+import Comment from '../../Components/Comment'
 
 const LoungeDetail = () => {
   return (
     <div className="details">
-      <img />
-      <div>address</div>
-      <div>별점: ?점</div>
-      <div className="rating">
-        <div className="star-fill" style={{ width: `${data.avgStars * 20}%` }}>
+      <img className="detailPic" />
+      <div className="detailAddress">address</div>
+      <div className="detailRatingText">별점: ?점</div>
+      <div className="detailRating">
+        <div className="star-fill" style={{ width: `${2 * 20}%` }}>
           <span>★</span>
           <span>★</span>
           <span>★</span>
@@ -22,7 +24,13 @@ const LoungeDetail = () => {
           <span>★</span>
         </div>
       </div>
-      <div className="comments"></div>
+      <div className="comments">
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+      </div>
     </div>
   )
 }
