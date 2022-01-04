@@ -81,3 +81,25 @@ img.lounge {
   white-space: normal;
   font-size: 13px;
 }
+
+/*overlay 별점*/
+.rating {
+  position: relative;
+  width: max-content;
+  left: 65px;
+  font-size: 20px;
+}
+
+.star-base {
+  color: #aaa9a9;
+}
+
+.star-fill {
+  color: yellow;
+  z-index: 2;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+

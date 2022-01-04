@@ -3,10 +3,12 @@ import './App.css'
 import axios from 'axios'
 import { useEffect } from 'react'
 import React from 'react'
-import MapComponent from './Pages/Map/Map'
 import Login from './Pages/Login/Login'
+import MapComponent from './Pages/Map/Map'
+import LoungeDetail from './Pages/LoungeDetail/LoungeDetail'
+import Report from './Pages/Report/Report'
 import NavBar from './Components/Navbar'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
@@ -14,8 +16,10 @@ function App() {
       <BrowserRouter>
         <main className="features">
           <Routes>
-            <Route path="/" element={<MapComponent />} />
+            <Route exact path="/" element={<MapComponent />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/details" element={<LoungeDetail />} />
+            <Route path="/report" element={<Report />} />
           </Routes>
         </main>
         <NavBar className="bottom-component" />
