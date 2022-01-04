@@ -4,9 +4,9 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import React from 'react'
 import './store/store.js'
-import MapComponent from './Components/Map'
-import LoungeDetail from './Components/LoungeDetail'
-import Report from './Components/Report'
+import MapComponent from './Pages/Map/Map'
+import LoungeDetail from './Pages/LoungeDetail/LoungeDetail'
+import Report from './Pages/Report/Report'
 import NavBar from './Components/Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<MapComponent />} />
-          <Route path="/info" element={<LoungeDetail />} />
+          <Route path="/details" element={<LoungeDetail />} />
           <Route path="/report" element={<Report />} />
         </Routes>
         <NavBar />
