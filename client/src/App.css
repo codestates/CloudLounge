@@ -9,10 +9,15 @@
   border: solid 1px black;
 }
 
-.map {
-  margin-top: 50px;
+.features {
   width: 90%;
   height: 80vh;
+}
+
+.map {
+  margin-top: 4vh;
+  height: 80vh;
+  width: 100%;
 }
 
 .navBar {
@@ -21,20 +26,25 @@
   display: flex;
   width: 100%;
   max-width: 700px;
-  height: 100px;
+  height: 10vh;
   justify-content: space-around;
   bottom: 0;
   align-items: center;
   border: solid 1px black;
 }
 
-.navBtn {
-  box-sizing: border-box;
-  height: 90px;
+.btn-wrapper {
+  height: 70px;
   width: 120px;
   border-radius: 10px;
-  font-size: 30px;
-  border: solid 1px black;
+  text-decoration-line: none;
+}
+
+.navBtn {
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  line-height: 70px;
 }
 
 /*지도 overlay*/
@@ -70,8 +80,4 @@ img.lounge {
   word-wrap: break-word;
   white-space: normal;
   font-size: 13px;
-}
-
-button {
-  /* font-size: 20px; */
 }

@@ -1,11 +1,10 @@
 /*global kakao*/
 import React, { useEffect, useRef } from 'react'
-import address from '../dummy/address'
-import loungeInfo from '../dummy/sampledata'
-import createContent from './Overlay'
+import address from '../../dummy/address'
+import loungeInfo from '../../dummy/sampledata'
+import createContent from '../../Components/Overlay'
 
 const MapComponent = () => {
-
   const mapContainer = useRef()
   const logAddress = () => {
     console.log('click!')
