@@ -9,7 +9,11 @@ const MapComponent = () => {
   const logAddress = () => {
     console.log('click!')
   }
-  const overlay = new kakao.maps.CustomOverlay({ xAnchor: 0.5, yAnchor: 1 })
+  const overlay = new kakao.maps.CustomOverlay({
+    xAnchor: 0.5,
+    yAnchor: 1,
+    clickable: true,
+  })
   useEffect(() => {
     //현재위치기반 지도 생성
     navigator.geolocation.getCurrentPosition((position) => {
