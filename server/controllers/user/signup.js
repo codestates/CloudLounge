@@ -3,7 +3,7 @@ const { user } = require('../../models')
 module.exports = (req, res) => {
   const { email, username, password } = req.body
   if (!email || !username || !password) {
-    res.status(400).send({ message: 'not enough user info' })
+    return res.status(400).send({ message: 'not enough user info' })
   }
   user
     .findOrCreate({
@@ -15,10 +15,10 @@ module.exports = (req, res) => {
     })
     .then(([data, created]) => {
       if (!created) {
-        res.status(409).send({ message: 'email exist' })
+        return res.status(409).send({ message: 'email exist' })
       } else {
         console.log(data.dataValues)
-        res.status(201).send({ message: 'created' })
+        return res.status(201).send({ message: 'created' })
       }
     })
 }
