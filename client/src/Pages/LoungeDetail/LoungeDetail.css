@@ -1,0 +1,59 @@
+.details {
+  margin-top: 4vh;
+  width: 100%;
+  border: solid 1px black;
+  font-size: 30px;
+}
+
+img.detailPic {
+  width: 400px;
+  height: 400px;
+}
+
+div.detailRating {
+  position: relative;
+  width: max-content;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 30px;
+}
+
+.commentWrapper {
+  padding: 5px;
+  width: 70%;
+  border: solid 1px black;
+  transform: translate(21%, 0);
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-right: 30px;
+}
+
+.commentContent {
+  font-size: 20px;
+  text-align: left;
+}
+
+.rating {
+  position: relative;
+  width: max-content;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 15px;
+}
+
+.star-base {
+  color: #aaa9a9;
+}
+
+.star-fill {
+  color: yellow;
+  z-index: 2;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}

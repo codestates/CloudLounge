@@ -11,6 +11,7 @@ import NavBar from './Components/Navbar'
 import Mypage from './Pages/Login/Mypage'
 import Signup from './Pages/Login/Signup'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 function App() {
   return (
