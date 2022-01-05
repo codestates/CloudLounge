@@ -13,6 +13,7 @@
 .features {
   width: 90%;
   min-height: 80vh;
+  justify-content: center;
 }
 
 .map {
@@ -35,17 +36,21 @@
 }
 
 .btn-wrapper {
-  height: 70px;
-  width: 120px;
+  height: auto;
+  width: auto;
   border-radius: 10px;
   text-decoration-line: none;
 }
 
 .navBtn {
+  width: 100%;
   font-size: 2rem;
   display: block;
   text-align: center;
   line-height: 70px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /*지도 overlay*/

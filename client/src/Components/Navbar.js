@@ -1,17 +1,37 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import axios from 'axios'
+import { handleLogin } from '../actions'
 
 const Navbar = () => {
+  const isLoginState = useSelector((state) => state.isLoginReducer)
+  const dispatch = useDispatch()
+  const { isLogin } = isLoginState
+  const handleClick = () => {
+    if (isLogin) {
+      const accessToken = window.localStorage.getItem('accessToken')
+      axios.get('http://localhost:80/user/logout', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      dispatch(handleLogin)
+      window.localStorage.clear()
+    }
+  }
   return (
     <div className="navBar">
       <Link to="/" className="btn-wrapper">
-        <btn className="navBtn">홈</btn>
+        <button className="navBtn">홈</button>
       </Link>
       <Link to="mypage" className="btn-wrapper">
-        <btn className="navBtn">MyPage</btn>
+        <button className="navBtn">MyPage</button>
       </Link>
       <Link to="/login" className="btn-wrapper">
-        <btn className="navBtn">로그인</btn>
+        <button className="navBtn" onClick={handleClick}>
+          {isLogin ? '로그아웃' : '로그인'}
+        </button>
       </Link>
     </div>
   )
