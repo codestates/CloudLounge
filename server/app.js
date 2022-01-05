@@ -10,7 +10,7 @@ const PORT = 80
 
 app.use(
   cors({
-    origin: 'https://cloudlounge.tk',
+    origin: ['https://cloudlounge.tk', 'http://localhost:3000'],
     credentials: true,
     methods: '*',
   })
