@@ -1,6 +1,7 @@
 export const initialState = {
   isLogin: { isLogin: false },
   location: { location: [1, 5] },
+  loungeDetail: {},
 }
 
 // // reducers

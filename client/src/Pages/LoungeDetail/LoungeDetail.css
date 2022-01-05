@@ -19,6 +19,7 @@ div.detailRating {
 }
 
 .commentWrapper {
+  padding: 5px;
   width: 70%;
   border: solid 1px black;
   transform: translate(21%, 0);
@@ -27,7 +28,32 @@ div.detailRating {
 .commentHeader {
   display: flex;
   justify-content: space-between;
+  font-size: 15px;
+  margin-right: 30px;
 }
 
 .commentContent {
+  font-size: 20px;
+  text-align: left;
+}
+
+.rating {
+  position: relative;
+  width: max-content;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 15px;
+}
+
+.star-base {
+  color: #aaa9a9;
+}
+
+.star-fill {
+  color: yellow;
+  z-index: 2;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
 }
