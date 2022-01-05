@@ -9,6 +9,7 @@ import LoungeDetail from './Pages/LoungeDetail/LoungeDetail'
 import Report from './Pages/Report/Report'
 import NavBar from './Components/Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 function App() {
   return (

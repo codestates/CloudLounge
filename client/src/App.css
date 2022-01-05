@@ -2,7 +2,8 @@
   margin: 0 auto;
   text-align: center;
   max-width: 700px;
-  min-height: 100vh;
+  min-height: 90vh;
+  margin-bottom: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +12,7 @@
 
 .features {
   width: 90%;
-  height: 80vh;
+  min-height: 80vh;
 }
 
 .map {
@@ -86,7 +87,8 @@ img.lounge {
 .rating {
   position: relative;
   width: max-content;
-  left: 65px;
+  left: 50%;
+  transform: translate(-50%, 0);
   font-size: 20px;
 }
 
@@ -102,4 +104,3 @@ img.lounge {
   top: 0;
   left: 0;
 }
-
