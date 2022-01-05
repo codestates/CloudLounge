@@ -11,24 +11,24 @@ const Navbar = () => {
   const handleClick = () => {
     if (isLogin) {
       const accessToken = window.localStorage.getItem('accessToken')
-      axios.get('http://localhost:80/user/logout', {
+      axios.get(process.env.REACT_APP_SERVER_URL + '/user/logout', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       })
-      dispatch(handleLogin)
+      dispatch(handleLogin())
       window.localStorage.clear()
     }
   }
   return (
     <div className="navBar">
-      <Link to="/" className="btn-wrapper">
+      <Link to="/" className="navbtn-wrapper">
         <button className="navBtn">홈</button>
       </Link>
-      <Link to="mypage" className="btn-wrapper">
+      <Link to="mypage" className="navbtn-wrapper">
         <button className="navBtn">MyPage</button>
       </Link>
-      <Link to="/login" className="btn-wrapper">
+      <Link to="/login" className="navbtn-wrapper">
         <button className="navBtn" onClick={handleClick}>
           {isLogin ? '로그아웃' : '로그인'}
         </button>

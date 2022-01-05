@@ -13,6 +13,7 @@
 .features {
   width: 90%;
   min-height: 80vh;
+  display: flex;
   justify-content: center;
 }
 
@@ -35,7 +36,7 @@
   border: solid 1px black;
 }
 
-.btn-wrapper {
+.navbtn-wrapper {
   height: auto;
   width: auto;
   border-radius: 10px;

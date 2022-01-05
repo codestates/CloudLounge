@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate()
   const handleClick = async () => {
     await axios
-      .post(REACT_APP_SERVER_URL + '/user/login', {
+      .post(process.env.REACT_APP_SERVER_URL + '/user/login', {
         email: id,
         password: pw,
       })

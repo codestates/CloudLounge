@@ -24,6 +24,7 @@ function App() {
             <Route path="/details" element={<LoungeDetail />} />
             <Route path="/report" element={<Report />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/mypage" element={<Mypage />} />
           </Routes>
         </main>
         <NavBar className="bottom-component" />
