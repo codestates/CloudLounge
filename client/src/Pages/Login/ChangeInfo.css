@@ -1,0 +1,53 @@
+.changeInfo-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 80vh;
+  justify-content: center;
+}
+
+.changeInfo-logo-wrapper {
+  height: 13vh;
+}
+
+.changeInfo-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.changeInfo-logo {
+  height: 15vh;
+}
+
+.changeInfo-fixed {
+  display: flex;
+  justify-content: space-between;
+  height: 8vh;
+}
+
+.changeInfo-chages {
+  display: flex;
+  justify-content: space-between;
+  height: 8vh;
+  vertical-align: middle;
+}
+
+.changeInfo-input-title {
+  margin-left: 10%;
+}
+
+.changeInfo-input-content {
+  margin-right: 15%;
+  height: 5vh;
+  width: 90%;
+  vertical-align: middle;
+}
+
+.changeInfo-input-wrapper {
+  width: 60%;
+  height: 5vh;
+  display: flex;
+}
+
+.changeInfo-input-fixed {
+}
