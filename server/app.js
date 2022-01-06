@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/', indexRouter)
 
-app.listen(PORT, () => console.log(`      🚀 Server is runnning on PORT:${PORT}`))
+app.listen(PORT, () => console.log(`      🚀 Server is runnning on PORT:${PORT}\n`))
 
 // sequelize 명령어
 
