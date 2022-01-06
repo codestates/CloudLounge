@@ -11,6 +11,7 @@ import NavBar from './Components/Navbar'
 import Mypage from './Pages/Login/Mypage'
 import Signup from './Pages/Login/Signup'
 import Comment from './Pages/Comment/Comment'
+import ChangeInfo from './Pages/Login/ChangeInfo'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/mypage" element={<Mypage />} />
             <Route path="/comment" element={<Comment />} />
+            <Route path="/changeInfo" element={<ChangeInfo />} />
           </Routes>
         </main>
         <NavBar className="bottom-component" />

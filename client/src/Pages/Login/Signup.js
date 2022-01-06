@@ -65,8 +65,8 @@ const Signup = () => {
 
   return (
     <div className="box-wrapper">
-      <div className="logo-wrapper">
-        <img src={logo}></img>
+      <div>
+        <img src={logo} className="logo-wrapper"></img>
       </div>
       <div className="box">
         로그인아이디(이메일)
@@ -74,6 +74,7 @@ const Signup = () => {
           name="id"
           onChange={handleChange}
           placeholder="이메일 형식으로 작성해주세요"
+          className="signup-input"
         ></input>
       </div>
       <div className="box">
@@ -82,6 +83,7 @@ const Signup = () => {
           name="username"
           onChange={handleChange}
           placeholder="사용하실 닉네임을 작성해주세요"
+          className="signup-input"
         ></input>
       </div>
       <div className="box">
@@ -90,6 +92,7 @@ const Signup = () => {
           name="pw"
           onChange={handleChange}
           placeholder="비밀번호를 작성해주세요"
+          className="signup-input"
         ></input>
       </div>
       <div className="box">
@@ -98,6 +101,7 @@ const Signup = () => {
           name="confirmPw"
           onChange={handleChange}
           placeholder="비밀번호를 재작성 해주세요"
+          className="signup-input"
         ></input>
       </div>
       <div className="signup-wrapper">

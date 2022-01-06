@@ -5,7 +5,6 @@
   flex-direction: column;
   align-items: center;
   /* border: orange 1px solid; */
-  margin-top: 3vh;
 }
 
 .login-part {
@@ -13,7 +12,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 7vh;
 }
 
 .top {
@@ -40,17 +38,10 @@
   text-align: left;
   align-items: left;
   flex-direction: column;
-  font-size: 30px;
-}
-
-input {
-  height: auto;
-  width: 70%;
-  border: none;
 }
 
 .logo-wrapper {
-  width: 15%;
+  height: 25vh;
 }
 
 img {
@@ -73,8 +64,10 @@ img {
 }
 
 .idpw-indicator {
+  font-size: 3vmin;
   width: 30%;
   margin: 3%;
+  vertical-align: middle;
 }
 
 .menu-wrapper {
@@ -88,14 +81,23 @@ img {
 
 .loginMenu1 {
   color: inherit;
+  cursor: pointer;
   text-decoration-line: none;
+  font-size: 2.3vmin;
 }
 
 .loginMenu2 {
   color: inherit;
   text-decoration-line: none;
+  font-size: 2.3vmin;
 }
 
 #loginBtn-wrapper {
+  border: none;
+}
+
+.login-input {
+  height: auto;
+  width: 70%;
   border: none;
 }

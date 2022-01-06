@@ -8,6 +8,8 @@
 
 .mypage-logo-wrapper {
   max-height: 20vh;
+  min-height: 3vh;
+  width: auto;
 }
 
 .mypage-idpw {
@@ -15,7 +17,7 @@
   display: flex;
   width: 80%;
   margin-left: 10%;
-  font-size: 25px;
+  font-size: 3.5vmin;
   flex-direction: column;
 }
 
@@ -39,10 +41,27 @@
 
 .change-info {
   cursor: pointer;
+  font-size: 2vmin;
   margin-right: 10%;
+  text-decoration-line: none;
+  color: inherit;
 }
 
 .delete-info {
   cursor: pointer;
+  font-size: 2vmin;
   margin-left: 10%;
+}
+
+.login-require {
+  text-align: center;
+  font-size: 4vmin;
+}
+
+.login-require-logo {
+  width: 30%;
+}
+
+.login-require-logo-wrapper {
+  text-align: center;
 }
