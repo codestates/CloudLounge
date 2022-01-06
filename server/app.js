@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: ['https://cloudlounge.tk', 'http://localhost:3000'],
     credentials: true,
-    methods: '*',
+    methods: ['GET', 'POST', 'DELETE', 'PATCH', 'OPTIONS'],
   })
 )
 
