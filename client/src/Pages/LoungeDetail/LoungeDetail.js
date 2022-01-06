@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './LoungeDetail.css'
 import Comment from '../../Components/Comment'
 import loungeInfo from '../../dummy/sampledata'
@@ -32,6 +33,9 @@ const LoungeDetail = () => {
         {loungeDetail.comments.map((el, index) => (
           <Comment key={index} comment={el} />
         ))}
+        <Link to="/comment">
+          <button className="writeComment">댓글작성</button>
+        </Link>
       </div>
     </div>
   )
