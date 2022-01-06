@@ -1,0 +1,101 @@
+.box-wrapper {
+  width: 100%;
+  height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: orange 1px solid; */
+  margin-top: 3vh;
+}
+
+.login-part {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7vh;
+}
+
+.top {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: gray 1px solid;
+}
+
+.inputs-wrapper {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  width: 80%;
+  height: auto;
+  text-align: left;
+  align-items: left;
+  flex-direction: column;
+  font-size: 30px;
+}
+
+input {
+  height: auto;
+  width: 70%;
+  border: none;
+}
+
+.logo-wrapper {
+  width: 15%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.loginBtn {
+  height: 4vh;
+  width: 50%;
+  align-self: center;
+  margin-bottom: 3vh;
+  cursor: pointer;
+}
+
+#idpw-box {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+}
+
+.idpw-indicator {
+  width: 30%;
+  margin: 3%;
+}
+
+.menu-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 60%;
+  align-items: center;
+  margin-top: 3vh;
+}
+
+.loginMenu1 {
+  color: inherit;
+  text-decoration-line: none;
+}
+
+.loginMenu2 {
+  color: inherit;
+  text-decoration-line: none;
+}
+
+#loginBtn-wrapper {
+  border: none;
+}

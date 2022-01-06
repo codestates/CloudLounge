@@ -1,0 +1,112 @@
+.App {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 700px;
+  min-height: 90vh;
+  margin-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 1px black;
+}
+
+.features {
+  width: 90%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+}
+
+.map {
+  margin-top: 4vh;
+  height: 80vh;
+  width: 100%;
+}
+
+.navBar {
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  max-width: 700px;
+  height: 10vh;
+  justify-content: space-around;
+  bottom: 0;
+  align-items: center;
+  border: solid 1px black;
+}
+
+.navbtn-wrapper {
+  height: auto;
+  width: auto;
+  border-radius: 10px;
+  text-decoration-line: none;
+}
+
+.navBtn {
+  width: 100%;
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  line-height: 70px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/*지도 overlay*/
+.container {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px black;
+  width: 250px;
+  background-color: white;
+  position: absolute;
+  left: -125px;
+  bottom: 40px;
+}
+
+.top {
+  text-align: right;
+}
+
+.info {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+img.lounge {
+  width: 180px;
+  height: 180px;
+}
+
+.address {
+  width: 100%;
+  overflow: visible;
+  word-wrap: break-word;
+  white-space: normal;
+  font-size: 13px;
+}
+
+/*overlay 별점*/
+.rating {
+  position: relative;
+  width: max-content;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 20px;
+}
+
+.star-base {
+  color: #aaa9a9;
+}
+
+.star-fill {
+  color: yellow;
+  z-index: 2;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
