@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
 import './Login.css'
 import { useSelector, useDispatch } from 'react-redux'
@@ -40,10 +40,15 @@ const Login = () => {
     }
   }
 
+  const oauthUrls = {
+    naver: process.env.REACT_APP_OAUTH_NAVER,
+    kakao: process.env.REACT_APP_OAUTH_KAKAO,
+  }
+
   return (
     <div className="box-wrapper">
-      <div id="logo" className="logo-wrapper">
-        <img src={logo} alt="Logo" />
+      <div id="logo">
+        <img src={logo} alt="Logo" className="logo-wrapper" />
       </div>
       <div className="login-part">
         <div className="top">
@@ -55,6 +60,7 @@ const Login = () => {
                 name="id"
                 placeholder="이메일 아이디를 입력하세요"
                 onChange={handleChange}
+                className="login-input"
               ></input>
             </div>
             <div className="box" id="idpw-box">
@@ -64,6 +70,7 @@ const Login = () => {
                 name="pw"
                 placeholder="비밀번호를 입력하세요"
                 onChange={handleChange}
+                className="login-input"
               ></input>
             </div>
           </div>
@@ -74,7 +81,12 @@ const Login = () => {
           </div>
         </div>
         <div className="menu-wrapper">
-          <a className="loginMenu1">네이버 로그인</a>
+          <a className="loginMenu1" href={oauthUrls.naver}>
+            네이버 로그인
+          </a>
+          <a className="loginMenu1" href={oauthUrls.kakao}>
+            카카오 로그인
+          </a>
           <a className="loginMenu2" href="/signup">
             회원가입
           </a>
