@@ -10,17 +10,19 @@ axios.defaults.withCredentials = true
 const Mypage = () => {
   const [id, setId] = useState('')
   const [username, setUsername] = useState('')
+  const [delInfo, setDelInfo] = useState(false)
+  const [confirmPw, setConfirmPw] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
   // const isLoginState = useSelector((state) => state.isLoginReducer)
 
-  console.log(window.location.href)
+  // console.log(window.location.href)
   useEffect(() => {
     const url = new URL(window.location.href)
     const authorizationCode = url.searchParams.get('code')
     const authorizationState = url.searchParams.get('state')
-    console.log(authorizationCode)
-    console.log(authorizationState)
+    // console.log(authorizationCode)
+    // console.log(authorizationState)
     // if (authorizationCode) {
     //   // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
     //   // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
@@ -50,14 +52,38 @@ const Mypage = () => {
       })
 
     const handleDeleteInfo = () => {
+      setDelInfo(true)
+    }
+
+    const handleCancel = () => {
+      setDelInfo(false)
+    }
+
+    const handleChange = (e) => {
+      setConfirmPw(e.target.value)
+    }
+
+    const handleSubmit = () => {
       axios
-        .delete(process.env.REACT_APP_SERVER_URL + '/user', {
-          headers: { authorization: `Bearer ${accessToken}` },
+        .post(process.env.REACT_APP_SERVER_URL + '/user/login', {
+          email: id,
+          password: confirmPw,
         })
         .then((res) => {
-          window.localStorage.clear()
-          dispatch(handleLogin())
-          navigate('/')
+          if (res.data.data.accessToken) {
+            axios
+              .delete(process.env.REACT_APP_SERVER_URL + '/user', {
+                headers: { authorization: `Bearer ${accessToken}` },
+              })
+              .then((res) => {
+                window.localStorage.clear()
+                setDelInfo(false)
+                dispatch(handleLogin())
+                navigate('/')
+                alert('회원을 탈퇴했습니다')
+              })
+              .catch((err) => console.log(err))
+          }
         })
         .catch((err) => console.log(err))
     }
@@ -71,6 +97,28 @@ const Mypage = () => {
           <div className="mypage-inner-box">
             <h4 className="mypage-idbox">아이디</h4>
             <h4 className="mypage-ididbox">{id}</h4>
+          </div>
+          <div className={delInfo ? 'mypage-inner-box' : 'mypage-inner-box mypage-hide'}>
+            <h4 className="mypage-idbox">비밀번호</h4>
+            <input
+              type="text"
+              name="confirmPw"
+              className="mypage-pw-confirm"
+              placeholder="본인 확인을 위해 비밀번호를 입력하세요"
+              onChange={handleChange}
+            ></input>
+          </div>
+          <div
+            className={
+              delInfo ? 'mypage-delBtn-wrapper' : 'mypage-delBtn-wrapper mypage-hide'
+            }
+          >
+            <button className="mypage-cancel-btn" onClick={handleSubmit}>
+              확인
+            </button>
+            <button className="mypage-cancel-btn" onClick={handleCancel}>
+              취소
+            </button>
           </div>
           <div className="mypage-inner-box">
             <h4 className="mypage-idbox">닉네임</h4>

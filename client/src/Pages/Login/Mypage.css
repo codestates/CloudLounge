@@ -27,10 +27,12 @@
 
 .mypage-idbox {
   margin-left: 10%;
+  font-size: 3vmin;
 }
 
 .mypage-ididbox {
   margin-left: 10%;
+  font-size: 3vmin;
 }
 
 .mypage-sidebar-wrapper {
@@ -64,4 +66,15 @@
 
 .login-require-logo-wrapper {
   text-align: center;
+}
+
+.mypage-pw-confirm {
+  height: 5vh;
+  margin-top: 3vh;
+  margin-left: 5%;
+  width: 60%;
+}
+
+.mypage-hide {
+  display: none;
 }
