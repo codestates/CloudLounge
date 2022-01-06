@@ -1,7 +1,7 @@
 function createContent(data) {
   return `<div class="container">
-    <div class="top">
-      <button onclick="report()">신고</button>
+    <div class="overlayTop">
+      <button class="reportBtn" onclick="report()">신고</button>
     </div>
     <div class="info">
       <img src="${data.image}" class="lounge"/>
