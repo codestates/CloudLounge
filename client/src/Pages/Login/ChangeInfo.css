@@ -38,16 +38,22 @@
 
 .changeInfo-input-content {
   margin-right: 15%;
-  height: 5vh;
+  margin-top: 1.7vh;
+  height: 4vh;
   width: 90%;
   vertical-align: middle;
 }
 
 .changeInfo-input-wrapper {
   width: 60%;
-  height: 5vh;
   display: flex;
 }
 
 .changeInfo-input-fixed {
+}
+
+.changeInfo-submitBtn {
+  margin-top: 3vh;
+  height: 5vh;
+  width: 50%;
 }

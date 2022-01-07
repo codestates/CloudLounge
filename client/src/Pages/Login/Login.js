@@ -47,6 +47,24 @@ const Login = () => {
     kakao: process.env.REACT_APP_OAUTH_KAKAO,
   }
 
+  useEffect(() => {
+    const url = new URL(window.location.href)
+    const authorizationCode = url.searchParams.get('code')
+    const authorizationState = url.searchParams.get('state')
+    console.log(authorizationCode)
+    console.log(authorizationState)
+    if (authorizationCode) {
+      // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
+      // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
+      axios
+        .post(process.env.REACT_APP_SERVER_URL + '/oauth/naverCallback', {
+          authorizationCode,
+          authorizationState,
+        })
+        .then((res) => console.log(res.data.data))
+    }
+  }, [window.location.href])
+
   return (
     <div className="box-wrapper">
       <div id="logo">

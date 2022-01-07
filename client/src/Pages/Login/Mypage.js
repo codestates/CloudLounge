@@ -17,18 +17,6 @@ const Mypage = () => {
   // const isLoginState = useSelector((state) => state.isLoginReducer)
 
   // console.log(window.location.href)
-  useEffect(() => {
-    const url = new URL(window.location.href)
-    const authorizationCode = url.searchParams.get('code')
-    const authorizationState = url.searchParams.get('state')
-    // console.log(authorizationCode)
-    // console.log(authorizationState)
-    // if (authorizationCode) {
-    //   // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
-    //   // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
-    //   this.getAccessToken(authorizationCode, authorizationState)
-    // }
-  }, [window.location.href])
 
   const accessToken = window.localStorage.getItem('accessToken')
   if (!accessToken) {
@@ -41,15 +29,17 @@ const Mypage = () => {
       </div>
     )
   } else {
-    axios
-      .get(process.env.REACT_APP_SERVER_URL + '/user/info', {
-        headers: { authorization: `Bearer ${accessToken}` },
-      })
-      .then((res) => {
-        const { email, username } = res.data.data
-        setId(email)
-        setUsername(username)
-      })
+    useEffect(() => {
+      axios
+        .get(process.env.REACT_APP_SERVER_URL + '/user/info', {
+          headers: { authorization: `Bearer ${accessToken}` },
+        })
+        .then((res) => {
+          const { email, username } = res.data.data
+          setId(email)
+          setUsername(username)
+        })
+    }, [])
 
     const handleDeleteInfo = () => {
       setDelInfo(true)
