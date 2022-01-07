@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
 import './Mypage.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLogin } from '../../actions/index'
+import { handleLoginTrue, handleLoginFalse } from '../../actions/index'
 import { useNavigate } from 'react-router'
+import Navbar from '../../Components/Navbar'
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
@@ -53,7 +54,7 @@ const Mypage = () => {
       setConfirmPw(e.target.value)
     }
 
-    const handleSubmit = () => {
+    const handleDelSubmit = () => {
       axios
         .post(process.env.REACT_APP_SERVER_URL + '/user/login', {
           email: id,
@@ -67,15 +68,14 @@ const Mypage = () => {
               })
               .then((res) => {
                 window.localStorage.clear()
-                setDelInfo(false)
-                dispatch(handleLogin())
+                dispatch(handleLoginFalse())
                 navigate('/')
                 alert('회원을 탈퇴했습니다')
               })
-              .catch((err) => console.log(err))
+              .catch((err) => alert('404 not found'))
           }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => alert('비밀번호를 다시 확인해주세요'))
     }
 
     return (
@@ -103,7 +103,7 @@ const Mypage = () => {
               delInfo ? 'mypage-delBtn-wrapper' : 'mypage-delBtn-wrapper mypage-hide'
             }
           >
-            <button className="mypage-cancel-btn" onClick={handleSubmit}>
+            <button className="mypage-cancel-btn" onClick={handleDelSubmit}>
               확인
             </button>
             <button className="mypage-cancel-btn" onClick={handleCancel}>

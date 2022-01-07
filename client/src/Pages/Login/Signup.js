@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import logo from './logo.png'
 import './Signup.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLogin } from '../../actions/index'
+import { handleLoginTrue, handleLoginFalse } from '../../actions/index'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
@@ -32,7 +32,7 @@ const Signup = () => {
             .then((res) => {
               if (res.data.data.accessToken) {
                 window.localStorage.setItem('accessToken', res.data.data.accessToken)
-                dispatch(handleLogin())
+                dispatch(handleLoginTrue())
                 navigate('/mypage')
               }
             })
