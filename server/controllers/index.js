@@ -10,4 +10,9 @@ module.exports = {
     naverCallback: require('./oauth/naverCallback'),
     kakaoCallback: require('./oauth/kakaoCallback'),
   },
+  loungeController: {
+    info: require('./lounge/info'),
+    comment: require('./lounge/comment'),
+    report: require('./lounge/report'),
+  },
 }
