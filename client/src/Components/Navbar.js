@@ -26,7 +26,7 @@ const Navbar = () => {
       <Link to="/" className="navbtn-wrapper">
         <button className="navBtn">홈</button>
       </Link>
-      <Link to="mypage" className="navbtn-wrapper">
+      <Link to="/mypage" className="navbtn-wrapper">
         <button className="navBtn">MyPage</button>
       </Link>
       <Link to="/login" className="navbtn-wrapper">

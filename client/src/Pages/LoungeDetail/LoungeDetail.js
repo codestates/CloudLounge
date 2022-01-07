@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom'
 import './LoungeDetail.css'
 import Comment from '../../Components/Comment'
 import loungeInfo from '../../dummy/sampledata'
+import { useDispatch } from 'react-redux'
+import { setLounge } from '../../actions'
+import commentdummy from './commentdummy'
 
 const LoungeDetail = () => {
+  const dispatch = useDispatch()
   let loungeId = localStorage.getItem('loungeId')
+  //lounge정보를 가져오는 코드 axios이용
   let loungeDetail = loungeInfo[loungeId - 1]
+  dispatch(setLounge(loungeDetail))
   console.log(loungeDetail)
   return (
     <div className="details">
@@ -30,13 +36,16 @@ const LoungeDetail = () => {
         </div>
       </div>
       <div className="comments">
-        {loungeDetail.comments.map((el, index) => (
+        {/* {loungeDetail.comments.map((el, index) => (
+          <Comment key={index} comment={el} />
+        ))} */}
+        {commentdummy.map((el, index) => (
           <Comment key={index} comment={el} />
         ))}
-        <Link to="/comment">
-          <button className="writeComment">댓글작성</button>
-        </Link>
       </div>
+      <Link to="/comment">
+        <img src="./iconComment.png" className="writeComment" />
+      </Link>
     </div>
   )
 }
