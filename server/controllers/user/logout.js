@@ -7,9 +7,7 @@ module.exports = (req, res) => {
   //? 토큰 값이 없을 때
   if (!tokenData) {
     console.log('⚠️error: No token in req.headers.authorization')
-    return res.status(400).send({
-      message: 'logout failed',
-    })
+    return res.status(400).send({ message: 'logout failed' })
   }
   const { email } = tokenData
   user
