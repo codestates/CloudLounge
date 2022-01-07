@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
 import './ChangeInfo.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLogin } from '../../actions/index'
+import { handleLoginFalse } from '../../actions/index'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
@@ -15,18 +15,10 @@ const ChangeInfo = () => {
   const [curPw, setCurPw] = useState('')
   const [changePw, setChangePw] = useState('')
   const [confirmPw, setConfirmPw] = useState('')
-  const navigate = { useNavigate }
-
-  useEffect(() => {
-    axios
-      .get(serverUrl + '/user/info', {
-        headers: { authorization: `Bearer ${accessToken}` },
-      })
-      .then((res) => {
-        setUserInfo(res.data.data)
-        setChangeUsername(res.data.data.username)
-      })
-  }, [])
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const isLoginState = useSelector((state) => state.isLoginReducer)
+  const { isLogin } = isLoginState
 
   const handleChange = (e) => {
     if (e.target.name === 'changeUsername') {
@@ -57,13 +49,28 @@ const ChangeInfo = () => {
         )
         .then((res) => {
           alert('정보가 성공적으로 변경되었습니다. 다시 로그인해주세요')
-          return navigate('/login')
+          window.localStorage.clear()
+          dispatch(handleLoginFalse())
+          navigate('/login')
         })
-      alert('현재 비밀번호를 다시 확인해주세요')
+        .catch((err) => alert('현재 비밀번호를 다시 확인해주세요'))
     } else {
       alert('변경하실 비밀번호와 확인이 일치하지 않습니다')
     }
   }
+
+  useEffect(() => {
+    if (window.localStorage.getItem('accessToken')) {
+      axios
+        .get(serverUrl + '/user/info', {
+          headers: { authorization: `Bearer ${accessToken}` },
+        })
+        .then((res) => {
+          setUserInfo(res.data.data)
+          setChangeUsername(res.data.data.username)
+        })
+    }
+  }, [])
 
   return (
     <div className="changeInfo-wrapper">
