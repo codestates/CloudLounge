@@ -8,9 +8,10 @@ const Navbar = () => {
   const isLoginState = useSelector((state) => state.isLoginReducer)
   const dispatch = useDispatch()
   const { isLogin } = isLoginState
+  const accessToken = window.localStorage.getItem('accessToken')
+
   const handleClick = () => {
-    if (isLogin) {
-      const accessToken = window.localStorage.getItem('accessToken')
+    if (accessToken) {
       axios.get(process.env.REACT_APP_SERVER_URL + '/user/logout', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -30,7 +31,7 @@ const Navbar = () => {
       </Link>
       <Link to="/login" className="navbtn-wrapper">
         <button className="navBtn" onClick={handleClick}>
-          {isLogin ? '로그아웃' : '로그인'}
+          {accessToken ? '로그아웃' : '로그인'}
         </button>
       </Link>
     </div>

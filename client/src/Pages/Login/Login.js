@@ -10,6 +10,7 @@ axios.defaults.withCredentials = true
 const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [start, setStart] = useState(false)
   const handleClick = async () => {
     await axios
       .post(process.env.REACT_APP_SERVER_URL + '/user/login', {
@@ -25,6 +26,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err)
+        alert('[로그인 실패] 아이디 혹은 비밀번호를 다시 확인해주세요')
       })
   }
 
