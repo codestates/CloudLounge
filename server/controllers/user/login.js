@@ -5,10 +5,7 @@ module.exports = (req, res) => {
   const { email, password } = req.body
   user
     .findOne({
-      where: {
-        email,
-        password,
-      },
+      where: { email, password },
     })
     .then((data) => {
       if (!data) {

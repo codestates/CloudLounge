@@ -8,10 +8,7 @@ module.exports = (req, res) => {
   user
     .findOrCreate({
       where: { email },
-      defaults: {
-        username,
-        password,
-      },
+      defaults: { username, password },
     })
     .then(([data, created]) => {
       if (!created) {
