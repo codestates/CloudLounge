@@ -7,4 +7,39 @@
 
 textarea.submitContent {
   resize: none;
+  width: 70%;
+  height: 20vh;
+  padding: 1vh;
+  font-size: 15px;
+  margin-top: 2vh;
+}
+
+img.submitImage {
+  width: 40vh;
+  height: 40vh;
+}
+
+div.submitRating {
+  position: relative;
+  width: max-content;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 30px;
+}
+
+.submitStar-base {
+  color: #aaa9a9;
+}
+
+.submitStar-fill {
+  color: yellow;
+  z-index: 2;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+button.commentSubmitBtn {
+  font-size: 20px;
 }
