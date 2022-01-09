@@ -29,7 +29,7 @@ module.exports = {
           })
           .then((data) => {
             // console.log(data)
-            const newData = data.map((x) => x.dataValues)
+            const newData = data.map((element) => element.dataValues)
             console.log(newData)
             return res.status(200).send({
               data: { image, address, avgRating, comments: newData },
