@@ -1,13 +1,13 @@
-function createContent(data) {
+function createContent({ data }) {
   return `<div class="container">
     <div class="overlayTop">
       <button class="reportBtn" onclick="report()">신고</button>
     </div>
     <div class="info">
       <img src="${data.image}" class="lounge"/>
-      <div class="start-rating">별점: ${data.avgStars}</div>
+      <div class="start-rating">별점: ${data.avgRating}</div>
       <div class="rating">
-      <div class="star-fill" style="width: ${data.avgStars * 20}%">
+      <div class="star-fill" style="width: ${data.avgRating * 20}%">
         <span>★</span>
         <span>★</span>
         <span>★</span>
