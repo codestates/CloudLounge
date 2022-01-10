@@ -15,4 +15,8 @@ module.exports = {
     comment: require('./lounge/comment'),
     report: require('./lounge/report'),
   },
+  adminController: {
+    index: require('./admin'),
+    delete: require('./admin/delete'),
+  },
 }

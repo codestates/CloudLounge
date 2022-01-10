@@ -19,11 +19,3 @@ module.exports = (req, res) => {
       }
     })
 }
-
-// const admin = user.create({
-//   email: 'admin',
-//   username: 'admin',
-//   password: 'admin',
-//   oauth: 0,
-//   admin: 1,
-// })
