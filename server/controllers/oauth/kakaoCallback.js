@@ -1,15 +1,87 @@
 require('dotenv').config()
 const axios = require('axios')
+const { user } = require('../../models')
+const { tokenSign } = require('../token')
 
 const kakaoClientID = process.env.KAKAO_CLIENT_ID
 const redirect = process.env.KAKAO_REDIRECT_URL
 
-module.exports = (req, res) => {
-  console.log(req.body)
-  res.send({ message: 'hello! kakao' })
-}
+module.exports = async (req, res) => {
+  //Todo: 카카오 토큰 => 받아온 데이터로 회원가입 => 로그인 토큰 생성 => 생성된 토큰, 유저정보를 클라이언트로 보내줘야 함.
+  console.log('\n💬 req.body:', req.body, '\n')
+  if (!req.body) {
+    console.log('no code in request body')
+    return res.status(401).send({ message: 'no code' })
+  }
 
-//Todo: 카카오 토큰 => 받아온 데이터로 회원가입 => 로그인 토큰 생성 => 생성된 토큰, 유저정보를 클라이언트로 보내줘야 함.
-//? 코드가 길어질 것 같은데 그럼 프라미스 헬이 될 것 같음 aync await으로 작성해야 하지 않을까?
-// 가입 완료 후에
-// 서버에서 새로 만든 jwt토큰이랑 유저 정보(email, username)를 같이 보내야 함
+  const kakaoUrl = `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${kakaoClientID}&redirect_uri=${redirect}&code=${req.body.authorizationCode}`
+
+  //? 토큰발급 => 클라이언트에서 받은 code를 이용해서 카카오 oauth 서버에서 token 받아오는 요청
+  const tokenIssuance = await axios //
+    .get(kakaoUrl)
+    .catch((err) => console.log(err))
+
+  console.log('\n💬 tokenIssuance:', tokenIssuance.data, '\n')
+
+  if (!tokenIssuance.data) {
+    console.log('no token issuance data')
+    return res.status(401).send({ message: 'no code' })
+  }
+
+  const { access_token } = tokenIssuance.data
+
+  //? 카카오 oauth 서버에서 받아온 token을 이용해 카카오 kapi 서버에 유저 정보를 요청
+  const getData = await axios({
+    method: 'get',
+    url: 'https://kapi.kakao.com/v2/user/me',
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  }).catch((err) => console.log(err))
+
+  console.log('\n💬 getData:', getData.data, '\n')
+
+  const { email } = getData.data.kakao_account
+  const { nickname } = getData.data.kakao_account.profile
+  console.log('email:', email, '\nnickname:', nickname, '\naccess_token:', access_token)
+
+  // Todo: 받아온 email, nickname, token을 가지고 회원가입
+  user
+    .findOrCreate({
+      where: { email },
+      defaults: {
+        username: nickname,
+        password: access_token,
+        oauth: true,
+      },
+    })
+    .then(([data, created]) => {
+      console.log('\n💬 data.dataValues', data.dataValues, '\n')
+
+      if (!created) {
+        //! 소셜로그인 계정으로 가입되어있음, 로그인은 어떻게? => 받아온 email로 findOne해서 가져온 data로 토큰생성 => 생성된 토큰과 oauth여부 response
+        console.log('\n🤔 email exist', '\n')
+        user.findOne({ where: { email } }).then((findData) => {
+          console.log('\n💬 findData.dataValues', findData.dataValues, '\n')
+          delete findData.dataValues.password
+          const cloudloungeAccessToken = tokenSign(findData.dataValues)
+          console.log('\n🔑 cloudloungeAccessToken: ', cloudloungeAccessToken, '\n')
+          return res.status(200).send({
+            data: { accessToken: cloudloungeAccessToken, oauth: true },
+            message: 'kakao social login success',
+          })
+        })
+      } else {
+        //! 소셜로그인 가입 안되어 있음, 가입과 동시에 로그인 해주면서 토큰 생성 => 생성된 토큰과 oauth여부 response
+        console.log('\n👍 email created', '\n')
+        // Todo: 로그인 => 생성된 토큰을 클라이언트로 보내줘야 함
+        delete data.dataValues.password
+        const cloudloungeAccessToken = tokenSign(data.dataValues)
+        console.log('\n🔑 cloudloungeAccessToken: ', cloudloungeAccessToken, '\n')
+        return res.status(200).send({
+          data: { accessToken: cloudloungeAccessToken, oauth: true },
+          message: 'kakao social login success',
+        })
+      }
+    })
+}
