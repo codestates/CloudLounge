@@ -31,7 +31,12 @@
         window.location.pathname = '/details'
       }
       function report() {
-        window.location.pathname = '/report'
+        if (localStorage.getItem('accessToken') !== null) {
+          window.location.pathname = '/report'
+        } else {
+          alert('로그인이 필요합니다.')
+          window.location.pathname = '/login'
+        }
       }
     </script>
   </head>
