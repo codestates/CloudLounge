@@ -21,9 +21,9 @@ module.exports = {
           console.log('⚠️error: No data corresponding to the database.')
           return res.status(401).send({ message: 'not authorized' })
         }
-        const { email, username } = data.dataValues
+        const { email, username, admin } = data.dataValues
         console.log(data.dataValues)
-        return res.status(200).send({ data: { email, username } })
+        return res.status(200).send({ data: { email, username, admin } })
       })
   },
 
