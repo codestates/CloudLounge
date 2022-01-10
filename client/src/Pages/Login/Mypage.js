@@ -36,7 +36,10 @@ const Mypage = () => {
           headers: { authorization: `Bearer ${accessToken}` },
         })
         .then((res) => {
-          const { email, username } = res.data.data
+          const { email, username, admin } = res.data.data
+          if (admin) {
+            navigate('/admin')
+          }
           setId(email)
           setUsername(username)
         })
