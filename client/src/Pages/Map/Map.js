@@ -1,10 +1,11 @@
 /*global kakao*/
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import address from '../../dummy/address'
-import loungeInfo from '../../dummy/sampledata'
+// import loungeInfo from '../../dummy/sampledata'
 import createContent from '../../Components/Overlay'
 import { useDispatch } from 'react-redux'
 import { setLounge } from '../../actions'
+import axios from 'axios'
 
 const MapComponent = () => {
   const [isOverlay, setIsOverlay] = useState(false)
@@ -15,8 +16,12 @@ const MapComponent = () => {
     clickable: true,
   })
   const dispatch = useDispatch()
-  useEffect(() => {
+  const [loungeInfo, setLoungeInfo] = useState({})
+  useEffect(async () => {
     //현재위치기반 지도 생성
+    await axios.get(`${process.env.REACT_APP_SERVER_URL}/lounge`).then((res) => {
+      setLoungeInfo(res.data)
+    })
     navigator.geolocation.getCurrentPosition((position) => {
       let currentPos = new kakao.maps.LatLng(
         // position.coords.latitude,
@@ -53,14 +58,22 @@ const MapComponent = () => {
               position: coords,
             })
             marker.setTitle(el.id)
-            kakao.maps.event.addListener(marker, 'click', function () {
+            kakao.maps.event.addListener(marker, 'click', async function () {
               // dispatch(setLounge(loungeInfo[marker.getTitle() - 1]))
               localStorage.setItem('loungeId', marker.getTitle())
-              overlay.setContent(createContent(loungeInfo[marker.getTitle() - 1]))
-              overlay.setPosition(marker.getPosition())
-              overlay.setMap(map)
-              map.setCenter(marker.getPosition())
+              await axios({
+                method: 'GET',
+                url: `${
+                  process.env.REACT_APP_SERVER_URL
+                }/lounge/info/${marker.getTitle()}`,
+              }).then((res) => {
+                overlay.setContent(createContent(res.data))
+                overlay.setPosition(marker.getPosition())
+                overlay.setMap(map)
+                map.setCenter(marker.getPosition())
+              })
             })
+            console.log('marker')
             marker.setMap(map)
           } else {
             console.log(el)

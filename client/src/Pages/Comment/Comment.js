@@ -1,21 +1,39 @@
 import React, { useState } from 'react'
 import './Comment.css'
 import { useSelector } from 'react-redux'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Comment = () => {
   const loungeDetail = useSelector((state) => state.loungeDetailReducer)
   const [rating, setRating] = useState(0)
   const [contents, setContent] = useState('')
+  const navigate = useNavigate()
   const submitComment = () => {
     if (rating === 0) {
       alert('별점을 선택해주세요')
-    }
-    if (contents === '') {
+    } else if (contents === '') {
       alert('댓글을 작성해주세요')
     } else {
-      console.log('loungeId: ', localStorage.getItem('loungeId'))
-      console.log('rating: ', rating)
-      console.log('contents: ', contents)
+      axios({
+        method: 'POST',
+        url: `${process.env.REACT_APP_SERVER_URL}/lounge/comment`,
+        headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+        data: {
+          loungeId: localStorage.getItem('loungeId'),
+          rating: rating,
+          contents: contents,
+        },
+      })
+        .then((res) => {
+          if (res.status === 201) {
+            alert('댓글이 등록되었습니다.')
+            navigate('/details')
+          }
+        })
+        .catch((err) => {
+          alert('error')
+        })
     }
   }
 

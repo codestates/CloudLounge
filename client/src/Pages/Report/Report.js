@@ -1,21 +1,42 @@
 import React, { useState, useRef } from 'react'
 import './Report.css'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Report = () => {
   const inputContent = useRef()
   const [radioBoxId, setRadioBoxId] = useState(-1)
   const [contents, setContents] = useState('')
+  const navigate = useNavigate()
 
   const contentChange = (e) => {
     setContents(e.target.value)
   }
 
   const submitBtnClick = () => {
-    if (contents === '') {
+    if (radioBoxId === 3 && contents === '') {
       alert('불편한 사항을 작성해 주세요')
+    } else {
+      axios({
+        method: 'POST',
+        url: `${process.env.REACT_APP_SERVER_URL}/lounge/report`,
+        data: {
+          loungeId: localStorage.getItem('loungeId'),
+          radioBoxId: radioBoxId,
+          contents: contents,
+        },
+        headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            alert('신고가 접수되었습니다.')
+            navigate('/')
+          }
+        })
+        .catch((err) => {
+          alert('error')
+        })
     }
-    console.log('radioBoxId: ', radioBoxId)
-    console.log('contents: ', contents)
   }
 
   return (
