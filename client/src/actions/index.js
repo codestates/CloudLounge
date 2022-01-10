@@ -3,6 +3,9 @@ export const HANDLE_LOGIN_TRUE = 'HANDLE_LOGIN_TRUE'
 export const HANDLE_LOGIN_FALSE = 'HANDLE_LOGIN_FALSE'
 export const CHANGE_LOCATION = 'CHANGE_LOCATION'
 export const SET_LOUNGE = 'SET_LOUNGE'
+export const HANDLE_ADMIN_TRUE = 'HANDLE_ADMIN_TRUE'
+export const HANDLE_ADMIN_FALSE = 'HANDLE_ADMIN_FALSE'
+export const GET_REPORTS_LIST = 'GET_REPORTS_LIST'
 
 //actions
 export const handleLoginTrue = () => {
@@ -27,5 +30,24 @@ export const setLounge = (lounge) => {
   return {
     type: SET_LOUNGE,
     body: lounge,
+  }
+}
+
+export const handleAdminTrue = () => {
+  return {
+    type: HANDLE_ADMIN_TRUE,
+  }
+}
+
+export const handleAdminFalse = () => {
+  return {
+    type: HANDLE_ADMIN_FALSE,
+  }
+}
+
+export const getReportsList = (payload) => {
+  return {
+    type: GET_REPORTS_LIST,
+    payload,
   }
 }

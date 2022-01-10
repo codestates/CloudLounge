@@ -14,10 +14,13 @@ module.exports = (req, res) => {
       // console.log('  data: ', data.dataValues)
       delete data.dataValues.password
       // console.log('rm pwd data: ', data.dataValues)
+      // console.log('어드민 정보 불러오기 용입니다', data.dataValues.admin)
 
       const accessToken = tokenSign(data.dataValues)
+      const { admin } = data.dataValues
+
       console.log('      🔑 accessToken: ', accessToken)
 
-      return res.send({ data: { accessToken }, message: 'login success' })
+      return res.send({ data: { accessToken, admin }, message: 'login success' })
     })
 }

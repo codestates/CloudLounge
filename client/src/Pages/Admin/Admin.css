@@ -1,0 +1,63 @@
+.admin-failure {
+  display: flex;
+  width: 90%;
+  height: 80vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-unauth {
+  vertical-align: middle;
+  font-size: 8vmin;
+}
+
+.admin-wrapper {
+  display: flex;
+  height: 90vh;
+  width: 90%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.admin-head {
+  height: 10vh;
+  border: solid 1px;
+  font-size: 7vmin;
+}
+.admin-body {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  border: solid 1px;
+  overflow-y: scroll;
+}
+
+.adminReport-wrapper {
+  display: flex;
+  /* border: solid 1px; */
+  justify-content: space-between;
+  margin-top: 4vh;
+  height: 8vh;
+}
+
+.adminReport-infos {
+  font-size: 2.7vmin;
+  margin-left: 10%;
+  display: flex;
+  text-align: left;
+  width: 63%;
+}
+
+.adminReport-btn {
+  font-size: 2.5vmin;
+  margin-right: 7%;
+}
+
+.adminReport-infos-right {
+  margin-left: 5%;
+  width: 60%;
+}
+
+.adminReport-infos-bottom {
+  margin-top: 1vh;
+}
