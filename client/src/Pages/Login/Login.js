@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
 import './Login.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLoginTrue } from '../../actions/index'
+import { handleAdminTrue, handleLoginTrue } from '../../actions/index'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
@@ -21,7 +21,14 @@ const Login = () => {
         if (res.data.data.accessToken) {
           window.localStorage.setItem('accessToken', res.data.data.accessToken)
           dispatch(handleLoginTrue())
-          navigate('/mypage')
+          if (!res.data.data.admin) {
+            navigate('/mypage')
+          } else {
+            console.log('working')
+            window.localStorage.setItem('admin', res.data.data.admin)
+            dispatch(handleAdminTrue())
+            navigate('/admin')
+          }
         }
       })
       .catch((err) => {
@@ -52,20 +59,34 @@ const Login = () => {
     const authorizationCode = url.searchParams.get('code')
     const authorizationState = url.searchParams.get('state')
     if (authorizationCode) {
-      // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
-      // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
-      axios
-        .post(process.env.REACT_APP_SERVER_URL + '/oauth/naverCallback', {
-          authorizationCode,
-          authorizationState,
-        })
-        .then((res) => {
-          const { accessToken, oauth } = res.data.data
-          window.localStorage.setItem('accessToken', accessToken)
-          window.localStorage.setItem('oauth', oauth)
-          dispatch(handleLoginTrue())
-          navigate('/mypage')
-        })
+      if (authorizationState) {
+        //스테이트 있으면 네이버로그인
+        axios
+          .post(process.env.REACT_APP_SERVER_URL + '/oauth/naverCallback', {
+            authorizationCode,
+            authorizationState,
+          })
+          .then((res) => {
+            const { accessToken, oauth } = res.data.data
+            window.localStorage.setItem('accessToken', accessToken)
+            window.localStorage.setItem('oauth', oauth)
+            dispatch(handleLoginTrue())
+            navigate('/mypage')
+          })
+      } else {
+        //스테이트 없으면 카카오로그인
+        axios
+          .post(process.env.REACT_APP_SERVER_URL + '/oauth/kakaoCallback', {
+            authorizationCode,
+          })
+          .then((res) => {
+            const { accessToken, oauth } = res.data.data
+            window.localStorage.setItem('accessToken', accessToken)
+            window.localStorage.setItem('oauth', oauth)
+            dispatch(handleLoginTrue())
+            navigate('/mypage')
+          })
+      }
     }
   }, [window.location.href])
 
