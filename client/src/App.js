@@ -1,9 +1,11 @@
+/*global kakao*/
 import logo from './logo.svg'
 import './App.css'
 import axios from 'axios'
-import { useEffect } from 'react'
-import React from 'react'
+import { useEffect, useState } from 'react'
+import React, { useRef } from 'react'
 import Login from './Pages/Login/Login'
+import MapComponent2 from './Pages/Map/Map2'
 import MapComponent from './Pages/Map/Map'
 import LoungeDetail from './Pages/LoungeDetail/LoungeDetail'
 import Report from './Pages/Report/Report'
@@ -23,6 +25,7 @@ function App() {
         <main className="features">
           <Routes>
             <Route exact path="/" element={<MapComponent />} />
+            <Route exact path="/map" element={<MapComponent2 />} />
             <Route path="/login" element={<Login />} />
             <Route path="/details" element={<LoungeDetail />} />
             <Route path="/report" element={<Report />} />
