@@ -20,6 +20,7 @@ const Mypage = () => {
   // console.log(window.location.href)
 
   const accessToken = window.localStorage.getItem('accessToken')
+  const oauth = window.localStorage.getItem('oauth')
   if (!accessToken) {
     return (
       <div className="mypage-box-wrapper">
@@ -119,7 +120,10 @@ const Mypage = () => {
           </div>
         </div>
         <div className="mypage-sidebar-wrapper">
-          <a className="change-info" href="/changeInfo">
+          <a
+            className={oauth ? 'change-info mypage-hide' : 'change-info'}
+            href="/changeInfo"
+          >
             정보 수정하기
           </a>
           <a className="delete-info" onClick={handleDeleteInfo}>

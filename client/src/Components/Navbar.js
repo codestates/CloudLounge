@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faHome,
+  faUserAlt,
+  faSignInAlt,
+  faSignOutAlt,
+} from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import {
   handleLoginTrue,
@@ -52,7 +59,9 @@ const Navbar = () => {
   return (
     <div className="navBar">
       <Link to="/" className="navbtn-wrapper">
-        <button className="navBtn">홈</button>
+        <button className="navBtn">
+          <FontAwesomeIcon icon={faHome} />
+        </button>
       </Link>
       {isAdmin ? (
         <Link to="/admin" className="navbtn-wrapper">
@@ -60,12 +69,18 @@ const Navbar = () => {
         </Link>
       ) : (
         <Link to="/mypage" className="navbtn-wrapper">
-          <button className="navBtn">MyPage</button>
+          <button className="navBtn">
+            <FontAwesomeIcon icon={faUserAlt} />
+          </button>
         </Link>
       )}
       <Link to="login" className="navbtn-wrapper">
         <button className="navBtn" onClick={handleLogout}>
-          {isLogin ? '로그아웃' : '로그인'}
+          {isLogin ? (
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          ) : (
+            <FontAwesomeIcon icon={faSignInAlt} />
+          )}
         </button>
       </Link>
     </div>

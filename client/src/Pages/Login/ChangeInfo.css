@@ -22,6 +22,7 @@
 .changeInfo-fixed {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 8vh;
 }
 
@@ -29,31 +30,33 @@
   display: flex;
   justify-content: space-between;
   height: 8vh;
-  vertical-align: middle;
+  align-items: center;
 }
 
 .changeInfo-input-title {
-  margin-left: 10%;
-}
-
-.changeInfo-input-content {
-  margin-right: 15%;
-  margin-top: 1.7vh;
-  height: 4vh;
-  width: 90%;
+  margin-left: 7%;
+  font-size: 3.5vmin;
   vertical-align: middle;
 }
 
+.changeInfo-input-content {
+  height: 4vh;
+  width: 90%;
+  font-size: 3.5vmin;
+}
+
 .changeInfo-input-wrapper {
-  width: 60%;
+  width: 50%;
   display: flex;
 }
 
 .changeInfo-input-fixed {
+  font-size: 3.5vmin;
 }
 
 .changeInfo-submitBtn {
   margin-top: 3vh;
   height: 5vh;
   width: 50%;
+  font-size: 3.5vmin;
 }
