@@ -80,7 +80,9 @@ const ChangeInfo = () => {
       <div className="changeInfo-body">
         <div className="changeInfo-fixed">
           <h4 className="changeInfo-input-title">아이디</h4>
-          <h4 className="changeInfo-input-fixed">{userInfo.email}</h4>
+          <div className="changeInfo-input-wrapper">
+            <h4 className="changeInfo-input-fixed">{userInfo.email}</h4>
+          </div>
         </div>
         <div className="changeInfo-chages">
           <h4 className="changeInfo-input-title">변경하실 닉네임</h4>
@@ -124,6 +126,11 @@ const ChangeInfo = () => {
               className="changeInfo-input-content"
               name="confirmPw"
               onChange={handleChange}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  handleClick()
+                }
+              }}
             ></input>
           </div>
         </div>

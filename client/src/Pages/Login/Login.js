@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
+import nLogo from './nLogo.png'
+import kLogo from './kLogo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import './Login.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { handleAdminTrue, handleLoginTrue } from '../../actions/index'
@@ -98,7 +102,7 @@ const Login = () => {
       <div className="login-part">
         <div className="top">
           <div className="inputs-wrapper">
-            <div className="box" id="idpw-box">
+            <div className="idpw-box-id">
               <div className="idpw-indicator">아이디</div>
               <input
                 type="text"
@@ -108,31 +112,34 @@ const Login = () => {
                 className="login-input"
               ></input>
             </div>
-            <div className="box" id="idpw-box">
+            <div className="idpw-box-pw">
               <div className="idpw-indicator">비밀번호</div>
               <input
                 type="text"
                 name="pw"
                 placeholder="비밀번호를 입력하세요"
                 onChange={handleChange}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleClick()
+                  }
+                }}
                 className="login-input"
               ></input>
             </div>
           </div>
-          <div className="box" id="loginBtn-wrapper">
-            <button className="loginBtn" onClick={handleClick}>
-              로그인
-            </button>
-          </div>
+          <button className="loginBtn" onClick={handleClick}>
+            로그인
+          </button>
         </div>
         <div className="menu-wrapper">
-          <a className="loginMenu1" href={oauthUrls.naver}>
-            네이버 로그인
+          <a className="loginMenu" href={oauthUrls.naver}>
+            <img src={nLogo} id="nLogo"></img>
           </a>
-          <a className="loginMenu1" href={oauthUrls.kakao}>
-            카카오 로그인
+          <a className="loginMenu" href={oauthUrls.kakao}>
+            <img src={kLogo} id="kLogo"></img>
           </a>
-          <a className="loginMenu2" href="/signup">
+          <a className="loginMenu" href="/signup">
             회원가입
           </a>
         </div>
