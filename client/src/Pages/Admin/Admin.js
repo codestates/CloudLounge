@@ -24,7 +24,9 @@ const Admin = () => {
   }
 
   const reportsListState = useSelector((state) => state.reportsListReducer)
-  const { reportsList } = reportsListState
+  // const { reportsList } = reportsListState
+  let reportsList = []
+  const received = axios.get(serverUrl + '/admin').then((res) => console.log(res.data))
 
   if (isAdmin) {
     return (
