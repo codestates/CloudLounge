@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class radioBox extends Model {
     /**
@@ -10,14 +8,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      radioBox.hasMany(models.report)
     }
-  };
-  radioBox.init({
-    states: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'radioBox',
-  });
-  return radioBox;
-};
+  }
+  radioBox.init(
+    {
+      states: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'radioBox',
+    }
+  )
+  return radioBox
+}
