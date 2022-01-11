@@ -10,6 +10,7 @@ const LoungeDetail = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const loungeDetail = useSelector((state) => state.loungeDetailReducer)
+  const isLogin = useSelector((state) => state.isLoginReducer.isLogin)
   useEffect(() => {
     let loungeId = localStorage.getItem('loungeId')
     axios
@@ -20,7 +21,12 @@ const LoungeDetail = () => {
   }, [])
 
   const commentBtnClick = () => {
-    navigate('/comment')
+    if (isLogin) {
+      navigate('/comment')
+    } else {
+      alert('로그인이 필요합니다.')
+      navigate('/login')
+    }
   }
   return (
     <Fragment>
