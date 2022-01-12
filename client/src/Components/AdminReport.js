@@ -1,12 +1,17 @@
+import axios from 'axios'
+axios.defaults.withCredentials = true
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { getReportsList } from '../actions'
+import { deleteReportsList } from '../actions'
+const serverUrl = process.env.REACT_APP_SERVER_URL
+console.log(serverUrl)
 
 const AdminReport = (props) => {
   const dispatch = useDispatch()
-  const { address, reportCount, loungeId } = props.report
-  const handleClick = () => {
-    dispatch(getReportsList({ loungeId }))
+  const { address, count, loungeId } = props.report
+  const handleClick = async () => {
+    await axios.delete(serverUrl + `/admin/${loungeId}`)
+    dispatch(deleteReportsList({ loungeId }))
   }
 
   return (
@@ -18,7 +23,7 @@ const AdminReport = (props) => {
         </div>
         <div className="adminReport-infos-right">
           <div className="adminReport-address">{address}</div>
-          <div className="adminReport-count adminReport-infos-bottom">{reportCount}</div>
+          <div className="adminReport-count adminReport-infos-bottom">{count}</div>
         </div>
       </div>
       <button className="adminReport-btn" onClick={handleClick}>
