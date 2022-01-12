@@ -1,7 +1,5 @@
 const { report } = require('../../models')
 const { lounge } = require('../../models')
-const { user } = require('../../models')
-const { comment } = require('../../models')
 
 module.exports = async (req, res) => {
   // Todo: select loungeId, count(id) as reportNum from reports group by loungeId;
