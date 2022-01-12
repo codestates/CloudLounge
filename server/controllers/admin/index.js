@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
   })
   console.log('\nfiltered:', filteredData)
 
-  if (!filteredData) {
+  if (filteredData.length === 0) {
     return res.send({ message: 'no report list' })
   }
 
