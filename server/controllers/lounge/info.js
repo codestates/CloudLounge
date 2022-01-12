@@ -15,26 +15,32 @@ module.exports = {
 
   particular: (req, res) => {
     console.log('   loungeId:', req.params.loungeId)
+
     lounge
       .findOne({
-        where: { id: req.params.loungeId },
+        where: {
+          id: req.params.loungeId,
+        },
+        include: {
+          model: comment,
+          require: true,
+          where: {
+            loungeId: req.params.loungeId,
+          },
+        },
       })
       .then((data) => {
-        // console.log(data.dataValues)
         const { image, address, avgRating } = data.dataValues
-        comment
-          .findAll({
-            where: { loungeId: req.params.loungeId },
-            attributes: ['userId', 'contents', 'rating', 'createdAt'],
-          })
-          .then((data) => {
-            // console.log(data)
-            const newData = data.map((element) => element.dataValues)
-            console.log(newData)
-            return res.status(200).send({
-              data: { image, address, avgRating, comments: newData },
-            })
-          })
+        const comments = data.dataValues.comments.map((element) => {
+          return {
+            userId: element.dataValues.userId,
+            contents: element.dataValues.contents,
+            rating: element.dataValues.rating,
+            createdAt: element.dataValues.createdAt,
+          }
+        })
+        console.log(comments)
+        return res.status(200).send({ data: { image, address, avgRating, comments } })
       })
       .catch((err) => {
         console.log(err)
