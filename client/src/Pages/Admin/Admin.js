@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import logo from '../Login/logo.png'
 import './Admin.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLoginTrue, handleLoginFalse } from '../../actions/index'
+import { getReportsList, handleLoginFalse } from '../../actions/index'
 import { useNavigate } from 'react-router'
 import Navbar from '../../Components/Navbar'
 import AdminReport from '../../Components/AdminReport'
@@ -25,6 +25,12 @@ const Admin = () => {
 
   const reportsListState = useSelector((state) => state.reportsListReducer)
   const { reportsList } = reportsListState
+  const dispatch = useDispatch()
+  useEffect(() => {
+    const received = axios
+      .get(serverUrl + '/admin')
+      .then((res) => dispatch(getReportsList(res.data)))
+  }, [])
 
   if (isAdmin) {
     return (

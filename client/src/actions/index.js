@@ -6,6 +6,7 @@ export const SET_LOUNGE = 'SET_LOUNGE'
 export const HANDLE_ADMIN_TRUE = 'HANDLE_ADMIN_TRUE'
 export const HANDLE_ADMIN_FALSE = 'HANDLE_ADMIN_FALSE'
 export const GET_REPORTS_LIST = 'GET_REPORTS_LIST'
+export const DELETE_REPORTS_LIST = 'DELETE_REPORTS_LIST'
 
 //actions
 export const handleLoginTrue = () => {
@@ -45,9 +46,16 @@ export const handleAdminFalse = () => {
   }
 }
 
-export const getReportsList = (payload) => {
+export const deleteReportsList = (payload) => {
+  return {
+    type: DELETE_REPORTS_LIST,
+    payload,
+  }
+}
+
+export const getReportsList = (reportsList) => {
   return {
     type: GET_REPORTS_LIST,
-    payload,
+    payload: reportsList,
   }
 }

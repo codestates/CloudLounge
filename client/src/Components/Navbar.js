@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faHome,
+  faCloud,
   faUserAlt,
   faSignInAlt,
   faSignOutAlt,
@@ -60,7 +60,7 @@ const Navbar = () => {
     <div className="navBar">
       <Link to="/" className="navbtn-wrapper">
         <button className="navBtn">
-          <FontAwesomeIcon icon={faHome} />
+          <FontAwesomeIcon icon={faCloud} />
         </button>
       </Link>
       {isAdmin ? (
