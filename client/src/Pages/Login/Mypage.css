@@ -17,56 +17,64 @@
   border: solid 1px;
   border-radius: 5% / 10%;
   display: flex;
-  width: 80%;
-  font-size: 3.5vmin;
+  /* min-width: 80%; */
+  width: 100%;
   flex-direction: column;
+  justify-content: left;
 }
 
 .mypage-inner-box {
   display: flex;
+  flex-direction: column;
+}
+
+#mypage-nick {
+  border-top: black 1px solid;
 }
 
 .mypage-idbox {
-  margin-left: 10%;
-  font-size: 3vmin;
+  margin: 2vh 0 0 5%;
+  text-align: left;
+  font-size: 6vmin;
 }
 
 .mypage-ididbox {
-  margin-left: 10%;
-  font-size: 3vmin;
+  margin-left: 5%;
+  font-size: 4vmin;
+  text-align: left;
 }
 
 .mypage-sidebar-wrapper {
   margin-top: 5vh;
   display: flex;
   justify-content: center;
+  width: 70%;
 }
 
 .change-info {
   cursor: pointer;
-  font-size: 2vmin;
+  font-size: 3.5vmin;
   margin-right: 10%;
   text-decoration-line: none;
   color: inherit;
+  width: 50%;
 }
 
 .delete-info {
   cursor: pointer;
-  font-size: 2vmin;
+  font-size: 3.5vmin;
   margin-left: 10%;
+  width: 50%;
 }
 
 .login-require {
   text-align: center;
-  font-size: 4vmin;
+  font-size: 8vmin;
 }
 
 .login-require-logo {
-  width: 30%;
-}
-
-.login-require-logo-wrapper {
-  text-align: center;
+  width: 50%;
+  margin-top: -14vh;
 }
 
 .mypage-pw-confirm {
