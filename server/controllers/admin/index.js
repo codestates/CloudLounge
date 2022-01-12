@@ -15,6 +15,7 @@ module.exports = async (req, res) => {
   const filteredData = data.count.filter((el) => {
     return el.count >= 3 //? 신고횟수가 3회 이상일 때
   })
+
   console.log('\nfiltered:', filteredData)
 
   if (filteredData.length === 0) {

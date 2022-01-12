@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react'
 import logo from '../Login/logo.png'
 import './Admin.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { getReportsList, handleLoginFalse } from '../../actions/index'
+import {
+  getReportsList,
+  handleAdminPageFalse,
+  handleLoginFalse,
+  handleAdminPageTrue,
+} from '../../actions/index'
 import { useNavigate } from 'react-router'
 import Navbar from '../../Components/Navbar'
 import AdminReport from '../../Components/AdminReport'
@@ -27,9 +32,14 @@ const Admin = () => {
   const { reportsList } = reportsListState
   const dispatch = useDispatch()
   useEffect(() => {
-    const received = axios
-      .get(serverUrl + '/admin')
-      .then((res) => dispatch(getReportsList(res.data)))
+    const getData = async () => {
+      await axios.get(serverUrl + '/admin').then((res) => {
+        if (!res.data.message) {
+          dispatch(getReportsList(res.data))
+        }
+      })
+    }
+    getData()
   }, [])
 
   if (isAdmin) {
@@ -37,9 +47,9 @@ const Admin = () => {
       <div className="admin-wrapper">
         <div className="admin-head">신고내역</div>
         <div className="admin-body">
-          {reportsList.map((el) => (
-            <AdminReport key={el.loungeId} report={el} />
-          ))}
+          {reportsList.length === 0
+            ? '신고가 없습니다'
+            : reportsList.map((el) => <AdminReport key={el.loungeId} report={el} />)}
         </div>
       </div>
     )

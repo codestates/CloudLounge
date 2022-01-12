@@ -4,6 +4,7 @@ import { locationReducer } from './locationReducer'
 import { loungeDetailReducer } from './loungeDetailReducer'
 import { isAdminReducer } from './isAdminReducer'
 import { reportsListReducer } from './reportsListReducer'
+import { isReportEmptyReducer } from './isReportEmptyReducer'
 
 export const rootReducer = combineReducers({
   isLoginReducer,
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
   loungeDetailReducer,
   isAdminReducer,
   reportsListReducer,
+  isReportEmptyReducer,
 })

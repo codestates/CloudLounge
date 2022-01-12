@@ -7,6 +7,8 @@ export const HANDLE_ADMIN_TRUE = 'HANDLE_ADMIN_TRUE'
 export const HANDLE_ADMIN_FALSE = 'HANDLE_ADMIN_FALSE'
 export const GET_REPORTS_LIST = 'GET_REPORTS_LIST'
 export const DELETE_REPORTS_LIST = 'DELETE_REPORTS_LIST'
+export const HANDLE_ADMIN_PAGE_TRUE = 'HANDLE_ADMIN_PAGE_TRUE'
+export const HANDLE_ADMIN_PAGE_FALSE = 'HANDLE_ADMIN_PAGE_FALSE'
 
 //actions
 export const handleLoginTrue = () => {
@@ -57,5 +59,17 @@ export const getReportsList = (reportsList) => {
   return {
     type: GET_REPORTS_LIST,
     payload: reportsList,
+  }
+}
+
+export const handleAdminPageTrue = () => {
+  return {
+    type: HANDLE_ADMIN_PAGE_TRUE,
+  }
+}
+
+export const handleAdminPageFalse = () => {
+  return {
+    type: HANDLE_ADMIN_PAGE_FALSE,
   }
 }

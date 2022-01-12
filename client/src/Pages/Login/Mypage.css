@@ -8,8 +8,8 @@
 }
 
 .mypage-logo-wrapper {
-  max-height: 20vh;
-  min-height: 3vh;
+  height: 15vh;
+  margin-top: -15vh;
   width: auto;
 }
 
