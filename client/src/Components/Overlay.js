@@ -19,7 +19,6 @@ const Overlay = () => {
   const moveDetail = () => {
     navigate('/details')
   }
-  useEffect(() => {})
   return (
     <div className="overlay">
       <img src={loungeInfo.image} className="overlayImg"></img>
