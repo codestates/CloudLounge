@@ -6,6 +6,7 @@ export const initialState = {
   reportsList: {
     reportsList: [],
   },
+  isReportEmpty: { isReportEmpty: false },
 }
 
 // // reducers

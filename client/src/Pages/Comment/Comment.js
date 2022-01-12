@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import './Comment.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { setLounge } from '../../actions'
 
 const Comment = () => {
   const loungeDetail = useSelector((state) => state.loungeDetailReducer)
   const [rating, setRating] = useState(0)
   const [contents, setContent] = useState('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const submitComment = () => {
     if (rating === 0) {
       alert('별점을 선택해주세요')
@@ -28,6 +30,14 @@ const Comment = () => {
         .then((res) => {
           if (res.status === 201) {
             alert('댓글이 등록되었습니다.')
+            axios({
+              method: 'GET',
+              url: `${
+                process.env.REACT_APP_SERVER_URL
+              }/lounge/info/${localStorage.getItem('loungeId')}`,
+            }).then((res) => {
+              dispatch(setLounge(res.data.data))
+            })
             navigate('/details')
           }
         })

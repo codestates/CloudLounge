@@ -15,8 +15,12 @@ module.exports = async (req, res) => {
   const filteredData = data.count.filter((el) => {
     return el.count >= 3 //? 신고횟수가 3회 이상일 때
   })
+
   console.log('\nfiltered:', filteredData)
-  // console.log(filteredData[1].loungeId)
+
+  if (filteredData.length === 0) {
+    return res.send({ message: 'no report list' })
+  }
 
   for (let i = 0; i < filteredData.length; i++) {
     await lounge

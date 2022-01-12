@@ -26,19 +26,6 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%REACT_APP_API_KEY%&libraries=services"
     ></script>
-    <script type="text/javascript">
-      function loungedetail() {
-        window.location.pathname = '/details'
-      }
-      function report() {
-        if (localStorage.getItem('accessToken') !== null) {
-          window.location.pathname = '/report'
-        } else {
-          alert('로그인이 필요합니다.')
-          window.location.pathname = '/login'
-        }
-      }
-    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

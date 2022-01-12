@@ -1,31 +1,36 @@
-function createContent({ data }) {
-  return `<div class="container">
-    <div class="overlayTop">
-      <button class="reportBtn" onclick="report()">신고</button>
-    </div>
-    <div class="info">
-      <img src="${data.image}" class="lounge"/>
-      <div class="start-rating">별점: ${data.avgRating}</div>
-      <div class="rating">
-      <div class="star-fill" style="width: ${data.avgRating * 20}%">
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLounge } from '../actions'
+import axios from 'axios'
+
+const Overlay = () => {
+  const navigate = useNavigate()
+  const isLogin = useSelector((state) => state.isLoginReducer)
+  const loungeInfo = useSelector((state) => state.loungeDetailReducer)
+  const moveReport = () => {
+    if (isLogin.isLogin === true) {
+      navigate('/report')
+    } else {
+      alert('로그인이 필요합니다.')
+      navigate('/login')
+    }
+  }
+  const moveDetail = () => {
+    navigate('/details')
+  }
+  return (
+    <div className="overlay">
+      <img src={loungeInfo.image} className="overlayImg"></img>
+      <div className="overlayContent">
+        <span>{loungeInfo.address}</span>
+        <div className="overlayButton">
+          <button onClick={moveReport}>report</button>
+          <button onClick={moveDetail}>detail</button>
+        </div>
       </div>
-      <div class="star-base">
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-      </div>
     </div>
-      <div class="address">${data.address}</div>
-      <button onclick="loungedetail()">자세히보기</button>
-    </div>
-  </div>`
+  )
 }
 
-export default createContent
+export default Overlay

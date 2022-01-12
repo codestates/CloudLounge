@@ -1,8 +1,8 @@
 import axios from 'axios'
 axios.defaults.withCredentials = true
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { deleteReportsList } from '../actions'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteReportsList, handleAdminPageFalse } from '../actions'
 const serverUrl = process.env.REACT_APP_SERVER_URL
 console.log(serverUrl)
 
