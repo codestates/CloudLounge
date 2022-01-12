@@ -15,9 +15,6 @@ const Mypage = () => {
   const [confirmPw, setConfirmPw] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  // const isLoginState = useSelector((state) => state.isLoginReducer)
-
-  // console.log(window.location.href)
 
   const accessToken = window.localStorage.getItem('accessToken')
   const oauth = window.localStorage.getItem('oauth')
@@ -27,7 +24,7 @@ const Mypage = () => {
         <div className="login-require-logo-wrapper">
           <img src={logo} className="login-require-logo" />
         </div>
-        <h4 className="login-require">로그인이 필요한 서비스입니다</h4>
+        <h4 className="login-require">로그인이 필요합니다</h4>
       </div>
     )
   } else {
@@ -114,7 +111,7 @@ const Mypage = () => {
               취소
             </button>
           </div>
-          <div className="mypage-inner-box">
+          <div className="mypage-inner-box" id="mypage-nick">
             <h4 className="mypage-idbox">닉네임</h4>
             <h4 className="mypage-ididbox">{username}</h4>
           </div>
