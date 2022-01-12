@@ -1,14 +1,16 @@
 import axios from 'axios'
+axios.defaults.withCredentials = true
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteReportsList } from '../actions'
-const serverUrl = process.env.SERVER_URL
+const serverUrl = process.env.REACT_APP_SERVER_URL
+console.log(serverUrl)
 
 const AdminReport = (props) => {
   const dispatch = useDispatch()
   const { address, count, loungeId } = props.report
   const handleClick = async () => {
-    // await axios.delete(serverUrl + '/admin', loungeId)
+    await axios.delete(serverUrl + `/admin/${loungeId}`)
     dispatch(deleteReportsList({ loungeId }))
   }
 
