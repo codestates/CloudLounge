@@ -124,7 +124,7 @@ const Mypage = () => {
             className={oauth ? 'change-info mypage-hide' : 'change-info'}
             href="/changeInfo"
           >
-            정보 수정하기
+            정보수정
           </a>
           <a className="delete-info" onClick={handleDeleteInfo}>
             회원탈퇴

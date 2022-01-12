@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
     return el.count >= 3 //? 신고횟수가 3회 이상일 때
   })
   console.log('\nfiltered:', filteredData)
-  console.log(filteredData[1].loungeId)
+  // console.log(filteredData[1].loungeId)
 
   for (let i = 0; i < filteredData.length; i++) {
     await lounge
