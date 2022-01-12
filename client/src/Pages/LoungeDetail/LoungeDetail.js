@@ -12,12 +12,14 @@ const LoungeDetail = () => {
   const loungeDetail = useSelector((state) => state.loungeDetailReducer)
   const isLogin = useSelector((state) => state.isLoginReducer.isLogin)
   useEffect(() => {
-    let loungeId = localStorage.getItem('loungeId')
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/lounge/info/${loungeId}`)
-      .then((res) => {
-        dispatch(setLounge(res.data.data))
-      })
+    if (Object.keys(loungeDetail).length === 0) {
+      let loungeId = localStorage.getItem('loungeId')
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/lounge/info/${loungeId}`)
+        .then((res) => {
+          dispatch(setLounge(res.data.data))
+        })
+    }
   }, [])
 
   const commentBtnClick = () => {
