@@ -3,6 +3,7 @@
   justify-content: center;
   width: 90%;
   height: auto;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -14,9 +15,9 @@
 
 .mypage-idpw {
   border: solid 1px;
+  border-radius: 5% / 10%;
   display: flex;
   width: 80%;
-  margin-left: 10%;
   font-size: 3.5vmin;
   flex-direction: column;
 }
