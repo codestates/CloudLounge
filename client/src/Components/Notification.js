@@ -5,14 +5,16 @@ import { notificationOff } from '../actions'
 const Notification = () => {
   const notificationText = useSelector((state) => state.notificationTextReducer)
   const dispatch = useDispatch()
-  const closeNotification = () => {
-    dispatch(notificationOff())
+  const closeNotification = (event) => {
+    if (event.target.className !== 'notification' && event.target.tagName !== 'SPAN') {
+      dispatch(notificationOff())
+    }
   }
   return (
-    <div className="notificationContainer">
+    <div className="notificationContainer" onClick={closeNotification}>
       <div className="notification">
         <span>{notificationText}</span>
-        <button onClick={closeNotification}>확인</button>
+        <button>확인</button>
       </div>
     </div>
   )
