@@ -24,9 +24,6 @@ module.exports = {
         include: {
           model: comment,
           require: true,
-          where: {
-            loungeId: req.params.loungeId,
-          },
         },
       })
       .then((data) => {
