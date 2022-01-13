@@ -9,6 +9,9 @@ export const GET_REPORTS_LIST = 'GET_REPORTS_LIST'
 export const DELETE_REPORTS_LIST = 'DELETE_REPORTS_LIST'
 export const HANDLE_ADMIN_PAGE_TRUE = 'HANDLE_ADMIN_PAGE_TRUE'
 export const HANDLE_ADMIN_PAGE_FALSE = 'HANDLE_ADMIN_PAGE_FALSE'
+export const NOTIFICATION_ON = 'NOTIFICATION_ON'
+export const NOTIFICATION_OFF = 'NOTIFICATION_OFF'
+export const SET_NOTIFICATION = 'SET_NOTIFICATION'
 
 //actions
 export const handleLoginTrue = () => {
@@ -71,5 +74,24 @@ export const handleAdminPageTrue = () => {
 export const handleAdminPageFalse = () => {
   return {
     type: HANDLE_ADMIN_PAGE_FALSE,
+  }
+}
+
+export const notificationOn = () => {
+  return {
+    type: NOTIFICATION_ON,
+  }
+}
+
+export const notificationOff = () => {
+  return {
+    type: NOTIFICATION_OFF,
+  }
+}
+
+export const setNotification = (text) => {
+  return {
+    type: SET_NOTIFICATION,
+    body: text,
   }
 }

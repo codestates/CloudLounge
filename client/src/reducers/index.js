@@ -5,6 +5,8 @@ import { loungeDetailReducer } from './loungeDetailReducer'
 import { isAdminReducer } from './isAdminReducer'
 import { reportsListReducer } from './reportsListReducer'
 import { isReportEmptyReducer } from './isReportEmptyReducer'
+import { isNotificationReducer } from './isNotificationReducer'
+import { notificationTextReducer } from './notificationTextReducer'
 
 export const rootReducer = combineReducers({
   isLoginReducer,
@@ -13,4 +15,6 @@ export const rootReducer = combineReducers({
   isAdminReducer,
   reportsListReducer,
   isReportEmptyReducer,
+  isNotificationReducer,
+  notificationTextReducer,
 })

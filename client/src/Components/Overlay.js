@@ -3,17 +3,19 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLounge } from '../actions'
 import axios from 'axios'
+import { notificationOn, setNotification } from '../actions'
 
 const Overlay = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const isLogin = useSelector((state) => state.isLoginReducer)
   const loungeInfo = useSelector((state) => state.loungeDetailReducer)
   const moveReport = () => {
     if (isLogin.isLogin === true) {
       navigate('/report')
     } else {
-      alert('로그인이 필요합니다.')
-      navigate('/login')
+      dispatch(notificationOn())
+      dispatch(setNotification('로그인이 필요한 서비스입니다.'))
     }
   }
   const moveDetail = () => {

@@ -96,24 +96,39 @@ div.overlayButton button {
   font-size: 2.2vh;
 }
 
-/*overlay 별점*/
-/* .rating {
-  position: relative;
-  width: max-content;
-  left: 50%;
-  transform: translate(-50%, 0);
-  font-size: 20px;
-}
-
-.star-base {
-  color: #aaa9a9;
-}
-
-.star-fill {
-  color: yellow;
-  z-index: 2;
+/*notification Modal*/
+div.notificationContainer {
   position: absolute;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-} */
+  max-width: 750px;
+  width: 100%;
+  height: 90vh;
+  background-color: rgba(127, 127, 127, 0.5);
+  z-index: 5;
+}
+
+div.notification {
+  width: 50%;
+  height: 25%;
+  margin: auto;
+  margin-top: 35vh;
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 2vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 6;
+  opacity: 1;
+  background-color: white;
+}
+
+div.notification button {
+  width: 40%;
+  font-size: 2vmin;
+}
+
+div.notification span {
+  font-size: 3vmin;
+}
