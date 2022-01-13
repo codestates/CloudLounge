@@ -48,10 +48,13 @@ const Mypage = () => {
     }
 
     const handleCancel = () => {
+      setConfirmPw('')
       setDelInfo(false)
+      console.log('지우기')
     }
 
     const handleChange = (e) => {
+      console.log('작성')
       setConfirmPw(e.target.value)
     }
 
@@ -86,41 +89,47 @@ const Mypage = () => {
         </div>
         <div className="mypage-idpw">
           <div className="mypage-inner-box">
-            <h4 className="mypage-idbox">아이디</h4>
-            <h4 className="mypage-ididbox">{id}</h4>
-          </div>
-          <div className={delInfo ? 'mypage-inner-box' : 'mypage-inner-box mypage-hide'}>
-            <h4 className="mypage-idbox">비밀번호</h4>
-            <input
-              type="text"
-              name="confirmPw"
-              className="mypage-pw-confirm"
-              placeholder="본인 확인을 위해 비밀번호를 입력하세요"
-              onChange={handleChange}
-            ></input>
+            <h4 className="mypage-menu-title">아이디</h4>
+            <h4 className="mypage-menu-content">{id}</h4>
           </div>
           <div
-            className={
-              delInfo ? 'mypage-delBtn-wrapper' : 'mypage-delBtn-wrapper mypage-hide'
-            }
+            className={delInfo ? 'mypage-inner-box' : 'mypage-inner-box mypage-hide'}
+            id="mypage-del-wrapper"
           >
-            <button className="mypage-cancel-btn" onClick={handleDelSubmit}>
-              확인
-            </button>
-            <button className="mypage-cancel-btn" onClick={handleCancel}>
-              취소
-            </button>
+            <h4 className="mypage-menu-title">비밀번호</h4>
+            <input
+              type="password"
+              name="confirmPw"
+              className="mypage-pw-confirm"
+              placeholder="본인 확인을 위해 입력해주세요"
+              value={confirmPw}
+              onChange={handleChange}
+            ></input>
+            <div
+              className={
+                delInfo ? 'mypage-delBtn-wrapper' : 'mypage-delBtn-wrapper mypage-hide'
+              }
+            >
+              <button className="mypage-cancel-btn" onClick={handleDelSubmit}>
+                탈퇴
+              </button>
+              <button className="mypage-cancel-btn" onClick={handleCancel}>
+                취소
+              </button>
+            </div>
           </div>
+
           <div className="mypage-inner-box" id="mypage-nick">
-            <h4 className="mypage-idbox">닉네임</h4>
-            <h4 className="mypage-ididbox">{username}</h4>
+            <h4 className="mypage-menu-title">닉네임</h4>
+            <h4 className="mypage-menu-content">{username}</h4>
           </div>
         </div>
-        <div className="mypage-sidebar-wrapper">
-          <a
-            className={oauth ? 'change-info mypage-hide' : 'change-info'}
-            href="/changeInfo"
-          >
+        <div
+          className={
+            oauth ? 'mypage-sidebar-wrapper mypage-hide' : 'mypage-sidebar-wrapper'
+          }
+        >
+          <a className="change-info mypage-hide" href="/changeInfo">
             정보수정
           </a>
           <a className="delete-info" onClick={handleDeleteInfo}>

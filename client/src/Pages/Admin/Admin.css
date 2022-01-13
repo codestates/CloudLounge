@@ -6,6 +6,11 @@
   justify-content: center;
 }
 
+.admin-logo {
+  height: 15vh;
+  margin-top: -5vh;
+}
+
 .admin-unauth {
   vertical-align: middle;
   font-size: 8vmin;
@@ -20,44 +25,69 @@
 }
 
 .admin-head {
-  height: 10vh;
+  height: 7vh;
   border: solid 1px;
   font-size: 7vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2vw 2vw 0 0;
 }
 .admin-body {
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 60vh;
   border: solid 1px;
   overflow-y: scroll;
+  border-radius: 0 0 2vw 2vw;
+}
+
+.admin-margin {
+  height: 2vh;
 }
 
 .adminReport-wrapper {
   display: flex;
   /* border: solid 1px; */
-  justify-content: space-between;
-  margin-top: 4vh;
+  width: 100%;
+  margin: 1vh 0;
   height: 8vh;
+  align-items: center;
 }
 
 .adminReport-infos {
-  font-size: 2.7vmin;
-  margin-left: 10%;
   display: flex;
-  text-align: left;
-  width: 63%;
+  align-items: center;
+  width: 80%;
 }
 
 .adminReport-btn {
-  font-size: 2.5vmin;
-  margin-right: 7%;
+  font-size: 3vmin;
+  height: 5vh;
+  width: 13%;
+  margin-left: 3%;
+  border-radius: 2vw;
+}
+
+.adminReport-infos-left {
+  font-size: 3vmin;
+  width: 20%;
+  padding-left: 5%;
+  text-align: left;
 }
 
 .adminReport-infos-right {
-  margin-left: 5%;
-  width: 60%;
+  font-size: 3vmin;
+  width: 75%;
+  text-align: left;
+  padding-left: 5%;
 }
 
 .adminReport-infos-bottom {
   margin-top: 1vh;
+}
+
+.admin-noList {
+  margin-top: 20vh;
+  font-size: 8vmin;
 }

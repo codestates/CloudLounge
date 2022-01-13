@@ -45,17 +45,27 @@ const Admin = () => {
   if (isAdmin) {
     return (
       <div className="admin-wrapper">
+        <div className="admin-logo-wrapper">
+          <img src={logo} className="admin-logo"></img>
+        </div>
         <div className="admin-head">신고내역</div>
         <div className="admin-body">
-          {reportsList.length === 0
-            ? '신고가 없습니다'
-            : reportsList.map((el) => <AdminReport key={el.loungeId} report={el} />)}
+          <div className="admin-margin"></div>
+          {reportsList.length === 0 ? (
+            <div className="admin-noList">신고 내역이 없습니다</div>
+          ) : (
+            reportsList.map((el) => <AdminReport key={el.loungeId} report={el} />)
+          )}
+          <div className="admin-margin"></div>
         </div>
       </div>
     )
   } else {
     return (
       <div className="admin-failure">
+        <div className="admin-logo-wrapper">
+          <img src={logo} className="admin-logo"></img>
+        </div>
         <span className="admin-unauth">권한이 없습니다</span>
       </div>
     )

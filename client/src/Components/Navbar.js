@@ -7,6 +7,7 @@ import {
   faUserAlt,
   faSignInAlt,
   faSignOutAlt,
+  faUserCog,
 } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import {
@@ -65,7 +66,9 @@ const Navbar = () => {
       </Link>
       {isAdmin ? (
         <Link to="/admin" className="navbtn-wrapper">
-          <button className="navBtn">Admin</button>
+          <button className="navBtn">
+            <FontAwesomeIcon icon={faUserCog} />
+          </button>
         </Link>
       ) : (
         <Link to="/mypage" className="navbtn-wrapper">
