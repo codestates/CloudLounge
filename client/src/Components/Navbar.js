@@ -74,7 +74,7 @@ const Navbar = () => {
           </button>
         </Link>
       )}
-      <Link to="login" className="navbtn-wrapper">
+      <div className="navbtn-wrapper">
         <button className="navBtn" onClick={handleLogout}>
           {isLogin ? (
             <FontAwesomeIcon icon={faSignOutAlt} />
@@ -82,7 +82,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faSignInAlt} />
           )}
         </button>
-      </Link>
+      </div>
     </div>
   )
 }
