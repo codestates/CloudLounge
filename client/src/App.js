@@ -16,6 +16,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Overlay from './Components/Overlay'
 import { initializeMap } from './Components/Map'
+import Notification from './Components/Notification'
 
 function App() {
   const mapRef = useRef()
@@ -24,6 +25,7 @@ function App() {
   const [map, setMap] = useState(null)
   const [mapLoading, setMapLoading] = useState(false)
   const [isOverlay, setIsOverlay] = useState(false)
+  const isNotification = useSelector((state) => state.isNotificationReducer)
 
   useEffect(() => {
     let options = {
@@ -65,6 +67,7 @@ function App() {
         </Routes>
         <div className="map" ref={mapRef}></div>
         {location.pathname === '/' && isOverlay ? <Overlay /> : null}
+        {isNotification ? <Notification /> : null}
       </main>
       <NavBar className="bottom-component" />
     </div>
