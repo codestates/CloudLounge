@@ -28,13 +28,3 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/', indexRouter)
 
 app.listen(PORT, () => console.log(`      🚀 Server is runnning on PORT:${PORT}\n`))
-
-// sequelize 명령어
-
-// migration
-// npx sequelize-cli db:migrate
-// npx sequelize-cli db:migrate:undo:all
-
-// seed
-// npx sequelize-cli db:seed:all
-// npx sequelize-cli db:seed:undo:all
