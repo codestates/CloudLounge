@@ -100,7 +100,7 @@ const ChangeInfo = () => {
           <h4 className="changeInfo-input-title">현재 비밀번호</h4>
           <div className="changeInfo-input-wrapper">
             <input
-              type="text"
+              type="password"
               className="changeInfo-input-content"
               name="curPw"
               onChange={handleChange}
@@ -111,7 +111,7 @@ const ChangeInfo = () => {
           <h4 className="changeInfo-input-title">변경하실 비밀번호</h4>
           <div className="changeInfo-input-wrapper">
             <input
-              type="text"
+              type="password"
               className="changeInfo-input-content"
               name="changePw"
               onChange={handleChange}
@@ -122,7 +122,7 @@ const ChangeInfo = () => {
           <h4 className="changeInfo-input-title">변경 비밀번호 확인</h4>
           <div className="changeInfo-input-wrapper">
             <input
-              type="text"
+              type="password"
               className="changeInfo-input-content"
               name="confirmPw"
               onChange={handleChange}

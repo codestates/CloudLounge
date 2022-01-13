@@ -64,12 +64,12 @@ const Signup = () => {
   }
 
   return (
-    <div className="box-wrapper">
+    <div className="signup-page-wrapper">
       <div>
-        <img src={logo} className="logo-wrapper"></img>
+        <img src={logo} className="signup-logo-wrapper"></img>
       </div>
-      <div className="box">
-        로그인아이디(이메일)
+      <div className="signup-menu">
+        <h4 className="signup-title">로그인아이디(이메일)</h4>
         <input
           name="id"
           onChange={handleChange}
@@ -77,8 +77,8 @@ const Signup = () => {
           className="signup-input"
         ></input>
       </div>
-      <div className="box">
-        닉네임
+      <div className="signup-menu">
+        <h4 className="signup-title">닉네임</h4>
         <input
           name="username"
           onChange={handleChange}
@@ -86,8 +86,8 @@ const Signup = () => {
           className="signup-input"
         ></input>
       </div>
-      <div className="box">
-        비밀번호
+      <div className="signup-menu">
+        <h4 className="signup-title">비밀번호</h4>
         <input
           name="pw"
           onChange={handleChange}
@@ -95,8 +95,8 @@ const Signup = () => {
           className="signup-input"
         ></input>
       </div>
-      <div className="box">
-        비밀번호 확인
+      <div className="signup-menu">
+        <h4 className="signup-title">비밀번호 확인</h4>
         <input
           name="confirmPw"
           onChange={handleChange}
@@ -104,7 +104,7 @@ const Signup = () => {
           className="signup-input"
         ></input>
       </div>
-      <div className="signup-wrapper">
+      <div className="signup-btn-wrapper">
         <button className="signup-btn" onClick={handleClick}>
           가입하기
         </button>

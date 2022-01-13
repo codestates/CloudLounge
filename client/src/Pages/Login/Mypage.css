@@ -15,33 +15,53 @@
 
 .mypage-idpw {
   border: solid 1px;
-  border-radius: 5% / 10%;
+  border-radius: 3vw;
   display: flex;
   /* min-width: 80%; */
   width: 100%;
   flex-direction: column;
-  justify-content: left;
+  align-items: center;
 }
 
 .mypage-inner-box {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.mypage-menu-title {
+  text-align: left;
+  width: 80%;
+  margin-top: 2vh;
+  margin-bottom: 1.5vh;
+  font-size: 5vmin;
 }
 
 #mypage-nick {
   border-top: black 1px solid;
 }
 
-.mypage-idbox {
-  margin: 2vh 0 0 5%;
-  text-align: left;
-  font-size: 6vmin;
+#mypage-del-wrapper {
+  border-top: black 1px solid;
 }
 
-.mypage-ididbox {
-  margin-left: 5%;
+.mypage-menu-content {
+  width: 80%;
+  margin-top: 0;
+  margin-bottom: 1.5vh;
   font-size: 4vmin;
   text-align: left;
+}
+
+.mypage-delBtn-wrapper {
+  margin: 2vh 0;
+  width: 80%;
+}
+
+.mypage-cancel-btn {
+  width: 20%;
+  border-radius: 2vw;
 }
 
 .mypage-sidebar-wrapper {
@@ -73,15 +93,15 @@
 }
 
 .login-require-logo {
-  width: 50%;
-  margin-top: -14vh;
+  height: 20vh;
+  margin-top: -16vh;
 }
 
 .mypage-pw-confirm {
   height: 5vh;
-  margin-top: 3vh;
-  margin-left: 5%;
-  width: 60%;
+  font-size: 4vmin;
+  width: 80%;
+  border-radius: 2vw;
 }
 
 .mypage-hide {

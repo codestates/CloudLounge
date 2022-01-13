@@ -1,30 +1,40 @@
-.box-wrapper {
+.signup-page-wrapper {
   display: flex;
   width: 90%;
   justify-content: center;
-  height: auto;
+  flex-direction: column;
+  height: 90vh;
 }
 
-.box {
+.signup-logo-wrapper {
+  height: 13vh;
+  margin-top: -4vh;
+}
+.signup-menu {
   display: flex;
   flex-direction: column;
-  font-size: 25px;
-  margin-left: 5%;
+}
+
+.signup-title {
+  text-align: left;
+  font-size: 4vmin;
+  margin: 1vh 0;
 }
 
 .signup-input {
   height: 5vh;
-  width: 90%;
+  width: 100%;
+  font-size: 3.5vmin;
   border: solid 1px;
-  margin: 1.5vh 0 1.5vh 0;
+  margin: 1.5vh 0;
+  border-radius: 2vw;
 }
 
-.signup-wrapper {
-  width: 90%;
-}
 .signup-btn {
-  height: 5vh;
-  margin-top: 3vh;
-  width: 70%;
+  height: 6vh;
+  margin-top: 4vh;
+  width: 40%;
+  font-size: 4vmin;
   margin-right: 3%;
+  border-radius: 2vw;
 }

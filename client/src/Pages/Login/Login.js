@@ -95,12 +95,12 @@ const Login = () => {
   }, [window.location.href])
 
   return (
-    <div className="box-wrapper">
+    <div className="login-page-wrapper">
       <div id="logo">
         <img src={logo} alt="Logo" className="logo-wrapper" />
       </div>
       <div className="login-part">
-        <div className="top">
+        <div className="login-top">
           <div className="inputs-wrapper">
             <div className="idpw-box-id">
               <div className="idpw-indicator">아이디</div>
@@ -115,7 +115,7 @@ const Login = () => {
             <div className="idpw-box-pw">
               <div className="idpw-indicator">비밀번호</div>
               <input
-                type="text"
+                type="password"
                 name="pw"
                 placeholder="비밀번호를 입력하세요"
                 onChange={handleChange}

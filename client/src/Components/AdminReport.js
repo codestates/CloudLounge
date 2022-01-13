@@ -27,7 +27,7 @@ const AdminReport = (props) => {
         </div>
       </div>
       <button className="adminReport-btn" onClick={handleClick}>
-        조치완료
+        완료
       </button>
     </div>
   )
