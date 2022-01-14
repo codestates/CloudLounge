@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Overlay from './Components/Overlay'
 import { initializeMap } from './Components/Map'
 import Notification from './Components/Notification'
+import { notificationOff } from './actions'
 
 function App() {
   const mapRef = useRef()
@@ -44,6 +45,7 @@ function App() {
   }, [mapLoading])
 
   useEffect(() => {
+    dispatch(notificationOff())
     if (location.pathname !== '/') {
       mapRef.current.style.display = 'none'
     } else {
