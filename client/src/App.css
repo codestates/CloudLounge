@@ -134,9 +134,9 @@ div.notification {
 
 div.notification button {
   width: 40%;
-  font-size: 2vmin;
+  font-size: 3vmin;
 }
 
 div.notification span {
-  font-size: 3vmin;
+  font-size: 4vmin;
 }
