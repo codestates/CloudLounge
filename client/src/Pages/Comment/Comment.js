@@ -36,8 +36,7 @@ const Comment = () => {
             // alert('댓글이 등록되었습니다.')
             dispatch(notificationOn())
             dispatch(setNotification('댓글이 등록되었습니다.'))
-            navigate('/details')
-            // dispatch(setNextLink('/details'))
+            dispatch(setNextLink('/details'))
             axios({
               method: 'GET',
               url: `${

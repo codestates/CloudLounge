@@ -25,6 +25,22 @@ const Overlay = () => {
       <img src={loungeInfo.image} className="overlayImg"></img>
       <div className="overlayContent">
         <span>{loungeInfo.address}</span>
+        <div className="overlayRating">
+          <div className="star-fill" style={{ width: `${loungeInfo.avgRating * 20}%` }}>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+          <div className="star-base">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+        </div>
         <div className="overlayButton">
           <button onClick={moveReport}>report</button>
           <button onClick={moveDetail}>detail</button>

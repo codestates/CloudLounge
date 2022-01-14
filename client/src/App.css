@@ -55,9 +55,9 @@
 div.overlay {
   width: 90%;
   max-width: 675px;
-  height: 14vh;
+  height: 15vh;
   position: absolute;
-  transform: translate(0, 33vh);
+  transform: translate(0, 32.5vh);
   z-index: 10;
   background-color: white;
   display: flex;
@@ -65,17 +65,18 @@ div.overlay {
   justify-content: center;
   border: solid 1px black;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 img.overlayImg {
   width: 20%;
   height: 80%;
+  border-radius: 50%;
 }
 
 div.overlayContent {
-  width: 70%;
-  height: 70%;
+  width: 75%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,17 +84,24 @@ div.overlayContent {
 }
 
 div.overlayContent > span {
-  font-size: 2.2vh;
+  font-size: 2vh;
 }
 
 div.overlayButton {
   width: 100%;
   display: flex;
+  margin-top: 0.5vh;
   justify-content: space-evenly;
 }
 
 div.overlayButton button {
   font-size: 2.2vh;
+}
+
+div.overlayRating {
+  position: relative;
+  width: max-content;
+  font-size: 5vmin;
 }
 
 /*notification Modal*/

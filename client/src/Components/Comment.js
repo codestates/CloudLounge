@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Comment = ({ comment }) => {
+  console.log(comment.createdAt)
   return (
     <div className="commentWrapper">
       <div className="commentHeader">
