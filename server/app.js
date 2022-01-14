@@ -14,6 +14,7 @@ app.use(
       'https://cloudlounge.tk',
       'https://www.cloudlounge.tk',
       'http://localhost:3000',
+      'http://cloud-lounge-client.s3-website.ap-northeast-2.amazonaws.com',
     ],
     credentials: true,
     methods: ['GET', 'POST', 'DELETE', 'PATCH', 'OPTIONS'],
