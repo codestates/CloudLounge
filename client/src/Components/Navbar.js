@@ -36,7 +36,9 @@ const Navbar = () => {
       })
       dispatch(handleLoginFalse())
       dispatch(handleAdminFalse())
-      window.localStorage.clear()
+      window.localStorage.removeItem('accessToken')
+      window.localStorage.removeItem('admin')
+      window.localStorage.removeItem('oauth')
       navigate('/login')
     } else {
       //로그아웃인 상태
