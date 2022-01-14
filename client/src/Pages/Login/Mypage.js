@@ -7,6 +7,7 @@ import {
   handleLoginFalse,
   notificationOn,
   setNotification,
+  setNextLink,
 } from '../../actions/index'
 import { useNavigate } from 'react-router'
 import Navbar from '../../Components/Navbar'
@@ -55,11 +56,9 @@ const Mypage = () => {
     const handleCancel = () => {
       setConfirmPw('')
       setDelInfo(false)
-      console.log('지우기')
     }
 
     const handleChange = (e) => {
-      console.log('작성')
       setConfirmPw(e.target.value)
     }
 
@@ -76,24 +75,23 @@ const Mypage = () => {
                 headers: { authorization: `Bearer ${accessToken}` },
               })
               .then((res) => {
-                window.localStorage.clear()
                 dispatch(handleLoginFalse())
                 dispatch(notificationOn())
                 dispatch(setNotification('회원을 탈퇴했습니다'))
-                navigate('/')
-                // alert('회원을 탈퇴했습니다')
+                dispatch(setNextLink('/'))
+                window.localStorage.removeItem('accessToken')
+                window.localStorage.removeItem('admin')
+                window.localStorage.removeItem('oauth')
               })
               .catch((err) => {
                 dispatch(notificationOn())
                 dispatch(setNotification('404 not found'))
-                // alert('404 not found')
               })
           }
         })
         .catch((err) => {
           dispatch(notificationOn())
           dispatch(setNotification('비밀번호를 다시 확인해주세요'))
-          // alert('비밀번호를 다시 확인해주세요')
         })
     }
 
