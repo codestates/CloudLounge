@@ -6,7 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import './Login.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleAdminTrue, handleLoginTrue } from '../../actions/index'
+import {
+  handleAdminTrue,
+  handleLoginTrue,
+  notificationOn,
+  setNotification,
+} from '../../actions/index'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
@@ -37,7 +42,10 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err)
-        alert('[로그인 실패] 아이디 혹은 비밀번호를 다시 확인해주세요')
+        dispatch(notificationOn())
+        dispatch(
+          setNotification('[로그인 실패] 아이디 혹은 비밀번호를 다시 확인해주세요')
+        )
       })
   }
 

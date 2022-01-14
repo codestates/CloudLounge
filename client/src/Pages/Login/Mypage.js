@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
 import './Mypage.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLoginTrue, handleLoginFalse } from '../../actions/index'
+import {
+  handleLoginTrue,
+  handleLoginFalse,
+  notificationOn,
+  setNotification,
+  setNextLink,
+} from '../../actions/index'
 import { useNavigate } from 'react-router'
 import Navbar from '../../Components/Navbar'
 import axios from 'axios'
@@ -50,11 +56,9 @@ const Mypage = () => {
     const handleCancel = () => {
       setConfirmPw('')
       setDelInfo(false)
-      console.log('지우기')
     }
 
     const handleChange = (e) => {
-      console.log('작성')
       setConfirmPw(e.target.value)
     }
 
@@ -71,15 +75,24 @@ const Mypage = () => {
                 headers: { authorization: `Bearer ${accessToken}` },
               })
               .then((res) => {
-                window.localStorage.clear()
                 dispatch(handleLoginFalse())
-                navigate('/')
-                alert('회원을 탈퇴했습니다')
+                dispatch(notificationOn())
+                dispatch(setNotification('회원을 탈퇴했습니다'))
+                dispatch(setNextLink('/'))
+                window.localStorage.removeItem('accessToken')
+                window.localStorage.removeItem('admin')
+                window.localStorage.removeItem('oauth')
               })
-              .catch((err) => alert('404 not found'))
+              .catch((err) => {
+                dispatch(notificationOn())
+                dispatch(setNotification('404 not found'))
+              })
           }
         })
-        .catch((err) => alert('비밀번호를 다시 확인해주세요'))
+        .catch((err) => {
+          dispatch(notificationOn())
+          dispatch(setNotification('비밀번호를 다시 확인해주세요'))
+        })
     }
 
     return (
@@ -129,7 +142,7 @@ const Mypage = () => {
             oauth ? 'mypage-sidebar-wrapper mypage-hide' : 'mypage-sidebar-wrapper'
           }
         >
-          <a className="change-info mypage-hide" href="/changeInfo">
+          <a className="change-info" href="/changeInfo">
             정보수정
           </a>
           <a className="delete-info" onClick={handleDeleteInfo}>

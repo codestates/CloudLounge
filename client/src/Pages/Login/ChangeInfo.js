@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
 import './ChangeInfo.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLoginFalse } from '../../actions/index'
+import {
+  handleLoginTrue,
+  handleLoginFalse,
+  notificationOn,
+  setNotification,
+  setNextLink,
+} from '../../actions/index'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
@@ -48,14 +54,23 @@ const ChangeInfo = () => {
           { headers: { authorization: `Bearer ${accessToken}` } }
         )
         .then((res) => {
-          alert('정보가 성공적으로 변경되었습니다. 다시 로그인해주세요')
-          window.localStorage.clear()
+          window.localStorage.removeItem('accessToken')
+          window.localStorage.removeItem('admin')
+          window.localStorage.removeItem('oauth')
           dispatch(handleLoginFalse())
-          navigate('/login')
+          dispatch(notificationOn())
+          dispatch(
+            setNotification('정보가 성공적으로 변경되었습니다. 다시 로그인해주세요')
+          )
+          dispatch(setNextLink('/login'))
         })
-        .catch((err) => alert('현재 비밀번호를 다시 확인해주세요'))
+        .catch((err) => {
+          dispatch(notificationOn())
+          dispatch(setNotification('현재 비밀번호를 다시 확인해주세요'))
+        })
     } else {
-      alert('변경하실 비밀번호와 확인이 일치하지 않습니다')
+      dispatch(notificationOn())
+      dispatch(setNotification('변경하실 비밀번호와 확인이 일치하지 않습니다'))
     }
   }
 

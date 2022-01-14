@@ -2,7 +2,13 @@ import React, { useState } from 'react'
 import logo from './logo.png'
 import './Signup.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLoginTrue, handleLoginFalse } from '../../actions/index'
+import {
+  handleLoginTrue,
+  handleLoginFalse,
+  notificationOn,
+  setNotification,
+  setNextLink,
+} from '../../actions/index'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
@@ -33,7 +39,9 @@ const Signup = () => {
               if (res.data.data.accessToken) {
                 window.localStorage.setItem('accessToken', res.data.data.accessToken)
                 dispatch(handleLoginTrue())
-                navigate('/mypage')
+                dispatch(notificationOn())
+                dispatch(setNotification('회원가입이 완료되었습니다'))
+                dispatch(setNextLink('/mypage'))
               }
             })
             .catch((err) => {
