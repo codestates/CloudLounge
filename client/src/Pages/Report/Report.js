@@ -2,12 +2,15 @@ import React, { useState, useRef } from 'react'
 import './Report.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { notificationOn, setNotification, setNextLink } from '../../actions'
 
 const Report = () => {
   const inputContent = useRef()
   const [radioBoxId, setRadioBoxId] = useState(-1)
   const [contents, setContents] = useState('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const contentChange = (e) => {
     setContents(e.target.value)
@@ -29,8 +32,10 @@ const Report = () => {
       })
         .then((res) => {
           if (res.status === 200) {
-            alert('신고가 접수되었습니다.')
-            navigate('/')
+            dispatch(notificationOn())
+            dispatch(setNotification('신고가 접수되었습니다.'))
+            dispatch(setNextLink('/'))
+            // navigate('/')
           }
         })
         .catch((err) => {

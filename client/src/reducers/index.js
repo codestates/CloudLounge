@@ -7,6 +7,7 @@ import { reportsListReducer } from './reportsListReducer'
 import { isReportEmptyReducer } from './isReportEmptyReducer'
 import { isNotificationReducer } from './isNotificationReducer'
 import { notificationTextReducer } from './notificationTextReducer'
+import { nextLinkReducer } from './nextLinkReducer'
 
 export const rootReducer = combineReducers({
   isLoginReducer,
@@ -17,4 +18,5 @@ export const rootReducer = combineReducers({
   isReportEmptyReducer,
   isNotificationReducer,
   notificationTextReducer,
+  nextLinkReducer,
 })

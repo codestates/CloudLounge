@@ -12,6 +12,7 @@ export const HANDLE_ADMIN_PAGE_FALSE = 'HANDLE_ADMIN_PAGE_FALSE'
 export const NOTIFICATION_ON = 'NOTIFICATION_ON'
 export const NOTIFICATION_OFF = 'NOTIFICATION_OFF'
 export const SET_NOTIFICATION = 'SET_NOTIFICATION'
+export const SET_NEXTLINK = 'SET_NEXTLINK'
 
 //actions
 export const handleLoginTrue = () => {
@@ -93,5 +94,12 @@ export const setNotification = (text) => {
   return {
     type: SET_NOTIFICATION,
     body: text,
+  }
+}
+
+export const setNextLink = (link) => {
+  return {
+    type: SET_NEXTLINK,
+    body: link,
   }
 }
