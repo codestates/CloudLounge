@@ -12,3 +12,7 @@ for (let i = 1; i < info.length; i++) {
   })
   console.log(i)
 }
+
+;`${date.getFullYear()}-${
+  date.getMonth() + 1
+}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
