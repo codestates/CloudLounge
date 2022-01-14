@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
 import './Mypage.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { handleLoginTrue, handleLoginFalse } from '../../actions/index'
+import {
+  handleLoginTrue,
+  handleLoginFalse,
+  notificationOn,
+  setNotification,
+} from '../../actions/index'
 import { useNavigate } from 'react-router'
 import Navbar from '../../Components/Navbar'
 import axios from 'axios'
@@ -73,13 +78,23 @@ const Mypage = () => {
               .then((res) => {
                 window.localStorage.clear()
                 dispatch(handleLoginFalse())
+                dispatch(notificationOn())
+                dispatch(setNotification('회원을 탈퇴했습니다'))
                 navigate('/')
-                alert('회원을 탈퇴했습니다')
+                // alert('회원을 탈퇴했습니다')
               })
-              .catch((err) => alert('404 not found'))
+              .catch((err) => {
+                dispatch(notificationOn())
+                dispatch(setNotification('404 not found'))
+                // alert('404 not found')
+              })
           }
         })
-        .catch((err) => alert('비밀번호를 다시 확인해주세요'))
+        .catch((err) => {
+          dispatch(notificationOn())
+          dispatch(setNotification('비밀번호를 다시 확인해주세요'))
+          // alert('비밀번호를 다시 확인해주세요')
+        })
     }
 
     return (
@@ -129,7 +144,7 @@ const Mypage = () => {
             oauth ? 'mypage-sidebar-wrapper mypage-hide' : 'mypage-sidebar-wrapper'
           }
         >
-          <a className="change-info mypage-hide" href="/changeInfo">
+          <a className="change-info" href="/changeInfo">
             정보수정
           </a>
           <a className="delete-info" onClick={handleDeleteInfo}>
