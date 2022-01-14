@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './LoungeDetail.css'
 import Comment from '../../Components/Comment'
 import { useSelector, useDispatch } from 'react-redux'
-import { setLounge } from '../../actions'
+import { setLounge, notificationOn, setNextLink, setNotification } from '../../actions'
 import axios from 'axios'
 
 const LoungeDetail = () => {
@@ -26,8 +26,9 @@ const LoungeDetail = () => {
     if (isLogin) {
       navigate('/comment')
     } else {
-      alert('로그인이 필요합니다.')
-      navigate('/login')
+      dispatch(notificationOn())
+      dispatch(setNotification('로그인이 필요한 서비스입니다.'))
+      // dispatch(setNextLink('/login'))
     }
   }
   return (

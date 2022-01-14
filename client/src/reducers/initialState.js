@@ -9,6 +9,7 @@ export const initialState = {
   isReportEmpty: { isReportEmpty: false },
   isNotification: false,
   notificationText: '',
+  nextLink: '',
 }
 
 // // reducers

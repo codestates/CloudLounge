@@ -2,20 +2,24 @@ import React, { useState } from 'react'
 import './Comment.css'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import { setLounge } from '../../actions'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { setLounge, notificationOn, setNotification, setNextLink } from '../../actions'
 
 const Comment = () => {
   const loungeDetail = useSelector((state) => state.loungeDetailReducer)
   const [rating, setRating] = useState(0)
   const [contents, setContent] = useState('')
-  const navigate = useNavigate()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const submitComment = () => {
     if (rating === 0) {
-      alert('별점을 선택해주세요')
+      // alert('별점을 선택해주세요')
+      dispatch(notificationOn())
+      dispatch(setNotification('별점을 선택해주세요.'))
     } else if (contents === '') {
-      alert('댓글을 작성해주세요')
+      // alert('댓글을 작성해주세요')
+      dispatch(notificationOn())
+      dispatch(setNotification('댓글을 작성해주세요.'))
     } else {
       axios({
         method: 'POST',
@@ -29,7 +33,11 @@ const Comment = () => {
       })
         .then((res) => {
           if (res.status === 201) {
-            alert('댓글이 등록되었습니다.')
+            // alert('댓글이 등록되었습니다.')
+            dispatch(notificationOn())
+            dispatch(setNotification('댓글이 등록되었습니다.'))
+            navigate('/details')
+            // dispatch(setNextLink('/details'))
             axios({
               method: 'GET',
               url: `${
@@ -38,7 +46,6 @@ const Comment = () => {
             }).then((res) => {
               dispatch(setLounge(res.data.data))
             })
-            navigate('/details')
           }
         })
         .catch((err) => {

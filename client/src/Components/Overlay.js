@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLounge } from '../actions'
-import axios from 'axios'
-import { notificationOn, setNotification } from '../actions'
+import { notificationOn, setNotification, setNextLink } from '../actions'
 
 const Overlay = () => {
   const navigate = useNavigate()
@@ -16,6 +14,7 @@ const Overlay = () => {
     } else {
       dispatch(notificationOn())
       dispatch(setNotification('로그인이 필요한 서비스입니다.'))
+      // dispatch(setNextLink('/login'))
     }
   }
   const moveDetail = () => {
