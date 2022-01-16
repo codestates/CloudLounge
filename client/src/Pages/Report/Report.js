@@ -17,8 +17,12 @@ const Report = () => {
   }
 
   const submitBtnClick = () => {
-    if (radioBoxId === 3 && contents === '') {
-      alert('불편한 사항을 작성해 주세요')
+    if (radioBoxId === -1) {
+      dispatch(notificationOn())
+      dispatch(setNotification('불편한 항목을 선택해 주세요'))
+    } else if (radioBoxId === 3 && contents === '') {
+      dispatch(notificationOn())
+      dispatch(setNotification('불편한 사항을 작성해주세요'))
     } else {
       axios({
         method: 'POST',
@@ -35,7 +39,6 @@ const Report = () => {
             dispatch(notificationOn())
             dispatch(setNotification('신고가 접수되었습니다.'))
             dispatch(setNextLink('/'))
-            // navigate('/')
           }
         })
         .catch((err) => {
