@@ -12,11 +12,12 @@ import Signup from './Pages/Login/Signup'
 import Comment from './Pages/Comment/Comment'
 import ChangeInfo from './Pages/Login/ChangeInfo'
 import Admin from './Pages/Admin/Admin'
+import Notification from './Components/Notification'
+import Overlay from './Components/Overlay'
+import LoadingIndicator from './Components/LoadingIndicator'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import Overlay from './Components/Overlay'
 import { initializeMap } from './Components/Map'
-import Notification from './Components/Notification'
 import { notificationOff } from './actions'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
   const [map, setMap] = useState(null)
   const [mapLoading, setMapLoading] = useState(false)
   const [isOverlay, setIsOverlay] = useState(false)
+  const [loadStatus, setLoadStatus] = useState('')
   const isNotification = useSelector((state) => state.isNotificationReducer)
 
   useEffect(() => {
@@ -35,13 +37,14 @@ function App() {
     }
     setMap(new kakao.maps.Map(mapRef.current, options))
     setMapLoading(true)
+    setLoadStatus('pos progress')
   }, [])
 
   useEffect(() => {
     if (!mapLoading) {
       return
     }
-    initializeMap(map, dispatch, setIsOverlay)
+    initializeMap(map, dispatch, setIsOverlay, setLoadStatus)
   }, [mapLoading])
 
   useEffect(() => {
@@ -70,6 +73,9 @@ function App() {
         <div className="map" ref={mapRef}></div>
         {location.pathname === '/' && isOverlay ? <Overlay /> : null}
         {isNotification ? <Notification /> : null}
+        {loadStatus !== 'load finish' ? (
+          <LoadingIndicator mapLoading={mapLoading} loadStatus={loadStatus} />
+        ) : null}
       </main>
       <NavBar className="bottom-component" />
     </div>

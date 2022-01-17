@@ -6,6 +6,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setLounge, notificationOn, setNextLink, setNotification } from '../../actions'
 import axios from 'axios'
 
+const NoComment = () => {
+  return (
+    <div className="noComment">
+      작성된 댓글이 없습니다.
+      <br />첫 댓글을 작성해주세요.
+    </div>
+  )
+}
+
 const LoungeDetail = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -54,11 +63,15 @@ const LoungeDetail = () => {
           </div>
         </div>
         <div className="comments">
-          {Object.keys(loungeDetail).length > 0
-            ? loungeDetail.comments.map((el, index) => (
+          {Object.keys(loungeDetail).length > 0 ? (
+            loungeDetail.comments.length === 0 ? (
+              <NoComment />
+            ) : (
+              loungeDetail.comments.map((el, index) => (
                 <Comment key={index} comment={el} />
               ))
-            : ''}
+            )
+          ) : null}
           {/* {commentdummy.map((el, index) => (
             <Comment key={index} comment={el} />
           ))} */}
