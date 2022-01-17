@@ -1,30 +1,41 @@
 .commentSubmit {
   margin-top: 4vh;
   width: 100%;
+  height: 86vh;
   border: solid 1px black;
-  font-size: 30px;
+  font-size: min(5vmin, 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 textarea.submitContent {
   resize: none;
   width: 70%;
-  height: 20vh;
+  height: 15vh;
   padding: 1vh;
-  font-size: 15px;
-  margin-top: 2vh;
+  font-size: min(4vmin, 20px);
+  margin-top: 1vh;
+  border: solid 1px black;
+}
+
+div.submitAddress {
+  margin-top: 1vh;
 }
 
 img.submitImage {
-  width: 40vh;
-  height: 40vh;
+  width: 70vmin;
+  height: 70vmin;
+  max-width: 40vh;
+  max-height: 40vh;
 }
 
 div.submitRating {
   position: relative;
   width: max-content;
-  left: 50%;
-  transform: translate(-50%, 0);
-  font-size: 30px;
+  font-size: 5vmin;
+  margin-top: 1vh;
 }
 
 .submitStar-base {
@@ -41,5 +52,6 @@ div.submitRating {
 }
 
 button.commentSubmitBtn {
-  font-size: 20px;
+  margin-top: 2vh;
+  font-size: min(4vmin, 20px);
 }
