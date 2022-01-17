@@ -18,7 +18,7 @@ const Comment = ({ comment }) => {
   return (
     <div className="commentWrapper">
       <div className="commentHeader">
-        <div className="commentWriter">{comment.userId}</div>
+        <div className="commentWriter">{comment.username}</div>
         <div className="commentCreatedAt">{dateTransform(comment.createdAt)}</div>
         <div className="commentRating">별점: {comment.rating}점</div>
         {/* <div className="rating">
