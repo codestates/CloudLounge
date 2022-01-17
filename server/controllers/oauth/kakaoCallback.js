@@ -7,8 +7,9 @@ const kakaoClientID = process.env.KAKAO_CLIENT_ID
 const redirect = process.env.KAKAO_REDIRECT_URL
 
 module.exports = async (req, res) => {
-  //Todo: 카카오 토큰 => 받아온 데이터로 회원가입 => 로그인 토큰 생성 => 생성된 토큰, 유저정보를 클라이언트로 보내줘야 함.
+  // Todo: 카카오 토큰서버에 클라이언트로 받은 code를 이용해서 네이버 token을 받아옴 => 받아온 토큰으로 네이버 oauth 서버에 유저 정보를 요청  => 받아온 유저정보로 회원가입 => 로그인 토큰 생성 => 생성된 토큰과 유저정보를 클라이언트로 응답
   console.log('\n💬 req.body:', req.body, '\n')
+
   if (!req.body) {
     console.log('no code in request body')
     return res.status(401).send({ message: 'no code' })
@@ -61,23 +62,28 @@ module.exports = async (req, res) => {
       if (!created) {
         //! 소셜로그인 계정으로 가입되어있음, 로그인은 어떻게? => 받아온 email로 findOne해서 가져온 data로 토큰생성 => 생성된 토큰과 oauth여부 response
         console.log('\n🤔 email exist', '\n')
+
         user.findOne({ where: { email } }).then((findData) => {
           console.log('\n💬 findData.dataValues', findData.dataValues, '\n')
           delete findData.dataValues.password
-          const cloudloungeAccessToken = tokenSign(findData.dataValues)
+
+          const cloudloungeAccessToken = tokenSign(findData.dataValues) // 토큰 생성
           console.log('\n🔑 cloudloungeAccessToken: ', cloudloungeAccessToken, '\n')
+
           return res.status(200).send({
             data: { accessToken: cloudloungeAccessToken, oauth: true },
             message: 'kakao social login success',
           })
         })
       } else {
-        //! 소셜로그인 가입 안되어 있음, 가입과 동시에 로그인 해주면서 토큰 생성 => 생성된 토큰과 oauth여부 response
+        //! 소셜로그인 가입이 안 되어 있음, 가입과 동시에 로그인 해주면서 토큰 생성 => 생성된 토큰과 oauth여부를 클라이언트로 response
         console.log('\n👍 email created', '\n')
-        // Todo: 로그인 => 생성된 토큰을 클라이언트로 보내줘야 함
+
         delete data.dataValues.password
-        const cloudloungeAccessToken = tokenSign(data.dataValues)
+
+        const cloudloungeAccessToken = tokenSign(data.dataValues) // 토큰 생성
         console.log('\n🔑 cloudloungeAccessToken: ', cloudloungeAccessToken, '\n')
+
         return res.status(200).send({
           data: { accessToken: cloudloungeAccessToken, oauth: true },
           message: 'kakao social login success',

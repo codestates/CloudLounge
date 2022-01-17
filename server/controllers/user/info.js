@@ -9,7 +9,7 @@ module.exports = {
 
     //? 토큰 값이 없을 때
     if (!tokenData) {
-      console.log('⚠️error: No token in req.headers.authorization')
+      console.log('😰 error: No token in req.headers.authorization')
       return res.status(401).send({ message: 'not authorized' })
     }
     const { email } = tokenData
@@ -18,7 +18,7 @@ module.exports = {
       .then((data) => {
         //? 데이터 베이스에 해당하는 유저 정보가 없을 때
         if (!data) {
-          console.log('⚠️error: No data corresponding to the database.')
+          console.log('😰 error: No data corresponding to the database.')
           return res.status(401).send({ message: 'not authorized' })
         }
         const { email, username, admin } = data.dataValues
@@ -36,7 +36,7 @@ module.exports = {
 
     //? 토큰 값이 없을 때
     if (!tokenData) {
-      console.log('⚠️error: No token in req.headers.authorization')
+      console.log('😰 error: No token in req.headers.authorization')
       return res.status(401).send({ message: 'not authorized' })
     }
     const { username, curPassword, newPassword } = req.body
@@ -47,7 +47,7 @@ module.exports = {
       .then((data) => {
         //? 비밀번호가 틀렸거나 토큰정보가 잘못됨
         if (!data) {
-          console.log('⚠️error: invalid password or token')
+          console.log('😰 error: invalid password or token')
           return res.status(401).send({ message: 'invalid password' })
         }
         console.log(data.dataValues)

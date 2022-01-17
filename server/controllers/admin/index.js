@@ -1,5 +1,6 @@
 const { report } = require('../../models')
 const { lounge } = require('../../models')
+const reportCount = 3 //? 관리자 신고 횟수 지정 변수
 
 module.exports = async (req, res) => {
   // Todo: select loungeId, count(id) as reportNum from reports group by loungeId;
@@ -11,11 +12,10 @@ module.exports = async (req, res) => {
     },
   })
 
-  const filteredData = data.count.filter((el) => {
-    return el.count >= 3 //? 신고횟수가 3회 이상일 때
+  const filteredData = await data.count.filter((el) => {
+    //? 신고횟수가 변수인 reportCount(type:number) 이상일 때
+    return el.count >= reportCount
   })
-
-  console.log('\nfiltered:', filteredData)
 
   if (filteredData.length === 0) {
     return res.send({ message: 'no report list' })
@@ -30,10 +30,10 @@ module.exports = async (req, res) => {
         },
       })
       .then((data) => {
-        console.log(data.dataValues.address)
         filteredData[i]['address'] = data.dataValues.address
-        console.log(filteredData)
       })
   }
-  res.send(filteredData)
+
+  console.log('\n💬 filteredData:', filteredData)
+  return res.status(200).send(filteredData)
 }

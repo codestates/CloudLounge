@@ -12,9 +12,10 @@ module.exports = (req, res) => {
     })
     .then(([data, created]) => {
       if (!created) {
+        console.log('😰 error: email exist!')
         return res.status(409).send({ message: 'email exist' })
       } else {
-        console.log(data.dataValues)
+        console.log('\n💬 data.dataValues', data.dataValues)
         return res.status(201).send({ message: 'created' })
       }
     })
