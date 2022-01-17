@@ -1,5 +1,6 @@
 const { lounge } = require('../../models')
 const { comment } = require('../../models')
+const { user } = require('../../models')
 
 module.exports = {
   all: (req, res) => {
@@ -18,26 +19,35 @@ module.exports = {
 
     lounge
       .findOne({
-        where: {
-          id: req.params.loungeId,
-        },
-        include: {
-          model: comment,
-          require: true,
-        },
+        where: { id: req.params.loungeId },
       })
       .then((data) => {
+        // console.log(data.dataValues)
         const { image, address, avgRating } = data.dataValues
-        const comments = data.dataValues.comments.map((element) => {
-          return {
-            userId: element.dataValues.userId,
-            contents: element.dataValues.contents,
-            rating: element.dataValues.rating,
-            createdAt: element.dataValues.createdAt,
-          }
-        })
-        console.log(comments)
-        return res.status(200).send({ data: { image, address, avgRating, comments } })
+        comment
+          .findAll({
+            where: { loungeId: req.params.loungeId },
+            attributes: ['userId', 'contents', 'rating', 'createdAt'],
+            include: {
+              model: user,
+              require: true,
+            },
+          })
+          .then((data) => {
+            const comments = data.map((element) => {
+              return {
+                username: element.user.dataValues.username,
+                contents: element.dataValues.contents,
+                rating: element.dataValues.rating,
+                createdAt: element.dataValues.createdAt,
+              }
+            })
+            console.log(comments)
+
+            return res.status(200).send({
+              data: { image, address, avgRating, comments },
+            })
+          })
       })
       .catch((err) => {
         console.log(err)
