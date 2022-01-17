@@ -22,7 +22,6 @@ module.exports = {
         where: { id: req.params.loungeId },
       })
       .then((data) => {
-        // console.log(data.dataValues)
         const { image, address, avgRating } = data.dataValues
         comment
           .findAll({
@@ -42,7 +41,7 @@ module.exports = {
                 createdAt: element.dataValues.createdAt,
               }
             })
-            console.log(comments)
+            console.log('\n💬 comments:', comments)
 
             return res.status(200).send({
               data: { image, address, avgRating, comments },
