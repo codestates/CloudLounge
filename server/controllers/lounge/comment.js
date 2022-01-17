@@ -45,10 +45,10 @@ module.exports = (req, res) => {
             .update({ avgRating }, { where: { id: loungeId } })
             .then((data) => {
               console.log(data)
+              return res.status(201).send({ message: 'created' })
             })
             .catch((err) => console.log(err))
         })
-      return res.status(201).send({ message: 'created' })
     })
 
     .catch((err) => console.log(err))
