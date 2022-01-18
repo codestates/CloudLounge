@@ -52,7 +52,48 @@ export function initializeMap(map, dispatch, setIsOverlay, setLoadStatus) {
       })
     },
     (error) => {
+      map.setCenter(new kakao.maps.LatLng(37.553836, 126.969652))
+      let icon = new kakao.maps.MarkerImage(
+        './currentPos.png',
+        new kakao.maps.Size(40, 40)
+      )
+      let marker = new kakao.maps.Marker({
+        position: map.getCenter(),
+        image: icon,
+      })
+      marker.setMap(map)
       setLoadStatus('pos failed')
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/lounge`).then((res) => {
+        for (const el of res.data.data) {
+          geocoder.addressSearch(el.address, function (result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+              let coords = new kakao.maps.LatLng(result[0].y, result[0].x)
+              let marker = new kakao.maps.Marker({
+                map: map,
+                position: coords,
+              })
+              marker.setTitle(el.id)
+              kakao.maps.event.addListener(marker, 'click', function () {
+                axios({
+                  method: 'GET',
+                  url: `${
+                    process.env.REACT_APP_SERVER_URL
+                  }/lounge/info/${marker.getTitle()}`,
+                }).then((res) => {
+                  localStorage.setItem('loungeId', marker.getTitle())
+                  dispatch(setLounge(res.data.data))
+                  setIsOverlay(true)
+                  map.setCenter(marker.getPosition())
+                })
+              })
+              marker.setMap(map)
+            }
+          })
+        }
+        setTimeout(() => {
+          setLoadStatus('load finish')
+        }, 1000)
+      })
     }
   )
 }
