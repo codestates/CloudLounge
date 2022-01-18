@@ -12,6 +12,7 @@ import {
 import { useNavigate } from 'react-router'
 import Navbar from '../../Components/Navbar'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 axios.defaults.withCredentials = true
 
 const Mypage = () => {
@@ -142,9 +143,9 @@ const Mypage = () => {
             oauth ? 'mypage-sidebar-wrapper mypage-hide' : 'mypage-sidebar-wrapper'
           }
         >
-          <a className="change-info" href="/changeInfo">
+          <Link className="change-info" to="/changeInfo">
             정보수정
-          </a>
+          </Link>
           <a className="delete-info" onClick={handleDeleteInfo}>
             회원탈퇴
           </a>
