@@ -73,7 +73,7 @@ function App() {
         <div className="map" ref={mapRef}></div>
         {location.pathname === '/' && isOverlay ? <Overlay /> : null}
         {isNotification ? <Notification /> : null}
-        {loadStatus !== 'load finish' ? (
+        {loadStatus !== 'load finish' && location.pathname === '/' ? (
           <LoadingIndicator mapLoading={mapLoading} loadStatus={loadStatus} />
         ) : null}
       </main>

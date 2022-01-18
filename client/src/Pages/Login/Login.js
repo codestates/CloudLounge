@@ -12,7 +12,7 @@ import {
   notificationOn,
   setNotification,
 } from '../../actions/index'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
@@ -147,9 +147,9 @@ const Login = () => {
           <a className="loginMenu" href={oauthUrls.kakao}>
             <img src={kLogo} id="kLogo"></img>
           </a>
-          <a className="loginMenu" href="/signup">
+          <Link className="loginMenu" to="/signup">
             회원가입
-          </a>
+          </Link>
         </div>
       </div>
     </div>
