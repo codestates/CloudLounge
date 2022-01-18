@@ -7,9 +7,15 @@
 }
 
 .signup-logo-wrapper {
-  height: 13vh;
+  height: 12vh;
   margin-top: -4vh;
 }
+
+.signup-body {
+  display: flex;
+  flex-direction: column;
+}
+
 .signup-menu {
   display: flex;
   flex-direction: column;
@@ -17,24 +23,28 @@
 
 .signup-title {
   text-align: left;
-  font-size: 4vmin;
+  font-size: 3.5vmin;
   margin: 1vh 0;
 }
 
 .signup-input {
-  height: 5vh;
-  width: 100%;
-  font-size: 3.5vmin;
+  height: 4vh;
+  font-size: 3vmin;
   border: solid 1px;
-  margin: 1.5vh 0;
+  margin: 1vh 0;
   border-radius: 2vw;
 }
 
+.signup-reg {
+  text-align: left;
+  font-size: 2vmin;
+}
+
 .signup-btn {
-  height: 6vh;
+  height: 5vh;
   margin-top: 4vh;
   width: 40%;
-  font-size: 4vmin;
+  font-size: 3.5vmin;
   margin-right: 3%;
   border-radius: 2vw;
 }

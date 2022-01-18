@@ -40,7 +40,14 @@ module.exports = async (req, res) => {
     },
   }).catch((err) => console.log(err))
 
-  console.log('\n💬 getData:', getData.data, '\n')
+  //! naver 오류 API 문서에 오류 메시지 기입할 것!
+  console.log('\n💬 getData:', getData, '\n')
+  if (!getData) {
+    return res
+      .status(400)
+      .send({ message: 'Authentication failed (인증 실패하였습니다.)' })
+  }
+  console.log('\n💬 getData.data:', getData.data, '\n')
 
   const { email, nickname } = getData.data.response
   console.log(email, nickname, access_token)
