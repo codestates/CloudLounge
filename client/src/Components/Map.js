@@ -8,19 +8,34 @@ export function initializeMap(map, dispatch, setIsOverlay, setLoadStatus) {
   })
   navigator.geolocation.getCurrentPosition(
     (position) => {
-      map.setCenter(
-        new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
-      )
+      console.log(position.coords)
+      if (sessionStorage.getItem('mapCenter') !== null) {
+        let mapCenter = JSON.parse(sessionStorage.getItem('mapCenter'))
+        sessionStorage.removeItem('mapCenter')
+        map.setCenter(new kakao.maps.LatLng(mapCenter.Ma, mapCenter.La))
+      } else {
+        console.log(
+          new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
+        )
+        map.setCenter(
+          new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
+        )
+      }
+      console.log(map.getCenter())
       let icon = new kakao.maps.MarkerImage(
         './currentPos.png',
         new kakao.maps.Size(30, 30)
       )
       let marker = new kakao.maps.Marker({
-        position: map.getCenter(),
+        position: new kakao.maps.LatLng(
+          position.coords.latitude,
+          position.coords.longitude
+        ),
         image: icon,
       })
       marker.setMap(map)
       setLoadStatus('pos success')
+
       axios.get(`${process.env.REACT_APP_SERVER_URL}/lounge`).then((res) => {
         for (const el of res.data.data) {
           geocoder.addressSearch(el.address, function (result, status) {
