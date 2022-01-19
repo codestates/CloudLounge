@@ -52,10 +52,13 @@ body {
 .navBtn {
   width: 100%;
   height: 10vh;
-  font-size: 8vmin;
+  font-size: 9vmin;
   background: none;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*지도 overlay*/
