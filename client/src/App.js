@@ -51,8 +51,16 @@ function App() {
     dispatch(notificationOff())
     if (location.pathname !== '/') {
       mapRef.current.style.display = 'none'
+      if (map !== null && loadStatus === 'load finish') {
+        sessionStorage.setItem('mapCenter', JSON.stringify(map.getCenter()))
+      }
     } else {
-      mapRef.current.style.display = ''
+      mapRef.current.style.display = 'block'
+      if (map !== null) {
+        let mapCenter = map.getCenter()
+        map.relayout()
+        map.setCenter(mapCenter)
+      }
     }
   }, [location])
 

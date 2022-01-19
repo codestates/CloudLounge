@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: beige;
 }
 
 .App {
@@ -11,8 +11,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 1px black;
-  background-color: white;
+  /* border: solid 1px black; */
+  /* background-color: white; */
   box-sizing: border-box;
 }
 
@@ -39,8 +39,8 @@ body {
   justify-content: space-around;
   bottom: 0;
   align-items: center;
-  border: solid 1px black;
-  background-color: white;
+  /* border: solid 1px black; */
+  /* background-color: white; */
 }
 
 .navbtn-wrapper {
