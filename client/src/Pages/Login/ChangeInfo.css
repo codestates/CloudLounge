@@ -29,6 +29,11 @@
   height: auto;
 }
 
+.changeInfo-changes-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .changeInfo-chages {
   display: flex;
   height: 8vh;
@@ -53,6 +58,13 @@
   display: flex;
   align-items: center;
   margin-left: 5%;
+}
+
+.changeInfo-reg {
+  text-align: left;
+  font-size: 2vmin;
+  margin-left: 4%;
+  margin-bottom: 1vh;
 }
 
 .changeInfo-submitBtn {
