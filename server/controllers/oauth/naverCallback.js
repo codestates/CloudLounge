@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
   if (!req.body) {
     console.log('no code and state in request body')
-    return res.status(401).send({ message: 'no code and state' })
+    return res.status(400).send({ message: 'Code and state do not exist' })
   }
 
   const naverUrl = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=${naverClientID}&client_secret=${naverClientSecret}&code=${req.body.authorizationCode}&state=${req.body.authorizationState}`
@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
 
   if (!tokenIssuance.data) {
     console.log('no token issuance data')
-    return res.status(401).send({ message: 'no code and state' })
+    return res.status(401).send({ message: 'Failed to issue naver access token' })
   }
 
   const { access_token } = tokenIssuance.data
@@ -43,9 +43,7 @@ module.exports = async (req, res) => {
   //! naver 오류 API 문서에 오류 메시지 기입할 것!
   console.log('\n💬 getData:', getData, '\n')
   if (!getData) {
-    return res
-      .status(400)
-      .send({ message: 'Authentication failed (인증 실패하였습니다.)' })
+    return res.status(400).send({ message: 'Authentication failed' })
   }
   console.log('\n💬 getData.data:', getData.data, '\n')
 
