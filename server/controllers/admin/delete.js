@@ -13,7 +13,7 @@ module.exports = (req, res) => {
     })
     .then((data) => {
       console.log('\n💬 데이터가', data, '개 삭제 되었습니다')
-      return res.status(200).send({ message: 'delete complete' })
+      return res.status(204).send({ message: 'delete complete' })
     })
     .catch((err) => {
       console.log(err)

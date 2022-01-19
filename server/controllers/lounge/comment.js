@@ -5,12 +5,14 @@ const { lounge } = require('../../models')
 module.exports = (req, res) => {
   const { loungeId, rating, contents } = req.body
   console.log(loungeId, rating, contents)
+
   const tokenData = tokenVerify(req)
   console.log('tokenData:', tokenData)
   const { id } = tokenData
+
   // error 처리
   if (!loungeId || !rating || !contents) {
-    return res.status(400).send({ message: 'missing info' })
+    return res.status(400).send({ message: 'not enough information' })
   }
 
   comment
@@ -22,6 +24,7 @@ module.exports = (req, res) => {
     })
     .then((data) => {
       console.log(data.dataValues)
+
       comment
         .findAll({
           where: { loungeId },
@@ -50,6 +53,5 @@ module.exports = (req, res) => {
             .catch((err) => console.log(err))
         })
     })
-
     .catch((err) => console.log(err))
 }

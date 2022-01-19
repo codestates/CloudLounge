@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
   if (!req.body) {
     console.log('no code in request body')
-    return res.status(401).send({ message: 'no code' })
+    return res.status(400).send({ message: 'Code does not exist' })
   }
 
   const kakaoUrl = `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${kakaoClientID}&redirect_uri=${redirect}&code=${req.body.authorizationCode}`
@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
 
   if (!tokenIssuance.data) {
     console.log('no token issuance data')
-    return res.status(401).send({ message: 'no code' })
+    return res.status(401).send({ message: 'Failed to issue kakao access token' })
   }
 
   const { access_token } = tokenIssuance.data
@@ -40,7 +40,11 @@ module.exports = async (req, res) => {
     },
   }).catch((err) => console.log(err))
 
-  console.log('\n💬 getData:', getData.data, '\n')
+  console.log('\n💬 getData:', getData, '\n')
+  if (!getData) {
+    return res.status(400).send({ message: 'Authentication failed' })
+  }
+  console.log('\n💬 getData.data:', getData.data, '\n')
 
   const { email } = getData.data.kakao_account
   const { nickname } = getData.data.kakao_account.profile

@@ -10,7 +10,7 @@ module.exports = {
       })
       .then((data) => {
         console.log(data)
-        return res.send({ data: data })
+        return res.status(200).send({ data: data })
       })
   },
 

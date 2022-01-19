@@ -16,6 +16,8 @@ module.exports = (req, res) => {
       const accessToken = tokenSign(data.dataValues)
       console.log('\n🔑 accessToken: ', accessToken, '\n')
 
-      return res.send({ data: { accessToken, admin }, message: 'login success' })
+      return res
+        .status(200)
+        .send({ data: { accessToken, admin }, message: 'login success' })
     })
 }

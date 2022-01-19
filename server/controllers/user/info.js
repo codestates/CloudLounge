@@ -7,7 +7,7 @@ module.exports = {
     //? 토큰 해독
     const tokenData = tokenVerify(req)
 
-    //? 토큰 값이 없을 때
+    //? 토큰을 해독한 데이터 값이 없을 때
     if (!tokenData) {
       console.log('😰 error: No token in req.headers.authorization')
       return res.status(401).send({ message: 'not authorized' })
@@ -18,8 +18,10 @@ module.exports = {
       .then((data) => {
         //? 데이터 베이스에 해당하는 유저 정보가 없을 때
         if (!data) {
-          console.log('😰 error: No data corresponding to the database.')
-          return res.status(401).send({ message: 'not authorized' })
+          console.log(
+            '😰 error: There is no user information corresponding to the database'
+          )
+          return res.status(404).send({ message: 'not found' })
         }
         const { email, username, admin } = data.dataValues
         console.log(data.dataValues)
@@ -34,7 +36,7 @@ module.exports = {
     //? 토큰 해독
     const tokenData = tokenVerify(req)
 
-    //? 토큰 값이 없을 때
+    //? 토큰을 해독한 데이터 값이 없을 때
     if (!tokenData) {
       console.log('😰 error: No token in req.headers.authorization')
       return res.status(401).send({ message: 'not authorized' })
@@ -45,9 +47,9 @@ module.exports = {
     user
       .findOne({ where: { email: email, password: curPassword } }) //
       .then((data) => {
-        //? 비밀번호가 틀렸거나 토큰정보가 잘못됨
+        //? 현재 사용중인 비밀번호가 틀렸음
         if (!data) {
-          console.log('😰 error: invalid password or token')
+          console.log('😰 error: invalid password')
           return res.status(401).send({ message: 'invalid password' })
         }
         console.log(data.dataValues)
