@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faCloud,
-  faUserAlt,
-  faSignInAlt,
-  faSignOutAlt,
-  faUserCog,
-} from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import {
   handleLoginTrue,
@@ -16,6 +8,11 @@ import {
   handleAdminTrue,
   handleAdminFalse,
 } from '../actions'
+import { AiOutlineCloud, AiFillCloud } from 'react-icons/ai'
+import { FaRegUser, FaUser } from 'react-icons/fa'
+import { VscSignOut, VscSignIn } from 'react-icons/vsc'
+import { GoSignIn } from 'react-icons/go'
+import { RiAdminFill, RiAdminLine } from 'react-icons/ri'
 
 const Navbar = () => {
   const isLoginState = useSelector((state) => state.isLoginReducer)
@@ -26,6 +23,8 @@ const Navbar = () => {
   const accessToken = window.localStorage.getItem('accessToken')
   const adminIndicator = window.localStorage.getItem('admin')
   const navigate = useNavigate()
+  const [curPage, setCurPage] = useState('')
+  const location = useLocation()
 
   const handleLogout = () => {
     if (isLogin) {
@@ -59,32 +58,50 @@ const Navbar = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const path = location.pathname
+    setCurPage(path)
+  }, [location])
+
   return (
     <div className="navBar">
       <Link to="/" className="navbtn-wrapper">
         <button className="navBtn">
-          <FontAwesomeIcon icon={faCloud} />
+          {curPage === '/' ||
+          curPage === '/report' ||
+          curPage === '/details' ||
+          curPage === '/comment' ? (
+            <AiFillCloud />
+          ) : (
+            <AiOutlineCloud />
+          )}
         </button>
       </Link>
       {isAdmin ? (
         <Link to="/admin" className="navbtn-wrapper">
           <button className="navBtn">
-            <FontAwesomeIcon icon={faUserCog} />
+            {curPage === '/admin' ? <RiAdminFill /> : <RiAdminLine />}
           </button>
         </Link>
       ) : (
         <Link to="/mypage" className="navbtn-wrapper">
           <button className="navBtn">
-            <FontAwesomeIcon icon={faUserAlt} />
+            {curPage === '/mypage' || curPage === '/changeInfo' ? (
+              <FaUser />
+            ) : (
+              <FaRegUser />
+            )}
           </button>
         </Link>
       )}
       <div className="navbtn-wrapper">
         <button className="navBtn" onClick={handleLogout}>
           {isLogin ? (
-            <FontAwesomeIcon icon={faSignOutAlt} />
+            <VscSignOut />
+          ) : curPage === '/login' ? (
+            <GoSignIn id="GoSignIn-icon" />
           ) : (
-            <FontAwesomeIcon icon={faSignInAlt} />
+            <VscSignIn />
           )}
         </button>
       </div>
