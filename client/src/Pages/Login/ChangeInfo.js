@@ -25,24 +25,71 @@ const ChangeInfo = () => {
   const dispatch = useDispatch()
   const isLoginState = useSelector((state) => state.isLoginReducer)
   const { isLogin } = isLoginState
+  const [changeUsernameIndi, setChangeUsernameIndi] = useState('')
+  const [changePwIndi, setChangePwIndi] = useState('')
+  const [confirmPwIndi, setConfirmPwIndi] = useState('')
 
   const handleChange = (e) => {
+    const value = e.target.value
     if (e.target.name === 'changeUsername') {
-      setChangeUsername(e.target.value)
+      setChangeUsername(value)
+      let regUsername = /^[가-힣|a-z|A-Z|0-9|]+$/
+      if (value.length === 0) {
+        setChangeUsernameIndi('2-20 글자 이내의 영문/한글/숫자로 작성해주세요')
+      } else if (value.length < 2 && value.length > 0) {
+        setChangeUsernameIndi('닉네임이 너무 짧습니다')
+      } else if (!regUsername.test(value)) {
+        setChangeUsernameIndi('영문/한글/숫자만 입력해주세요')
+      } else if (value.length > 20) {
+        setChangeUsernameIndi('닉네임이 너무 깁니다')
+      } else {
+        setChangeUsernameIndi('')
+        console.log('초기화')
+      }
     }
     if (e.target.name === 'curPw') {
-      setCurPw(e.target.value)
+      setCurPw(value)
     }
     if (e.target.name === 'changePw') {
-      setChangePw(e.target.value)
+      setChangePw(value)
+      let regPw = /^(?=.*[A-Za-z])(?=.*\d)[A-Z|a-z|\d|@$!%*#?&|]{6,40}$/
+      if (value.length === 0) {
+        setChangePwIndi('6-40 글자 이내의 영문/숫자 조합으로 작성해주세요')
+      } else if (value.length < 6 && value.length > 0) {
+        setChangePwIndi('비밀번호가 너무 짧습니다')
+      } else if (!regPw.test(value)) {
+        setChangePwIndi('영문/숫자 조합으로 작성해주세요')
+      } else if (value.length > 40) {
+        setChangePwIndi('비밀번호가 너무 깁니다')
+      } else {
+        setChangePwIndi('')
+        console.log('초기화')
+      }
+      if (value !== confirmPw) {
+        setConfirmPwIndi('비밀번호가 일치하지 않습니다')
+      } else {
+        setConfirmPwIndi('비밀번호가 일치합니다')
+      }
     }
     if (e.target.name === 'confirmPw') {
-      setConfirmPw(e.target.value)
+      setConfirmPw(value)
+      if (value.length === 0) {
+        setConfirmPwIndi('')
+        console.log('초기화')
+      } else if (value !== changePw) {
+        setConfirmPwIndi('비밀번호가 일치하지 않습니다')
+      } else {
+        setConfirmPwIndi('비밀번호가 일치합니다')
+      }
     }
   }
 
   const handleClick = () => {
-    if (changePw === confirmPw) {
+    if (
+      changePwIndi === '' &&
+      changeUsernameIndi === '' &&
+      confirmPwIndi === '비밀번호가 일치합니다'
+    ) {
       axios
         .patch(
           serverUrl + '/user/info',
@@ -70,7 +117,7 @@ const ChangeInfo = () => {
         })
     } else {
       dispatch(notificationOn())
-      dispatch(setNotification('변경하실 비밀번호와 확인이 일치하지 않습니다'))
+      dispatch(setNotification('닉네임/변경 비밀번호를 다시 확인해주세요'))
     }
   }
 
@@ -99,17 +146,20 @@ const ChangeInfo = () => {
             <h4 className="changeInfo-input-fixed">{userInfo.email}</h4>
           </div>
         </div>
-        <div className="changeInfo-chages">
-          <h4 className="changeInfo-input-title">변경하실 닉네임</h4>
-          <div className="changeInfo-input-wrapper">
-            <input
-              type="text"
-              className="changeInfo-input-content"
-              name="changeUsername"
-              value={changeUsername}
-              onChange={handleChange}
-            ></input>
+        <div className="changeInfo-changes-wrapper">
+          <div className="changeInfo-chages">
+            <h4 className="changeInfo-input-title">변경하실 닉네임</h4>
+            <div className="changeInfo-input-wrapper">
+              <input
+                type="text"
+                className="changeInfo-input-content"
+                name="changeUsername"
+                value={changeUsername}
+                onChange={handleChange}
+              ></input>
+            </div>
           </div>
+          <div className="changeInfo-reg">{changeUsernameIndi}</div>
         </div>
         <div className="changeInfo-chages">
           <h4 className="changeInfo-input-title">현재 비밀번호</h4>
@@ -122,32 +172,38 @@ const ChangeInfo = () => {
             ></input>
           </div>
         </div>
-        <div className="changeInfo-chages">
-          <h4 className="changeInfo-input-title">변경하실 비밀번호</h4>
-          <div className="changeInfo-input-wrapper">
-            <input
-              type="password"
-              className="changeInfo-input-content"
-              name="changePw"
-              onChange={handleChange}
-            ></input>
+        <div className="changeInfo-changes-wrapper">
+          <div className="changeInfo-chages">
+            <h4 className="changeInfo-input-title">변경하실 비밀번호</h4>
+            <div className="changeInfo-input-wrapper">
+              <input
+                type="password"
+                className="changeInfo-input-content"
+                name="changePw"
+                onChange={handleChange}
+              ></input>
+            </div>
           </div>
+          <div className="changeInfo-reg">{changePwIndi}</div>
         </div>
-        <div className="changeInfo-chages">
-          <h4 className="changeInfo-input-title">변경 비밀번호 확인</h4>
-          <div className="changeInfo-input-wrapper">
-            <input
-              type="password"
-              className="changeInfo-input-content"
-              name="confirmPw"
-              onChange={handleChange}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  handleClick()
-                }
-              }}
-            ></input>
+        <div className="changeInfo-changes-wrapper">
+          <div className="changeInfo-chages">
+            <h4 className="changeInfo-input-title">변경 비밀번호 확인</h4>
+            <div className="changeInfo-input-wrapper">
+              <input
+                type="password"
+                className="changeInfo-input-content"
+                name="confirmPw"
+                onChange={handleChange}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleClick()
+                  }
+                }}
+              ></input>
+            </div>
           </div>
+          <div className="changeInfo-reg">{confirmPwIndi}</div>
         </div>
         <div>
           <button className="changeInfo-submitBtn" onClick={handleClick}>
