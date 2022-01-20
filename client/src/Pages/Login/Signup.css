@@ -1,6 +1,6 @@
 .signup-page-wrapper {
   display: flex;
-  width: 90%;
+  width: 80%;
   justify-content: center;
   flex-direction: column;
   height: 90vh;
@@ -29,21 +29,23 @@
 
 .signup-input {
   height: 4vh;
-  font-size: 3vmin;
-  border: solid 1px;
-  margin: 1vh 0;
-  border-radius: 2vw;
+  font-size: 3.5vmin;
+  border: solid 1px gray;
+  margin: 0 0 1vh 0;
+  border-radius: 1vw;
 }
 
 .signup-reg {
   text-align: left;
   font-size: 2vmin;
+  color: red;
+  margin-bottom: 1.7vh;
 }
 
 .signup-btn {
   height: 5vh;
   margin-top: 4vh;
-  width: 40%;
+  width: 100%;
   font-size: 3.5vmin;
   margin-right: 3%;
   border-radius: 2vw;

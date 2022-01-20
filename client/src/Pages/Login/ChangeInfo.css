@@ -36,7 +36,7 @@
 
 .changeInfo-chages {
   display: flex;
-  height: 8vh;
+  height: 6vh;
   align-items: center;
 }
 
@@ -64,7 +64,8 @@
   text-align: left;
   font-size: 2vmin;
   margin-left: 4%;
-  margin-bottom: 1vh;
+  margin-bottom: 3vh;
+  color: red;
 }
 
 .changeInfo-submitBtn {

@@ -33,7 +33,6 @@ const Login = () => {
           if (!res.data.data.admin) {
             navigate('/mypage')
           } else {
-            console.log('working')
             window.localStorage.setItem('admin', res.data.data.admin)
             dispatch(handleAdminTrue())
             navigate('/admin')
@@ -41,7 +40,6 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        console.log(err)
         dispatch(notificationOn())
         dispatch(
           setNotification('[로그인 실패] 아이디 혹은 비밀번호를 다시 확인해주세요')
@@ -139,17 +137,20 @@ const Login = () => {
           <button className="loginBtn" onClick={handleClick}>
             로그인
           </button>
-        </div>
-        <div className="menu-wrapper">
-          <a className="loginMenu" href={oauthUrls.naver}>
-            <img src={nLogo} id="nLogo"></img>
-          </a>
-          <a className="loginMenu" href={oauthUrls.kakao}>
-            <img src={kLogo} id="kLogo"></img>
-          </a>
+          {/* <span className="social-title">소셜로그인</span> */}
+          {/* <div className="menu-wrapper"> */}
           <Link className="loginMenu" to="/signup">
-            회원가입
+            <button className="loginBtn">회원가입</button>
           </Link>
+          {/* </div> */}
+          <div className="social-login">
+            <a className="loginMenu" href={oauthUrls.naver}>
+              <img src={nLogo} id="nLogo"></img>
+            </a>
+            <a className="loginMenu" href={oauthUrls.kakao}>
+              <img src={kLogo} id="kLogo"></img>
+            </a>
+          </div>
         </div>
       </div>
     </div>
