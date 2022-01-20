@@ -1,11 +1,15 @@
-.details {
+div.details {
   margin-top: 4vh;
   width: 100%;
   height: 86vh;
   overflow-y: scroll;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   font-size: min(5vmin, 30px);
   box-sizing: border-box;
+}
+
+div.details::-webkit-scrollbar {
+  display: none;
 }
 
 img.detailPic {
@@ -22,6 +26,12 @@ div.detailRating {
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 4vmin;
+}
+
+@media (max-width: 750px) {
+  div.detailRating {
+    font-size: 8vmin;
+  }
 }
 
 .star-base {
@@ -42,23 +52,23 @@ div.btnContainer {
   bottom: 10vh;
   text-align: right;
   width: 100%;
-  max-width: 700px;
+  max-width: 750px;
 }
 
 img.writeComment {
   width: min(8vmin, 40px);
   height: min(8vmin, 40px);
-  margin-right: min(9%, 40px);
-  margin-bottom: min(2%, 2vh);
+  margin-right: 1vw;
 }
 
 /* comment 컴포넌트*/
 .commentWrapper {
   padding: min(2vmin, 5px);
-  width: 70%;
+  width: 90%;
   margin-top: 1vh;
-  border: solid 1px black;
-  transform: translate(21%, 0);
+  border: solid 1px gray;
+  border-radius: 10px;
+  transform: translate(5%, 0);
   box-sizing: border-box;
 }
 

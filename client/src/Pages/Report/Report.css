@@ -2,7 +2,7 @@
   margin-top: 4vh;
   width: 100%;
   height: 86vh;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   font-size: min(5vmin, 30px);
   display: flex;
   flex-direction: column;
@@ -14,30 +14,29 @@
 
 div.reportHeader {
   box-sizing: border-box;
-  margin-top: 4vh;
-  border: solid 3px black;
-  padding: 1vh;
-  width: 70%;
+  width: 90%;
   font-weight: bold;
+  font-size: 1.5em;
 }
 
 div.reportSurvey {
   box-sizing: border-box;
   margin-top: 2vh;
-  width: 70%;
+  width: 60%;
 }
 
 div.radioOption {
   box-sizing: border-box;
   margin-top: 7vh;
-  border: 1px solid black;
+  border: 1px solid gray;
   padding: 1vh;
-  font-size: min(25px, 5vmin);
+  font-size: 0.8em;
 }
 
 div.selected {
-  border: 2px solid black;
-  font-weight: bold;
+  border: 3px solid gray;
+  font-weight: 800;
+  background-color: rgb(187, 194, 197);
 }
 
 textarea.reportContents {

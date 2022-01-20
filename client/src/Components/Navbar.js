@@ -14,7 +14,7 @@ import { VscSignOut, VscSignIn } from 'react-icons/vsc'
 import { GoSignIn } from 'react-icons/go'
 import { RiAdminFill, RiAdminLine } from 'react-icons/ri'
 
-const Navbar = () => {
+const Navbar = ({ loadStatus }) => {
   const isLoginState = useSelector((state) => state.isLoginReducer)
   const { isLogin } = isLoginState
   const isAdminState = useSelector((state) => state.isAdminReducer)
@@ -45,6 +45,12 @@ const Navbar = () => {
     }
   }
 
+  const homeBtnHandler = () => {
+    if (loadStatus === 'load finish') {
+      navigate('/')
+    }
+  }
+
   useEffect(() => {
     if (accessToken) {
       dispatch(handleLoginTrue())
@@ -65,7 +71,7 @@ const Navbar = () => {
 
   return (
     <div className="navBar">
-      <Link to="/" className="navbtn-wrapper">
+      <div className="navbtn-wrapper" onClick={homeBtnHandler}>
         <button className="navBtn">
           {curPage === '/' ||
           curPage === '/report' ||
@@ -76,7 +82,7 @@ const Navbar = () => {
             <AiOutlineCloud />
           )}
         </button>
-      </Link>
+      </div>
       {isAdmin ? (
         <Link to="/admin" className="navbtn-wrapper">
           <button className="navBtn">
