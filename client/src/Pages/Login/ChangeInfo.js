@@ -85,7 +85,12 @@ const ChangeInfo = () => {
   }
 
   const handleClick = () => {
-    if (
+    if (curPw === changePw && curPw === confirmPw) {
+      dispatch(notificationOn())
+      dispatch(
+        setNotification('현재 비밀번호와 변경하실 비밀번호가 같습니다. 다시 확인해주세요')
+      )
+    } else if (
       changePwIndi === '' &&
       changeUsernameIndi === '' &&
       confirmPwIndi === '비밀번호가 일치합니다'
