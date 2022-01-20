@@ -35,14 +35,17 @@ const Report = () => {
         headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` },
       })
         .then((res) => {
-          if (res.status === 200) {
+          if (res.status === 201) {
             dispatch(notificationOn())
             dispatch(setNotification('신고가 접수되었습니다.'))
             dispatch(setNextLink('/'))
           }
         })
         .catch((err) => {
-          alert('error')
+          if (err.status === 400) {
+            dispatch(notificationOn())
+            dispatch(setNotification('신고를 접수하기 위한 정보가 부족합니다.'))
+          }
         })
     }
   }

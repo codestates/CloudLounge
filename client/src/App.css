@@ -1,6 +1,5 @@
-body {
-  background-color: white;
-  /* z-index: 1; */
+html {
+  background-image: url('./background2.jpeg');
 }
 
 /* body::after {
@@ -24,9 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border-left: solid 2px gray;
-  border-right: solid 2px gray; */
-  /* background-color: white; */
+  background-color: white;
   box-sizing: border-box;
 }
 
@@ -39,8 +36,10 @@ body {
 }
 
 .map {
-  height: 80vh;
+  height: 90vh;
   width: 100%;
+  max-width: 750px;
+  position: absolute;
 }
 
 .navBar {
@@ -53,6 +52,9 @@ body {
   justify-content: space-around;
   bottom: 0;
   align-items: center;
+  border-top: 2px solid gray;
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
   /* border: solid 1px black; */
   background-color: #f0f0f0;
 }
@@ -77,26 +79,36 @@ body {
 
 /*지도 overlay*/
 div.overlay {
-  width: 90%;
-  max-width: 675px;
-  height: 15vh;
+  width: 100%;
+  padding-left: 1vw;
+  max-width: 750px;
+  height: 20vh;
   position: absolute;
-  transform: translate(0, 32.5vh);
+  transform: translate(0, 70vh);
   z-index: 10;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 1px black;
+  border: solid 1px gray;
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
+  box-sizing: border-box;
 }
 
 img.overlayImg {
-  width: 20%;
-  height: 80%;
+  width: min(30vmin, 16vh);
+  height: min(30vmin, 16vh);
   border-radius: 50%;
 }
+
+/* @media (min-width:750px){
+  img.overlayImg {
+    width: min(10vmin,16vh);
+    height: min(10vmin,16vh);
+    border-radius: 50%;
+  }
+} */
 
 div.overlayContent {
   width: 75%;
@@ -108,7 +120,7 @@ div.overlayContent {
 }
 
 div.overlayContent > span {
-  font-size: 2vh;
+  font-size: 3vh;
 }
 
 div.overlayButton {
@@ -119,7 +131,7 @@ div.overlayButton {
 }
 
 div.overlayButton button {
-  font-size: 2vh;
+  font-size: 2.5vh;
 }
 
 div.overlayRating {
@@ -139,11 +151,11 @@ div.notificationContainer {
 }
 
 div.notification {
-  width: 50%;
-  height: 25%;
+  width: 80%;
+  height: 30%;
   margin: auto;
   margin-top: 35vh;
-  border: solid 1px black;
+  border: solid 1px gray;
   border-radius: 5px;
   padding: 2vh;
   box-sizing: border-box;
@@ -158,11 +170,11 @@ div.notification {
 
 div.notification button {
   width: 40%;
-  font-size: min(15px, 3vmin);
+  font-size: min(20px, 4vmin);
 }
 
 div.notification span {
-  font-size: min(20px, 4vmin);
+  font-size: min(25px, 5vmin);
 }
 
 /*loadingIndicator*/
@@ -179,10 +191,10 @@ svg.loadingIndicator {
 
 div.loadingIndicator {
   position: absolute;
-  max-width: 675px;
+  max-width: 750px;
   background-color: rgba(127, 127, 127, 0.4);
-  height: 80vh;
-  width: 90%;
+  height: 90vh;
+  width: 100%;
   z-index: 5;
   display: flex;
   flex-direction: column;

@@ -13,11 +13,9 @@ const Comment = () => {
   const navigate = useNavigate()
   const submitComment = () => {
     if (rating === 0) {
-      // alert('별점을 선택해주세요')
       dispatch(notificationOn())
       dispatch(setNotification('별점을 선택해주세요.'))
     } else if (contents === '') {
-      // alert('댓글을 작성해주세요')
       dispatch(notificationOn())
       dispatch(setNotification('댓글을 작성해주세요.'))
     } else {
@@ -33,7 +31,6 @@ const Comment = () => {
       })
         .then((res) => {
           if (res.status === 201) {
-            // alert('댓글이 등록되었습니다.')
             dispatch(notificationOn())
             dispatch(setNotification('댓글이 등록되었습니다.'))
             dispatch(setNextLink('/details'))
@@ -48,7 +45,10 @@ const Comment = () => {
           }
         })
         .catch((err) => {
-          alert('error')
+          if (err.status === 400) {
+            dispatch(notificationOn())
+            dispatch(setNotification('댓글을 등록하기 위한 정보가 부족합니다.'))
+          }
         })
     }
   }

@@ -66,6 +66,11 @@ function App() {
 
   return (
     <div className="App">
+      <div className="map" ref={mapRef}></div>
+      {location.pathname === '/' && isOverlay ? <Overlay /> : null}
+      {loadStatus !== 'load finish' && location.pathname === '/' ? (
+        <LoadingIndicator mapLoading={mapLoading} loadStatus={loadStatus} />
+      ) : null}
       <main className="features">
         <Routes>
           <Route exact path="/" element={null} />
@@ -78,14 +83,10 @@ function App() {
           <Route path="/changeInfo" element={<ChangeInfo />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
-        <div className="map" ref={mapRef}></div>
-        {location.pathname === '/' && isOverlay ? <Overlay /> : null}
+
         {isNotification ? <Notification /> : null}
-        {loadStatus !== 'load finish' && location.pathname === '/' ? (
-          <LoadingIndicator mapLoading={mapLoading} loadStatus={loadStatus} />
-        ) : null}
       </main>
-      <NavBar className="bottom-component" />
+      <NavBar className="bottom-component" loadStatus={loadStatus} />
     </div>
   )
 }

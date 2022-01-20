@@ -2,7 +2,7 @@
   margin-top: 4vh;
   width: 100%;
   height: 86vh;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   font-size: min(5vmin, 30px);
   display: flex;
   flex-direction: column;
@@ -36,6 +36,12 @@ div.submitRating {
   width: max-content;
   font-size: 5vmin;
   margin-top: 1vh;
+}
+
+@media (max-width: 750px) {
+  div.submitRating {
+    font-size: 8vmin;
+  }
 }
 
 .submitStar-base {
