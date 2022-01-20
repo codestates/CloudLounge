@@ -14,8 +14,8 @@
 }
 
 .mypage-idpw {
-  border: solid 1px;
-  border-radius: 3vw;
+  border: solid 1px gray;
+  border-radius: 1vw;
   display: flex;
   /* min-width: 80%; */
   width: 100%;
@@ -35,15 +35,16 @@
   width: 80%;
   margin-top: 2vh;
   margin-bottom: 1.5vh;
-  font-size: 5vmin;
+  font-size: 3.5vmin;
+  color: gray;
 }
 
 #mypage-nick {
-  border-top: black 1px solid;
+  border-top: gray 1px solid;
 }
 
 #mypage-del-wrapper {
-  border-top: black 1px solid;
+  border-top: gray 1px solid;
 }
 
 .mypage-menu-content {
@@ -61,7 +62,7 @@
 
 .mypage-cancel-btn {
   width: 20%;
-  border-radius: 2vw;
+  border-radius: 1vw;
 }
 
 .mypage-sidebar-wrapper {
@@ -89,7 +90,7 @@
 
 .login-require {
   text-align: center;
-  font-size: 8vmin;
+  font-size: 6.5vmin;
 }
 
 .login-require-logo {
@@ -101,7 +102,7 @@
   height: 5vh;
   font-size: 4vmin;
   width: 80%;
-  border-radius: 2vw;
+  border-radius: 1vw;
 }
 
 .mypage-hide {

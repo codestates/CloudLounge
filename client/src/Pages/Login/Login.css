@@ -19,13 +19,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: gray 1px solid;
+  border: white 1px solid;
   border-radius: 2vw;
+  /* box-shadow: 5px 5px 5px 5px; */
 }
 
 .inputs-wrapper {
   width: 80%;
-  margin: auto;
+  margin: 4vh 2vh 2vh 2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +44,7 @@ img {
 
 .loginBtn {
   height: 5vh;
-  width: 45%;
+  width: 80%;
   font-size: 3.5vmin;
   margin-bottom: 3vh;
   cursor: pointer;
@@ -79,26 +80,41 @@ img {
   margin-left: 5%;
 }
 
-.menu-wrapper {
+/* .menu-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 75%;
   align-items: center;
   margin-top: 3vh;
-}
+} */
 
-.loginMenu {
+/* .loginMenu {
   color: inherit;
   cursor: pointer;
   text-decoration-line: none;
-  font-size: 3vmin;
-  width: 30%;
+  font-size: 3.5vmin;
+  width: 100%;
+} */
+
+.social-title {
+  margin-bottom: 1vh;
+  font-size: 3.5vmin;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2vh;
 }
 
 #kLogo {
-  margin-left: 3.5vw;
-  width: 85%;
+  width: 50%;
+}
+
+#nLogo {
+  width: 50%;
 }
 
 .login-input {
@@ -108,11 +124,8 @@ img {
   margin: 2px;
   margin-right: 2%;
   font-size: 3.5vmin;
+  background-color: inherit;
 }
-
-/* .loginMenu-middle {
-  border: black 1px;
-} */
 
 .mypage-delBtn-wrapper {
   display: flex;

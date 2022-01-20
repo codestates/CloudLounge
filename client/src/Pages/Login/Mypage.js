@@ -106,6 +106,11 @@ const Mypage = () => {
             <h4 className="mypage-menu-title">아이디</h4>
             <h4 className="mypage-menu-content">{id}</h4>
           </div>
+
+          <div className="mypage-inner-box" id="mypage-nick">
+            <h4 className="mypage-menu-title">닉네임</h4>
+            <h4 className="mypage-menu-content">{username}</h4>
+          </div>
           <div
             className={delInfo ? 'mypage-inner-box' : 'mypage-inner-box mypage-hide'}
             id="mypage-del-wrapper"
@@ -131,11 +136,6 @@ const Mypage = () => {
                 취소
               </button>
             </div>
-          </div>
-
-          <div className="mypage-inner-box" id="mypage-nick">
-            <h4 className="mypage-menu-title">닉네임</h4>
-            <h4 className="mypage-menu-content">{username}</h4>
           </div>
         </div>
         <div

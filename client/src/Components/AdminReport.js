@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteReportsList, handleAdminPageFalse } from '../actions'
 const serverUrl = process.env.REACT_APP_SERVER_URL
-console.log(serverUrl)
 
 const AdminReport = (props) => {
   const dispatch = useDispatch()
