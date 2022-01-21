@@ -5,6 +5,7 @@ module.exports = (req, res) => {
   if (!req.params) {
     res.status(400).send({ message: 'invalid information' })
   }
+
   report
     .destroy({
       where: {
@@ -17,5 +18,6 @@ module.exports = (req, res) => {
     })
     .catch((err) => {
       console.log(err)
+      return res.status(500).send({ message: 'query error' })
     })
 }
