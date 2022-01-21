@@ -153,6 +153,7 @@ const Signup = () => {
             onChange={handleChange}
             placeholder="이메일 형식으로 작성해주세요"
             className="signup-input"
+            spellCheck="false"
           ></input>
           <span
             className={
@@ -171,6 +172,7 @@ const Signup = () => {
             onChange={handleChange}
             placeholder="사용하실 닉네임을 작성해주세요"
             className="signup-input"
+            spellCheck="false"
           ></input>
           <span
             className={
@@ -190,6 +192,7 @@ const Signup = () => {
             placeholder="비밀번호를 작성해주세요"
             className="signup-input"
             type="password"
+            spellCheck="false"
           ></input>
         </div>
         <span
@@ -209,6 +212,7 @@ const Signup = () => {
             placeholder="비밀번호를 재작성 해주세요"
             className="signup-input"
             type="password"
+            spellCheck="false"
           ></input>
         </div>
         <span

@@ -155,6 +155,7 @@ const Comment = () => {
         className="submitContent"
         placeholder="댓글을 작성해주세요"
         onChange={textareaChange}
+        spellCheck="false"
       ></textarea>
       <br></br>
       <button className="commentSubmitBtn" type="button" onClick={submitComment}>

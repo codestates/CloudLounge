@@ -94,6 +94,7 @@ const Report = () => {
           onChange={contentChange}
           ref={inputContent}
           placeholder="불편한 점을 적어주세요"
+          spellCheck="false"
         ></textarea>
       </div>
       <button className="submitReport" onClick={submitBtnClick}>

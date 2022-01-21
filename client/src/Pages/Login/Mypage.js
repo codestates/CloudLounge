@@ -127,19 +127,13 @@ const Mypage = () => {
               placeholder="본인 확인을 위해 입력해주세요"
               value={confirmPw}
               onChange={handleChange}
+              spellCheck="false"
             ></input>
             <div
               className={
                 delInfo ? 'mypage-delBtn-wrapper' : 'mypage-delBtn-wrapper mypage-hide'
               }
-            >
-              {/* <button className="mypage-cancel-btn" onClick={handleDelSubmit}>
-                탈퇴
-              </button>
-              <button className="mypage-cancel-btn" onClick={handleCancel}>
-                취소
-              </button> */}
-            </div>
+            ></div>
           </div>
         </div>
         <div

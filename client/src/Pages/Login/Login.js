@@ -122,6 +122,7 @@ const Login = () => {
                 placeholder="이메일 아이디를 입력하세요"
                 onChange={handleChange}
                 className="login-input"
+                spellCheck="false"
               ></input>
             </div>
             <div className="idpw-box-pw">
@@ -130,6 +131,7 @@ const Login = () => {
                 type="password"
                 name="pw"
                 placeholder="비밀번호를 입력하세요"
+                spellCheck="false"
                 onChange={handleChange}
                 onKeyPress={(e) => {
                   if (e.key === 'Enter') {

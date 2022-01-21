@@ -162,6 +162,7 @@ const ChangeInfo = () => {
                 name="changeUsername"
                 value={changeUsername}
                 onChange={handleChange}
+                spellCheck="false"
               ></input>
             </div>
           </div>
@@ -184,6 +185,7 @@ const ChangeInfo = () => {
                 className="changeInfo-input-content"
                 name="curPw"
                 onChange={handleChange}
+                spellCheck="false"
               ></input>
             </div>
           </div>
@@ -200,6 +202,7 @@ const ChangeInfo = () => {
                 className="changeInfo-input-content"
                 name="changePw"
                 onChange={handleChange}
+                spellCheck="false"
               ></input>
             </div>
           </div>
@@ -222,6 +225,7 @@ const ChangeInfo = () => {
                 className="changeInfo-input-content"
                 name="confirmPw"
                 onChange={handleChange}
+                spellCheck="false"
               ></input>
             </div>
           </div>
