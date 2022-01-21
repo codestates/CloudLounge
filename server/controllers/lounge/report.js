@@ -32,5 +32,8 @@ module.exports = (req, res) => {
       console.log('\n💬 data.dataValues:', data.dataValues)
       return res.status(201).send({ message: 'created' })
     })
-    .catch((err) => console.log(err))
+    .catch((err) => {
+      console.log(err)
+      return res.status(500).send({ message: 'query error' })
+    })
 }

@@ -50,8 +50,18 @@ module.exports = (req, res) => {
               console.log(data)
               return res.status(201).send({ message: 'created' })
             })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+              console.log(err)
+              return res.status(500).send({ message: 'query error' })
+            })
+        })
+        .catch((err) => {
+          console.log(err)
+          return res.status(500).send({ message: 'query error' })
         })
     })
-    .catch((err) => console.log(err))
+    .catch((err) => {
+      console.log(err)
+      return res.status(500).send({ message: 'query error' })
+    })
 }

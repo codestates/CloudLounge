@@ -20,7 +20,9 @@ module.exports = async (req, res) => {
   //? 토큰발급 => 클라이언트에서 받은 code를 이용해서 카카오 oauth 서버에서 token 받아오는 요청
   const tokenIssuance = await axios //
     .get(kakaoUrl)
-    .catch((err) => console.log(err))
+    .catch((err) => {
+      console.log(err)
+    })
 
   // console.log('\n💬 tokenIssuance:', tokenIssuance, '\n')
 
@@ -38,11 +40,13 @@ module.exports = async (req, res) => {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
-  }).catch((err) => console.log(err))
+  }).catch((err) => {
+    console.log(err)
+  })
 
   // console.log('\n💬 getData:', getData, '\n')
   if (!getData) {
-    return res.status(400).send({ message: 'Authentication failed' })
+    return res.status(403).send({ message: 'Forbidden' })
   }
   console.log('\n💬 getData.data:', getData.data, '\n')
 
@@ -67,18 +71,24 @@ module.exports = async (req, res) => {
         // 소셜로그인 계정으로 가입되어있음, 로그인은 어떻게? => 받아온 email로 findOne해서 가져온 data로 토큰생성 => 생성된 토큰과 oauth여부 response
         console.log('\n🤔 email exist', '\n')
 
-        user.findOne({ where: { email } }).then((findData) => {
-          console.log('\n💬 findData.dataValues', findData.dataValues, '\n')
-          delete findData.dataValues.password
+        user
+          .findOne({ where: { email } })
+          .then((findData) => {
+            console.log('\n💬 findData.dataValues', findData.dataValues, '\n')
+            delete findData.dataValues.password
 
-          const cloudloungeAccessToken = tokenSign(findData.dataValues) // 토큰 생성
-          console.log('\n🔑 cloudloungeAccessToken: ', cloudloungeAccessToken, '\n')
+            const cloudloungeAccessToken = tokenSign(findData.dataValues) // 토큰 생성
+            console.log('\n🔑 cloudloungeAccessToken: ', cloudloungeAccessToken, '\n')
 
-          return res.status(200).send({
-            data: { accessToken: cloudloungeAccessToken, oauth: true },
-            message: 'kakao social login success',
+            return res.status(200).send({
+              data: { accessToken: cloudloungeAccessToken, oauth: true },
+              message: 'kakao social login success',
+            })
           })
-        })
+          .catch((err) => {
+            console.log(err)
+            return res.status(500).send({ message: 'query error' })
+          })
       } else {
         // 소셜로그인 가입이 안 되어 있음, 가입과 동시에 로그인 해주면서 토큰 생성 => 생성된 토큰과 oauth여부를 클라이언트로 response
         console.log('\n👍 email created', '\n')
@@ -93,5 +103,9 @@ module.exports = async (req, res) => {
           message: 'kakao social login success',
         })
       }
+    })
+    .catch((err) => {
+      console.log(err)
+      return res.status(500).send({ message: 'query error' })
     })
 }

@@ -12,10 +12,17 @@ module.exports = {
         console.log(data)
         return res.status(200).send({ data: data })
       })
+      .catch((err) => {
+        console.log(err)
+        return res.status(500).send({ message: 'query error' })
+      })
   },
 
   particular: (req, res) => {
-    console.log('   loungeId:', req.params.loungeId)
+    console.log('\n💬 loungeId:', req.params.loungeId)
+    if (!req.params.loungeId) {
+      return res.status(400).send({ message: 'not enough information' })
+    }
 
     lounge
       .findOne({
@@ -23,6 +30,7 @@ module.exports = {
       })
       .then((data) => {
         const { image, address, avgRating } = data.dataValues
+
         comment
           .findAll({
             where: { loungeId: req.params.loungeId },
@@ -47,10 +55,14 @@ module.exports = {
               data: { image, address, avgRating, comments },
             })
           })
+          .catch((err) => {
+            console.log(err)
+            return res.status(500).send({ message: 'query error' })
+          })
       })
       .catch((err) => {
         console.log(err)
-        return res.status(400).send({ message: 'not enough information' })
+        return res.status(500).send({ message: 'query error' })
       })
   },
 }

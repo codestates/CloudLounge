@@ -62,7 +62,7 @@ module.exports = {
           } else {
             console.log('\n💬 data.dataValues', data.dataValues)
             const hash = data.dataValues.password
-
+            // 비밀번호 일치여부 확인
             bcrypt.compare(curPassword, hash, (err, result) => {
               if (err) {
                 console.log(err)
@@ -81,7 +81,7 @@ module.exports = {
                       return res.status(500).send({ message: 'bcrypt error' })
                     } else {
                       console.log('\n💬 newHash:', newHash)
-
+                      // 변경된 정보 db에 update
                       user
                         .update({ username, password: newHash }, { where: { email } })
                         .then((data) => {
