@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { notificationOn, setNotification } from '../actions'
+import { HiOutlineLocationMarker } from 'react-icons/hi'
 
 const Overlay = () => {
   const navigate = useNavigate()
@@ -28,7 +29,7 @@ const Overlay = () => {
     <div className="overlay">
       <img src={loungeInfo.image} className="overlayImg"></img>
       <div className="overlayContent">
-        <span>{loungeInfo.address}</span>
+        <span className="overlay-address">{loungeInfo.address}</span>
         <div className="overlayRating">
           <div className="star-fill" style={{ width: `${loungeInfo.avgRating * 20}%` }}>
             <span>★</span>

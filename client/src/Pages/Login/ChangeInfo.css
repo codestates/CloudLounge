@@ -54,6 +54,8 @@
   border-radius: 1vw;
   border-color: gray;
   box-shadow: 0 0 1px gray;
+  box-sizing: border-box;
+  padding-left: 2vw;
 }
 
 .changeInfo-input-wrapper {

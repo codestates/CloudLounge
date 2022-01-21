@@ -116,6 +116,8 @@ img {
   margin: 2px;
   margin-right: 2%;
   font-size: 3.5vmin;
+  box-sizing: border-box;
+  padding-left: 2vw;
   background-color: inherit;
 }
 
