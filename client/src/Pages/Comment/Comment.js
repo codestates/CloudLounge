@@ -7,11 +7,15 @@ import { setLounge, notificationOn, setNotification, setNextLink } from '../../a
 
 const Comment = () => {
   const loungeDetail = useSelector((state) => state.loungeDetailReducer)
+  const isNotification = useSelector((state) => state.isNotificationReducer)
   const [rating, setRating] = useState(0)
   const [contents, setContent] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const submitComment = () => {
+    if (isNotification === true) {
+      return
+    }
     if (rating === 0) {
       dispatch(notificationOn())
       dispatch(setNotification('별점을 선택해주세요.'))
@@ -143,7 +147,7 @@ const Comment = () => {
         onChange={textareaChange}
       ></textarea>
       <br></br>
-      <button className="commentSubmitBtn" onClick={submitComment}>
+      <button className="commentSubmitBtn" type="button" onClick={submitComment}>
         댓글등록
       </button>
     </div>

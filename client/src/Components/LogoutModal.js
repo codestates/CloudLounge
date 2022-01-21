@@ -1,18 +1,18 @@
 import React from 'react'
 
-const DeleteModal = ({ setIsDelete, handleDelSubmit }) => {
+const LogoutModal = ({ setIsModal, logout }) => {
   const closeNotification = () => {
-    setIsDelete(false)
+    setIsModal(false)
   }
   return (
-    <div className="notificationContainer">
+    <div className="logoutModalContainer">
       <div className="notification">
-        <span>회원을 탈퇴하시겠습니까?</span>
+        <span>로그아웃 하시겠습니까?</span>
         <div className="notificationBtnContainer">
           <button
             onClick={() => {
               closeNotification()
-              handleDelSubmit()
+              logout()
             }}
           >
             예
@@ -24,4 +24,4 @@ const DeleteModal = ({ setIsDelete, handleDelSubmit }) => {
   )
 }
 
-export default DeleteModal
+export default LogoutModal

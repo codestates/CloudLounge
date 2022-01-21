@@ -15,11 +15,12 @@ import Admin from './Pages/Admin/Admin'
 import Notification from './Components/Notification'
 import Overlay from './Components/Overlay'
 import LoadingIndicator from './Components/LoadingIndicator'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import LogoutModal from './Components/LogoutModal'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeMap } from './Components/Map'
-import { notificationOff } from './actions'
-import DeleteModal from './Components/DeleteModal'
+import { notificationOff, handleLoginFalse, handleAdminFalse } from './actions'
+import axios from 'axios'
 
 function App() {
   const mapRef = useRef()
@@ -30,6 +31,9 @@ function App() {
   const [isOverlay, setIsOverlay] = useState(false)
   const [loadStatus, setLoadStatus] = useState('')
   const isNotification = useSelector((state) => state.isNotificationReducer)
+  const [isModal, setIsModal] = useState(false)
+  const accessToken = window.localStorage.getItem('accessToken')
+  const navigate = useNavigate()
 
   useEffect(() => {
     let options = {
@@ -65,6 +69,20 @@ function App() {
     }
   }, [location])
 
+  const logout = () => {
+    axios.get(process.env.REACT_APP_SERVER_URL + '/user/logout', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    dispatch(handleLoginFalse())
+    dispatch(handleAdminFalse())
+    window.localStorage.removeItem('accessToken')
+    window.localStorage.removeItem('admin')
+    window.localStorage.removeItem('oauth')
+    navigate('/login')
+  }
+
   return (
     <div className="App">
       <div className="map" ref={mapRef}></div>
@@ -83,11 +101,17 @@ function App() {
           <Route path="/comment" element={<Comment />} />
           <Route path="/changeInfo" element={<ChangeInfo />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/out" element={<LogoutModal />} />
         </Routes>
 
         {isNotification ? <Notification /> : null}
+        {isModal ? <LogoutModal setIsModal={setIsModal} logout={logout} /> : null}
       </main>
-      <NavBar className="bottom-component" loadStatus={loadStatus} />
+      <NavBar
+        className="bottom-component"
+        loadStatus={loadStatus}
+        setIsModal={setIsModal}
+      />
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import axios from 'axios'
 import {
   handleLoginTrue,
   handleLoginFalse,
@@ -13,8 +12,9 @@ import { FaRegUser, FaUser } from 'react-icons/fa'
 import { VscSignOut, VscSignIn } from 'react-icons/vsc'
 import { GoSignIn } from 'react-icons/go'
 import { RiAdminFill, RiAdminLine } from 'react-icons/ri'
+import LogoutModal from './LogoutModal'
 
-const Navbar = ({ loadStatus }) => {
+const Navbar = ({ loadStatus, setIsModal }) => {
   const isLoginState = useSelector((state) => state.isLoginReducer)
   const { isLogin } = isLoginState
   const isAdminState = useSelector((state) => state.isAdminReducer)
@@ -28,17 +28,7 @@ const Navbar = ({ loadStatus }) => {
 
   const handleLogout = () => {
     if (isLogin) {
-      axios.get(process.env.REACT_APP_SERVER_URL + '/user/logout', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      dispatch(handleLoginFalse())
-      dispatch(handleAdminFalse())
-      window.localStorage.removeItem('accessToken')
-      window.localStorage.removeItem('admin')
-      window.localStorage.removeItem('oauth')
-      navigate('/login')
+      setIsModal(true)
     } else {
       //로그아웃인 상태
       navigate('/login')
