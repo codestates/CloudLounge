@@ -27,9 +27,9 @@ const Signup = () => {
 
   const handleClick = async () => {
     if (
-      pwIndi === '' &&
-      idIndi === '' &&
-      usernameIndi === '' &&
+      pwIndi === '사용가능한 비밀번호입니다' &&
+      idIndi === '사용가능한 아이디입니다' &&
+      usernameIndi === '사용가능한 닉네임입니다' &&
       confirmPwIndi === '비밀번호가 일치합니다'
     ) {
       await axios
@@ -84,7 +84,7 @@ const Signup = () => {
       } else if (value.length > 30) {
         setIdIndi('아이디가 너무 깁니다')
       } else {
-        setIdIndi('')
+        setIdIndi('사용가능한 아이디입니다')
       }
     }
     if (name === 'username') {
@@ -99,8 +99,7 @@ const Signup = () => {
       } else if (value.length > 20) {
         setUsernameIndi('닉네임이 너무 깁니다')
       } else {
-        setUsernameIndi('')
-        console.log('초기화')
+        setUsernameIndi('사용가능한 닉네임입니다')
       }
     }
     if (name === 'pw') {
@@ -115,7 +114,7 @@ const Signup = () => {
       } else if (value.length > 40) {
         setPwIndi('비밀번호가 너무 깁니다')
       } else {
-        setPwIndi('')
+        setPwIndi('사용가능한 비밀번호입니다')
         console.log('초기화')
       }
       if (value !== confirmPw) {
@@ -151,7 +150,15 @@ const Signup = () => {
             placeholder="이메일 형식으로 작성해주세요"
             className="signup-input"
           ></input>
-          <span className="signup-reg">{idIndi}</span>
+          <span
+            className={
+              idIndi === '사용가능한 아이디입니다'
+                ? 'signup-reg signup-green'
+                : 'signup-reg'
+            }
+          >
+            {idIndi}
+          </span>
         </div>
         <div className="signup-menu">
           <h4 className="signup-title">닉네임</h4>
@@ -161,7 +168,15 @@ const Signup = () => {
             placeholder="사용하실 닉네임을 작성해주세요"
             className="signup-input"
           ></input>
-          <span className="signup-reg">{usernameIndi}</span>
+          <span
+            className={
+              usernameIndi === '사용가능한 닉네임입니다'
+                ? 'signup-reg signup-green'
+                : 'signup-reg'
+            }
+          >
+            {usernameIndi}
+          </span>
         </div>
         <div className="signup-menu">
           <h4 className="signup-title">비밀번호</h4>
@@ -173,7 +188,15 @@ const Signup = () => {
             type="password"
           ></input>
         </div>
-        <span className="signup-reg">{pwIndi}</span>
+        <span
+          className={
+            pwIndi === '사용가능한 비밀번호입니다'
+              ? 'signup-reg signup-green'
+              : 'signup-reg'
+          }
+        >
+          {pwIndi}
+        </span>
         <div className="signup-menu">
           <h4 className="signup-title">비밀번호 확인</h4>
           <input
@@ -184,7 +207,15 @@ const Signup = () => {
             type="password"
           ></input>
         </div>
-        <span className="signup-reg">{confirmPwIndi}</span>
+        <span
+          className={
+            confirmPwIndi === '비밀번호가 일치합니다'
+              ? 'signup-reg signup-green'
+              : 'signup-reg'
+          }
+        >
+          {confirmPwIndi}
+        </span>
       </div>
       <div className="signup-btn-wrapper">
         <button className="signup-btn" onClick={handleClick}>

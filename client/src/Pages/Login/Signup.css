@@ -39,6 +39,7 @@
   text-align: left;
   font-size: 2vmin;
   color: red;
+  height: 2vh;
   margin-bottom: 1.7vh;
 }
 
@@ -49,4 +50,8 @@
   font-size: 3.5vmin;
   margin-right: 3%;
   border-radius: 2vw;
+}
+
+.signup-green {
+  color: green;
 }

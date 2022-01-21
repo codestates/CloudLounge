@@ -108,3 +108,13 @@
 .mypage-hide {
   display: none;
 }
+
+.mypage-delBtn-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mypage-cancel-btn {
+  width: 30%;
+  height: 4vh;
+}

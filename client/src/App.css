@@ -52,10 +52,6 @@ html {
   justify-content: space-around;
   bottom: 0;
   align-items: center;
-  border-top: 2px solid gray;
-  border-left: 2px solid gray;
-  border-right: 2px solid gray;
-  /* border: solid 1px black; */
   background-color: #f0f0f0;
 }
 

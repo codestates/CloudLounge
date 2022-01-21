@@ -15,13 +15,12 @@
 
 .login-top {
   width: 100%;
-  height: 35vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: white 1px solid;
   border-radius: 2vw;
-  /* box-shadow: 5px 5px 5px 5px; */
+  margin-bottom: 3vh;
 }
 
 .inputs-wrapper {
@@ -34,7 +33,8 @@
 
 .logo-wrapper {
   height: 25vh;
-  margin-top: 5vh;
+  margin-top: 10vh;
+  margin-bottom: -5vh;
 }
 
 img {
@@ -46,10 +46,11 @@ img {
   height: 5vh;
   width: 80%;
   font-size: 3.5vmin;
-  margin-bottom: 3vh;
+  margin-bottom: 2vh;
   cursor: pointer;
   border: 1px solid gray;
   border-radius: 1vw;
+  box-shadow: 0 0 3px gray;
 }
 
 .idpw-box-id {
@@ -59,6 +60,7 @@ img {
   flex-direction: row;
   border: gray 1px solid;
   border-radius: 2vw 2vw 0 0;
+  box-shadow: -1px -1px 2px gray, 1px 0px 2px gray;
 }
 
 .idpw-box-pw {
@@ -70,6 +72,7 @@ img {
   border-right: gray 1px solid;
   border-bottom: gray 1px solid;
   border-radius: 0 0 2vw 2vw;
+  box-shadow: -1px 0px 1px gray, 1px 1px 1px gray;
 }
 
 .idpw-indicator {
@@ -80,23 +83,6 @@ img {
   margin-left: 5%;
 }
 
-/* .menu-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 75%;
-  align-items: center;
-  margin-top: 3vh;
-} */
-
-/* .loginMenu {
-  color: inherit;
-  cursor: pointer;
-  text-decoration-line: none;
-  font-size: 3.5vmin;
-  width: 100%;
-} */
-
 .social-title {
   margin-bottom: 1vh;
   font-size: 3.5vmin;
@@ -106,7 +92,13 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2vh;
+  height: 5vh;
+}
+
+.loginMenu {
+  cursor: pointer;
+  width: 20%;
+  margin: 0 5vw;
 }
 
 #kLogo {
@@ -125,14 +117,4 @@ img {
   margin-right: 2%;
   font-size: 3.5vmin;
   background-color: inherit;
-}
-
-.mypage-delBtn-wrapper {
-  display: flex;
-  justify-content: space-around;
-}
-
-.mypage-cancel-btn {
-  width: 30%;
-  height: 4vh;
 }

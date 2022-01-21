@@ -64,6 +64,10 @@ const Login = () => {
     kakao: process.env.REACT_APP_OAUTH_KAKAO,
   }
 
+  const handleSignupClick = () => {
+    navigate('/signup')
+  }
+
   useEffect(() => {
     const url = new URL(window.location.href)
     const authorizationCode = url.searchParams.get('code')
@@ -137,20 +141,17 @@ const Login = () => {
           <button className="loginBtn" onClick={handleClick}>
             로그인
           </button>
-          {/* <span className="social-title">소셜로그인</span> */}
-          {/* <div className="menu-wrapper"> */}
-          <Link className="loginMenu" to="/signup">
-            <button className="loginBtn">회원가입</button>
-          </Link>
-          {/* </div> */}
-          <div className="social-login">
-            <a className="loginMenu" href={oauthUrls.naver}>
-              <img src={nLogo} id="nLogo"></img>
-            </a>
-            <a className="loginMenu" href={oauthUrls.kakao}>
-              <img src={kLogo} id="kLogo"></img>
-            </a>
-          </div>
+          <button className="loginBtn" onClick={handleSignupClick}>
+            회원가입
+          </button>
+        </div>
+        <div className="social-login">
+          <a className="loginMenu" href={oauthUrls.naver}>
+            <img src={nLogo} id="nLogo"></img>
+          </a>
+          <a className="loginMenu" href={oauthUrls.kakao}>
+            <img src={kLogo} id="kLogo"></img>
+          </a>
         </div>
       </div>
     </div>
