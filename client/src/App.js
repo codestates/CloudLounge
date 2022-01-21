@@ -19,6 +19,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeMap } from './Components/Map'
 import { notificationOff } from './actions'
+import DeleteModal from './Components/DeleteModal'
 
 function App() {
   const mapRef = useRef()
