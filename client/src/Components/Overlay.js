@@ -1,14 +1,18 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { notificationOn, setNotification, setNextLink } from '../actions'
+import { notificationOn, setNotification } from '../actions'
 
 const Overlay = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const isLogin = useSelector((state) => state.isLoginReducer)
   const loungeInfo = useSelector((state) => state.loungeDetailReducer)
+  const isNotification = useSelector((state) => state.isNotificationReducer)
   const moveReport = () => {
+    if (isNotification) {
+      return
+    }
     if (isLogin.isLogin === true) {
       navigate('/report')
     } else {

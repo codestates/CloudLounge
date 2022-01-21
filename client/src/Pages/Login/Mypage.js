@@ -22,6 +22,7 @@ const Mypage = () => {
   const [confirmPw, setConfirmPw] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const isNotification = useSelector((state) => state.isNotificationReducer)
 
   const accessToken = window.localStorage.getItem('accessToken')
   const oauth = window.localStorage.getItem('oauth')
@@ -64,6 +65,9 @@ const Mypage = () => {
     }
 
     const handleDelSubmit = () => {
+      if (isNotification) {
+        return
+      }
       axios
         .post(process.env.REACT_APP_SERVER_URL + '/user/login', {
           email: id,

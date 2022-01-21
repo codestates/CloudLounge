@@ -39,7 +39,6 @@ const LoungeDetail = () => {
     } else {
       dispatch(notificationOn())
       dispatch(setNotification('로그인이 필요한 서비스입니다.'))
-      // dispatch(setNextLink('/login'))
     }
   }
   return (

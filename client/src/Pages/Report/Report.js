@@ -2,21 +2,24 @@ import React, { useState, useRef } from 'react'
 import './Report.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { notificationOn, setNotification, setNextLink } from '../../actions'
 
 const Report = () => {
   const inputContent = useRef()
   const [radioBoxId, setRadioBoxId] = useState(-1)
   const [contents, setContents] = useState('')
-  const navigate = useNavigate()
   const dispatch = useDispatch()
+  const isNotification = useSelector((state) => state.isNotificationReducer)
 
   const contentChange = (e) => {
     setContents(e.target.value)
   }
 
   const submitBtnClick = () => {
+    if (isNotification) {
+      return
+    }
     if (radioBoxId === -1) {
       dispatch(notificationOn())
       dispatch(setNotification('불편한 항목을 선택해 주세요'))
