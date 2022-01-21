@@ -133,12 +133,12 @@ const Mypage = () => {
                 delInfo ? 'mypage-delBtn-wrapper' : 'mypage-delBtn-wrapper mypage-hide'
               }
             >
-              <button className="mypage-cancel-btn" onClick={handleDelSubmit}>
+              {/* <button className="mypage-cancel-btn" onClick={handleDelSubmit}>
                 탈퇴
               </button>
               <button className="mypage-cancel-btn" onClick={handleCancel}>
                 취소
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -147,12 +147,25 @@ const Mypage = () => {
             oauth ? 'mypage-sidebar-wrapper mypage-hide' : 'mypage-sidebar-wrapper'
           }
         >
-          <Link className="change-info" to="/changeInfo">
-            정보수정
-          </Link>
-          <a className="delete-info" onClick={handleDeleteInfo}>
-            회원탈퇴
-          </a>
+          {delInfo ? (
+            <div className="mypage-del-menus">
+              <button className="mypage-cancel-btn" onClick={handleDelSubmit}>
+                탈퇴
+              </button>
+              <button className="mypage-cancel-btn" onClick={handleCancel}>
+                취소
+              </button>
+            </div>
+          ) : (
+            <div className="mypage-del-menus">
+              <Link className="change-info" to="/changeInfo">
+                정보수정
+              </Link>
+              <a className="delete-info" onClick={handleDeleteInfo}>
+                회원탈퇴
+              </a>
+            </div>
+          )}
         </div>
       </div>
     )

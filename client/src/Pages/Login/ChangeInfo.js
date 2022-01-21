@@ -25,6 +25,7 @@ const ChangeInfo = () => {
   const dispatch = useDispatch()
   const isLoginState = useSelector((state) => state.isLoginReducer)
   const { isLogin } = isLoginState
+  const isNotification = useSelector((state) => state.isNotificationReducer)
   const [changeUsernameIndi, setChangeUsernameIndi] = useState('')
   const [changePwIndi, setChangePwIndi] = useState('')
   const [confirmPwIndi, setConfirmPwIndi] = useState('')
@@ -44,8 +45,7 @@ const ChangeInfo = () => {
       } else if (value.length > 20) {
         setChangeUsernameIndi('닉네임이 너무 깁니다')
       } else {
-        setChangeUsernameIndi('')
-        console.log('초기화')
+        setChangeUsernameIndi('사용가능한 닉네임입니다')
       }
     }
     if (e.target.name === 'curPw') {
@@ -63,8 +63,7 @@ const ChangeInfo = () => {
       } else if (value.length > 40) {
         setChangePwIndi('비밀번호가 너무 깁니다')
       } else {
-        setChangePwIndi('')
-        console.log('초기화')
+        setChangePwIndi('사용가능한 비밀번호입니다')
       }
       if (value !== confirmPw) {
         setConfirmPwIndi('비밀번호가 일치하지 않습니다')
@@ -76,7 +75,6 @@ const ChangeInfo = () => {
       setConfirmPw(value)
       if (value.length === 0) {
         setConfirmPwIndi('')
-        console.log('초기화')
       } else if (value !== changePw) {
         setConfirmPwIndi('비밀번호가 일치하지 않습니다')
       } else {
@@ -95,8 +93,8 @@ const ChangeInfo = () => {
         setNotification('현재 비밀번호와 변경하실 비밀번호가 같습니다. 다시 확인해주세요')
       )
     } else if (
-      changePwIndi === '' &&
-      changeUsernameIndi === '' &&
+      changePwIndi === '사용가능한 비밀번호입니다' &&
+      changeUsernameIndi === '사용가능한 닉네임입니다' &&
       confirmPwIndi === '비밀번호가 일치합니다'
     ) {
       axios
@@ -168,17 +166,30 @@ const ChangeInfo = () => {
               ></input>
             </div>
           </div>
-          <div className="changeInfo-reg">{changeUsernameIndi}</div>
+          <div
+            className={
+              changeUsernameIndi === '사용가능한 닉네임입니다'
+                ? 'changeInfo-reg changeInfo-green'
+                : 'changeInfo-reg'
+            }
+          >
+            {changeUsernameIndi}
+          </div>
         </div>
-        <div className="changeInfo-chages">
-          <h4 className="changeInfo-input-title">현재 비밀번호</h4>
-          <div className="changeInfo-input-wrapper">
-            <input
-              type="password"
-              className="changeInfo-input-content"
-              name="curPw"
-              onChange={handleChange}
-            ></input>
+        <div className="changeInfo-changes-wrapper">
+          <div className="changeInfo-chages">
+            <h4 className="changeInfo-input-title">현재 비밀번호</h4>
+            <div className="changeInfo-input-wrapper">
+              <input
+                type="password"
+                className="changeInfo-input-content"
+                name="curPw"
+                onChange={handleChange}
+              ></input>
+            </div>
+          </div>
+          <div className="changeInfo-reg">
+            <br></br>
           </div>
         </div>
         <div className="changeInfo-changes-wrapper">
@@ -193,7 +204,15 @@ const ChangeInfo = () => {
               ></input>
             </div>
           </div>
-          <div className="changeInfo-reg">{changePwIndi}</div>
+          <div
+            className={
+              changePwIndi === '사용가능한 비밀번호입니다'
+                ? 'changeInfo-reg changeInfo-green'
+                : 'changeInfo-reg'
+            }
+          >
+            {changePwIndi}
+          </div>
         </div>
         <div className="changeInfo-changes-wrapper">
           <div className="changeInfo-chages">
@@ -204,18 +223,21 @@ const ChangeInfo = () => {
                 className="changeInfo-input-content"
                 name="confirmPw"
                 onChange={handleChange}
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                    handleClick()
-                  }
-                }}
               ></input>
             </div>
           </div>
-          <div className="changeInfo-reg">{confirmPwIndi}</div>
+          <div
+            className={
+              confirmPwIndi === '비밀번호가 일치합니다'
+                ? 'changeInfo-reg changeInfo-green'
+                : 'changeInfo-reg'
+            }
+          >
+            {confirmPwIndi}
+          </div>
         </div>
         <div>
-          <button className="changeInfo-submitBtn" onClick={handleClick}>
+          <button type="button" className="changeInfo-submitBtn" onClick={handleClick}>
             제출하기
           </button>
         </div>
