@@ -42,13 +42,16 @@
   border-radius: 0 0 2vw 2vw;
 }
 
+.admin-body::-webkit-scrollbar {
+  display: none;
+}
+
 .admin-margin {
   height: 2vh;
 }
 
 .adminReport-wrapper {
   display: flex;
-  /* border: solid 1px; */
   width: 100%;
   margin: 1vh 0;
   height: 8vh;
