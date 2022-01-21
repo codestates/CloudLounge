@@ -12,7 +12,8 @@ const NoComment = () => {
   return (
     <div className="noComment">
       작성된 댓글이 없습니다.
-      <br />첫 댓글을 작성해주세요.
+      <br />
+      <br />첫 댓글을 작성해보세요!
     </div>
   )
 }
@@ -46,7 +47,6 @@ const LoungeDetail = () => {
       <div className="details">
         <img className="detailPic" src={loungeDetail.image} />
         <div className="detailAddress">{loungeDetail.address}</div>
-        <div className="detailRatingText">별점: {loungeDetail.avgRating}점</div>
         <div className="detailRating">
           <div className="star-fill" style={{ width: `${loungeDetail.avgRating * 20}%` }}>
             <span>★</span>
@@ -62,6 +62,7 @@ const LoungeDetail = () => {
             <span>★</span>
             <span>★</span>
           </div>
+          <div className="detailRatingText">{loungeDetail.avgRating} / 5</div>
         </div>
         <div className="comments">
           {Object.keys(loungeDetail).length > 0 ? (

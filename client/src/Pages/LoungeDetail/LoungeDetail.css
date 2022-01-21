@@ -27,6 +27,10 @@ div.detailRating {
   font-size: 4vmin;
 }
 
+div.detailRatingText {
+  font-size: 4vmin;
+}
+
 @media (max-width: 750px) {
   div.detailRating {
     font-size: 8vmin;
@@ -75,6 +79,7 @@ svg.writeComment {
   border-radius: 1vw;
   transform: translate(12.5%, 0);
   box-sizing: border-box;
+  box-shadow: 0 0 3px gray;
 }
 
 .commentHeader {
@@ -82,6 +87,7 @@ svg.writeComment {
   justify-content: space-between;
   font-size: 2vmin;
   margin-right: 3vmin;
+  margin-bottom: 1.5vh;
 }
 
 .commentContent {
