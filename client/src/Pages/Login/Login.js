@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import logo from './logo.png'
 import nLogo from './nLogo.png'
 import kLogo from './kLogo.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import './Login.css'
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -20,7 +18,11 @@ const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [start, setStart] = useState(false)
+  const isNotification = useSelector((state) => state.isNotificationReducer)
   const handleClick = async () => {
+    if (isNotification) {
+      return
+    }
     await axios
       .post(process.env.REACT_APP_SERVER_URL + '/user/login', {
         email: id,
