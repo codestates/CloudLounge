@@ -25,6 +25,7 @@ const ChangeInfo = () => {
   const dispatch = useDispatch()
   const isLoginState = useSelector((state) => state.isLoginReducer)
   const { isLogin } = isLoginState
+  const isNotification = useSelector((state) => state.isNotificationReducer)
   const [changeUsernameIndi, setChangeUsernameIndi] = useState('')
   const [changePwIndi, setChangePwIndi] = useState('')
   const [confirmPwIndi, setConfirmPwIndi] = useState('')
@@ -44,7 +45,6 @@ const ChangeInfo = () => {
         setChangeUsernameIndi('닉네임이 너무 깁니다')
       } else {
         setChangeUsernameIndi('')
-        console.log('초기화')
       }
     }
     if (e.target.name === 'curPw') {
@@ -63,7 +63,6 @@ const ChangeInfo = () => {
         setChangePwIndi('비밀번호가 너무 깁니다')
       } else {
         setChangePwIndi('')
-        console.log('초기화')
       }
       if (value !== confirmPw) {
         setConfirmPwIndi('비밀번호가 일치하지 않습니다')
@@ -75,7 +74,6 @@ const ChangeInfo = () => {
       setConfirmPw(value)
       if (value.length === 0) {
         setConfirmPwIndi('')
-        console.log('초기화')
       } else if (value !== changePw) {
         setConfirmPwIndi('비밀번호가 일치하지 않습니다')
       } else {
@@ -84,7 +82,10 @@ const ChangeInfo = () => {
     }
   }
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    if (isNotification) {
+      return
+    }
     if (curPw === changePw && curPw === confirmPw) {
       dispatch(notificationOn())
       dispatch(
@@ -200,18 +201,13 @@ const ChangeInfo = () => {
                 className="changeInfo-input-content"
                 name="confirmPw"
                 onChange={handleChange}
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                    handleClick()
-                  }
-                }}
               ></input>
             </div>
           </div>
           <div className="changeInfo-reg">{confirmPwIndi}</div>
         </div>
         <div>
-          <button className="changeInfo-submitBtn" onClick={handleClick}>
+          <button type="button" className="changeInfo-submitBtn" onClick={handleClick}>
             제출하기
           </button>
         </div>
