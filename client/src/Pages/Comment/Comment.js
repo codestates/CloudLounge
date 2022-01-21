@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Comment.css'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
@@ -12,6 +12,16 @@ const Comment = () => {
   const [contents, setContent] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  useEffect(() => {
+    if (Object.keys(loungeDetail).length === 0) {
+      let loungeId = localStorage.getItem('loungeId')
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/lounge/info/${loungeId}`)
+        .then((res) => {
+          dispatch(setLounge(res.data.data))
+        })
+    }
+  }, [])
   const submitComment = () => {
     if (isNotification) {
       return
