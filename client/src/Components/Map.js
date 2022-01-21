@@ -58,7 +58,9 @@ export function initializeMap(map, dispatch, setIsOverlay, setLoadStatus) {
             }
           })
         }
-        setLoadStatus('load finish')
+        setTimeout(() => {
+          setLoadStatus('load finish')
+        }, 800)
       })
     },
     (error) => {

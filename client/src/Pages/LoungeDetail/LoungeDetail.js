@@ -74,9 +74,6 @@ const LoungeDetail = () => {
               ))
             )
           ) : null}
-          {/* {commentdummy.map((el, index) => (
-            <Comment key={index} comment={el} />
-          ))} */}
         </div>
       </div>
       <div className="btnContainer">
