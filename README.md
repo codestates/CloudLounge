@@ -58,4 +58,4 @@
 
 # For more details
 
-### [CLOUD LOUNGE WIKI](https://github.com/codestates/CloudLounge/wiki)
+### [go to WiKi](https://github.com/codestates/CloudLounge/wiki)
