@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router'
 import Navbar from '../../Components/Navbar'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import DeleteModal from '../../Components/DeleteModal'
 axios.defaults.withCredentials = true
 
 const Mypage = () => {
@@ -20,6 +21,7 @@ const Mypage = () => {
   const [username, setUsername] = useState('')
   const [delInfo, setDelInfo] = useState(false)
   const [confirmPw, setConfirmPw] = useState('')
+  const [isDelete, setIsDelete] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -129,7 +131,12 @@ const Mypage = () => {
                 delInfo ? 'mypage-delBtn-wrapper' : 'mypage-delBtn-wrapper mypage-hide'
               }
             >
-              <button className="mypage-cancel-btn" onClick={handleDelSubmit}>
+              <button
+                className="mypage-cancel-btn"
+                onClick={() => {
+                  setIsDelete(true)
+                }}
+              >
                 탈퇴
               </button>
               <button className="mypage-cancel-btn" onClick={handleCancel}>
@@ -146,10 +153,18 @@ const Mypage = () => {
           <Link className="change-info" to="/changeInfo">
             정보수정
           </Link>
-          <a className="delete-info" onClick={handleDeleteInfo}>
+          <a
+            className="delete-info"
+            onClick={() => {
+              handleDeleteInfo()
+            }}
+          >
             회원탈퇴
           </a>
         </div>
+        {isDelete ? (
+          <DeleteModal setIsDelete={setIsDelete} handleDelSubmit={handleDelSubmit} />
+        ) : null}
       </div>
     )
   }

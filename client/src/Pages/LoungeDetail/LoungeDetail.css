@@ -3,7 +3,6 @@ div.details {
   width: 100%;
   height: 86vh;
   overflow-y: scroll;
-  /* border: solid 1px black; */
   font-size: min(5vmin, 30px);
   box-sizing: border-box;
 }
@@ -55,20 +54,26 @@ div.btnContainer {
   max-width: 750px;
 }
 
-img.writeComment {
-  width: min(8vmin, 40px);
-  height: min(8vmin, 40px);
+svg.writeComment {
   margin-right: 1vw;
+  margin-bottom: 1vw;
+  font-size: 3em;
+}
+
+@media (max-width: 750px) {
+  svg.writeComment {
+    font-size: 2em;
+  }
 }
 
 /* comment 컴포넌트*/
 .commentWrapper {
   padding: min(2vmin, 5px);
-  width: 90%;
+  width: 80%;
   margin-top: 1vh;
   border: solid 1px gray;
-  border-radius: 10px;
-  transform: translate(5%, 0);
+  border-radius: 1vw;
+  transform: translate(12.5%, 0);
   box-sizing: border-box;
 }
 

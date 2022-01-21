@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import './LoungeDetail.css'
 import Comment from '../../Components/Comment'
 import { useSelector, useDispatch } from 'react-redux'
-import { setLounge, notificationOn, setNextLink, setNotification } from '../../actions'
+import { setLounge, notificationOn, setNotification } from '../../actions'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComment } from '@fortawesome/free-solid-svg-icons'
 
 const NoComment = () => {
   return (
@@ -78,7 +80,11 @@ const LoungeDetail = () => {
         </div>
       </div>
       <div className="btnContainer">
-        <img src="./iconComment.png" className="writeComment" onClick={commentBtnClick} />
+        <FontAwesomeIcon
+          icon={faComment}
+          className="writeComment"
+          onClick={commentBtnClick}
+        />
       </div>
     </Fragment>
   )

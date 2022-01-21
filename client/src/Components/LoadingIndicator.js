@@ -17,11 +17,6 @@ function LoadingIndicator({ mapLoading, loadStatus }) {
   return (
     <div className="loadingIndicator">
       <FontAwesomeIcon icon={faSpinner} size="6x" className="loadingIndicator" />
-      <br />
-      <br />
-      <br />
-      <br />
-      <pre>{msg}</pre>
     </div>
   )
 }
