@@ -2,15 +2,28 @@ import axios from 'axios'
 axios.defaults.withCredentials = true
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteReportsList, handleAdminPageFalse } from '../actions'
+import { deleteReportsList, notificationOn, setNotification } from '../actions'
 const serverUrl = process.env.REACT_APP_SERVER_URL
 
 const AdminReport = (props) => {
   const dispatch = useDispatch()
   const { address, count, loungeId } = props.report
+  const isNotification = useSelector((state) => state.isNotificationReducer)
   const handleClick = async () => {
-    await axios.delete(serverUrl + `/admin/${loungeId}`)
-    dispatch(deleteReportsList({ loungeId }))
+    if (isNotification) {
+      return
+    }
+    await axios
+      .delete(serverUrl + `/admin/${loungeId}`)
+      .then((res) => {
+        dispatch(notificationOn())
+        dispatch(setNotification('정상적으로 삭제되었습니다.'))
+        dispatch(deleteReportsList({ loungeId }))
+      })
+      .catch((err) => {
+        dispatch(notificationOn())
+        dispatch(setNotification('[삭제실패] 다시 시도해주세요'))
+      })
   }
 
   return (

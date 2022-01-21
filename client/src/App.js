@@ -70,17 +70,20 @@ function App() {
   }, [location])
 
   const logout = () => {
-    axios.get(process.env.REACT_APP_SERVER_URL + '/user/logout', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-    dispatch(handleLoginFalse())
-    dispatch(handleAdminFalse())
-    window.localStorage.removeItem('accessToken')
-    window.localStorage.removeItem('admin')
-    window.localStorage.removeItem('oauth')
-    navigate('/login')
+    axios
+      .get(process.env.REACT_APP_SERVER_URL + '/user/logout', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        dispatch(handleLoginFalse())
+        dispatch(handleAdminFalse())
+        window.localStorage.removeItem('accessToken')
+        window.localStorage.removeItem('admin')
+        window.localStorage.removeItem('oauth')
+        navigate('/login')
+      })
   }
 
   return (

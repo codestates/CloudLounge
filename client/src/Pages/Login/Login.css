@@ -118,3 +118,12 @@ img {
   font-size: 3.5vmin;
   background-color: inherit;
 }
+
+@media (min-width: 750px) {
+  .idpw-box-id {
+    border-radius: 15px 15px 0 0;
+  }
+  .idpw-box-pw {
+    border-radius: 0 0 15px 15px;
+  }
+}
