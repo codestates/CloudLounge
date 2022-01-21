@@ -30,7 +30,7 @@ module.exports = (req, res) => {
     })
     .then((data) => {
       console.log('\n💬 data.dataValues:', data.dataValues)
-      return res.status(200).send({ message: 'created' })
+      return res.status(201).send({ message: 'created' })
     })
     .catch((err) => console.log(err))
 }
