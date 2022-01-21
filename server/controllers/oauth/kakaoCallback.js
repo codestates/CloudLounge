@@ -22,9 +22,9 @@ module.exports = async (req, res) => {
     .get(kakaoUrl)
     .catch((err) => console.log(err))
 
-  console.log('\n💬 tokenIssuance:', tokenIssuance.data, '\n')
+  // console.log('\n💬 tokenIssuance:', tokenIssuance, '\n')
 
-  if (!tokenIssuance.data) {
+  if (!tokenIssuance) {
     console.log('no token issuance data')
     return res.status(401).send({ message: 'Failed to issue kakao access token' })
   }
@@ -40,7 +40,7 @@ module.exports = async (req, res) => {
     },
   }).catch((err) => console.log(err))
 
-  console.log('\n💬 getData:', getData, '\n')
+  // console.log('\n💬 getData:', getData, '\n')
   if (!getData) {
     return res.status(400).send({ message: 'Authentication failed' })
   }
@@ -64,7 +64,7 @@ module.exports = async (req, res) => {
       console.log('\n💬 data.dataValues', data.dataValues, '\n')
 
       if (!created) {
-        //! 소셜로그인 계정으로 가입되어있음, 로그인은 어떻게? => 받아온 email로 findOne해서 가져온 data로 토큰생성 => 생성된 토큰과 oauth여부 response
+        // 소셜로그인 계정으로 가입되어있음, 로그인은 어떻게? => 받아온 email로 findOne해서 가져온 data로 토큰생성 => 생성된 토큰과 oauth여부 response
         console.log('\n🤔 email exist', '\n')
 
         user.findOne({ where: { email } }).then((findData) => {
@@ -80,7 +80,7 @@ module.exports = async (req, res) => {
           })
         })
       } else {
-        //! 소셜로그인 가입이 안 되어 있음, 가입과 동시에 로그인 해주면서 토큰 생성 => 생성된 토큰과 oauth여부를 클라이언트로 response
+        // 소셜로그인 가입이 안 되어 있음, 가입과 동시에 로그인 해주면서 토큰 생성 => 생성된 토큰과 oauth여부를 클라이언트로 response
         console.log('\n👍 email created', '\n')
 
         delete data.dataValues.password
