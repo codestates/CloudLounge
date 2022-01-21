@@ -16,6 +16,7 @@
 .mypage-idpw {
   border: solid 1px gray;
   border-radius: 1vw;
+  box-shadow: 0 0 3px gray;
   display: flex;
   /* min-width: 80%; */
   width: 100%;
@@ -75,7 +76,6 @@
 .change-info {
   cursor: pointer;
   font-size: 3.5vmin;
-  margin-right: 10%;
   text-decoration-line: none;
   color: inherit;
   width: 50%;
@@ -84,7 +84,6 @@
 .delete-info {
   cursor: pointer;
   font-size: 3.5vmin;
-  margin-left: 10%;
   width: 50%;
 }
 
@@ -103,6 +102,9 @@
   font-size: 4vmin;
   width: 80%;
   border-radius: 1vw;
+  box-sizing: border-box;
+  padding-left: 2vw;
+  box-shadow: 0 0 3px gray;
 }
 
 .mypage-hide {
@@ -117,4 +119,17 @@
 .mypage-cancel-btn {
   width: 30%;
   height: 4vh;
+  cursor: pointer;
+}
+
+.mypage-del-menus {
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+}
+
+@media (min-width: 750px) {
+  .mypage-cancel-btn {
+    font-size: 3.5vmin;
+  }
 }
