@@ -35,9 +35,9 @@ div.radioOption {
 }
 
 div.selected {
-  border: 3px solid gray;
   font-weight: 800;
   background-color: #f0f0f0;
+  box-shadow: 0 0 3px gray;
 }
 
 textarea.reportContents {
