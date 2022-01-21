@@ -13,7 +13,7 @@ const Comment = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const submitComment = () => {
-    if (isNotification === true) {
+    if (isNotification) {
       return
     }
     if (rating === 0) {

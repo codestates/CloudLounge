@@ -24,8 +24,12 @@ const Signup = () => {
   const [confirmPwIndi, setConfirmPwIndi] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const isNotification = useSelector((state) => state.isNotificationReducer)
 
   const handleClick = async () => {
+    if (isNotification) {
+      return
+    }
     if (
       pwIndi === '사용가능한 비밀번호입니다' &&
       idIndi === '사용가능한 아이디입니다' &&

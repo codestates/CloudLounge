@@ -28,6 +28,7 @@ const ChangeInfo = () => {
   const [changeUsernameIndi, setChangeUsernameIndi] = useState('')
   const [changePwIndi, setChangePwIndi] = useState('')
   const [confirmPwIndi, setConfirmPwIndi] = useState('')
+  const isNotification = useSelector((state) => state.isNotificationReducer)
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -85,6 +86,9 @@ const ChangeInfo = () => {
   }
 
   const handleClick = () => {
+    if (isNotification) {
+      return
+    }
     if (curPw === changePw && curPw === confirmPw) {
       dispatch(notificationOn())
       dispatch(
