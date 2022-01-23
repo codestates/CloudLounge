@@ -10,7 +10,12 @@ const PORT = 80
 
 app.use(
   cors({
-    origin: ['https://cloudlounge.tk', 'http://localhost:3000'],
+    origin: [
+      'https://cloudlounge.tk',
+      'https://www.cloudlounge.tk',
+      'http://localhost:3000',
+      'http://cloud-lounge-client.s3-website.ap-northeast-2.amazonaws.com',
+    ],
     credentials: true,
     methods: ['GET', 'POST', 'DELETE', 'PATCH', 'OPTIONS'],
   })
@@ -23,14 +28,4 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/', indexRouter)
 
-app.listen(PORT, () => console.log(`      🚀 Server is runnning on PORT:${PORT}`))
-
-// sequelize 명령어
-
-// migration
-// npx sequelize-cli db:migrate
-// npx sequelize-cli db:migrate:undo:all
-
-// seed
-// npx sequelize-cli db:seed:all
-// npx sequelize-cli db:seed:undo:all
+app.listen(PORT, () => console.log(`      🚀 Server is runnning on PORT:${PORT}\n`))

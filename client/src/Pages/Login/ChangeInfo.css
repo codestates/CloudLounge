@@ -1,0 +1,87 @@
+.changeInfo-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 80vh;
+  justify-content: center;
+}
+
+.changeInfo-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.changeInfo-logo {
+  height: 14vh;
+  margin-top: -6vh;
+}
+
+.changeInfo-input-title {
+  margin: 0 0 0 3%;
+  text-align: left;
+  width: 37%;
+  font-size: 3.5vmin;
+}
+
+.changeInfo-input-fixed {
+  font-size: 3.5vmin;
+  margin: 0;
+  height: auto;
+}
+
+.changeInfo-changes-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.changeInfo-chages {
+  display: flex;
+  height: 6vh;
+  align-items: center;
+}
+
+.changeInfo-fixed {
+  display: flex;
+  align-items: center;
+  height: 6vh;
+  margin-bottom: 3vh;
+}
+
+.changeInfo-input-content {
+  height: 3.5vh;
+  font-size: 3.5vmin;
+  width: 100%;
+  border-radius: 1vw;
+  border-color: gray;
+  box-shadow: 0 0 1px gray;
+  box-sizing: border-box;
+  padding-left: 2vw;
+}
+
+.changeInfo-input-wrapper {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.changeInfo-reg {
+  text-align: left;
+  font-size: 2vmin;
+  height: 3vh;
+  margin-left: 4%;
+  margin-bottom: 2vh;
+  color: red;
+}
+
+.changeInfo-submitBtn {
+  height: 4vh;
+  width: 90%;
+  font-size: 3.5vmin;
+  border-radius: 1vw;
+  box-shadow: 0 0 3px gray;
+}
+
+.changeInfo-green {
+  color: green;
+}

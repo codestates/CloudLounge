@@ -1,14 +1,17 @@
-# Cloud Lounge
+# LOGO
 
-![Logo](https://cdn.discordapp.com/attachments/924939708377739287/925975238934667264/logo.png)
+<img src="https://cdn.discordapp.com/attachments/924939708377739287/925975238934667264/logo.png" width="20%" height="20%">
+
 
 # About
 
-야외에서 흡연을 하고 싶었지만 근처에 흡연구역을 찾지 못해서 불편했던 적이 있으신가요?
+* 나의 현재 위치를 기반으로 주변 흡연구역을 나타내 줍니다.
 
-지금 바로 Cloud Lounge를 통해 근처 흡연구역을 찾아보세요!
+* 흡연구역에 대한 별점 및 리뷰를 확인할 수 있고 직접 작성할 수 있습니다.
 
-Cloud Lounge에서는 내 위치 근처의 흡연구역을 나타내주고 그 장소에 대한 후기도 남길 수 있습니다.
+* 간편 신고 기능을 통하여 부정적인 고객 경험을 관리자에게 쉽게 전달하고 관리받을 수 있습니다.
+
+    현재 버전은 서울특별시의 흡연구역만 지원합니다.
 
 # 어떤 기술이 사용되었나요?
 
@@ -55,4 +58,4 @@ Cloud Lounge에서는 내 위치 근처의 흡연구역을 나타내주고 그 �
 
 # For more details
 
-### [CLOUD LOUNGE WIKI](https://github.com/codestates/CloudLounge/wiki)
+### [go to WiKi](https://github.com/codestates/CloudLounge/wiki)
