@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setLounge } from '../actions'
+import { setLounge, setNotification, notificationOn } from '../actions'
 
 export function initializeMap(map, dispatch, setIsOverlay, setLoadStatus) {
   let geocoder = new kakao.maps.services.Geocoder()
@@ -107,6 +107,12 @@ export function initializeMap(map, dispatch, setIsOverlay, setLoadStatus) {
         setTimeout(() => {
           setLoadStatus('load finish')
         }, 1000)
+        dispatch(notificationOn())
+        dispatch(
+          setNotification(
+            '위치정보 권한이 없습니다.\n 위치정보권한을 허용한후 새로고침해주세요'
+          )
+        )
       })
     }
   )
