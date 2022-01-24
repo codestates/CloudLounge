@@ -14,8 +14,7 @@ export function initializeMap(map, dispatch, setIsOverlay, setLoadStatus) {
         map.setCenter(new kakao.maps.LatLng(mapCenter.Ma, mapCenter.La))
       } else {
         map.setCenter(
-          // new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
-          new kakao.maps.LatLng(37.52285820136469, 126.92555193917285)
+          new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
         )
       }
       let icon = new kakao.maps.MarkerImage(
@@ -23,11 +22,10 @@ export function initializeMap(map, dispatch, setIsOverlay, setLoadStatus) {
         new kakao.maps.Size(30, 30)
       )
       let marker = new kakao.maps.Marker({
-        // position: new kakao.maps.LatLng(
-        //   position.coords.latitude,
-        //   position.coords.longitude
-        // ),
-        position: new kakao.maps.LatLng(37.52285820136469, 126.92555193917285),
+        position: new kakao.maps.LatLng(
+          position.coords.latitude,
+          position.coords.longitude
+        ),
         image: icon,
       })
       marker.setMap(map)
