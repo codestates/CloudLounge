@@ -119,7 +119,6 @@ const Signup = () => {
         setPwIndi('비밀번호가 너무 깁니다')
       } else {
         setPwIndi('사용가능한 비밀번호입니다')
-        console.log('초기화')
       }
       if (value !== confirmPw) {
         setConfirmPwIndi('비밀번호가 일치하지 않습니다')
