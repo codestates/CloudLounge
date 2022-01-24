@@ -93,6 +93,7 @@ svg.writeComment {
 .commentContent {
   font-size: 3vmin;
   text-align: left;
+  word-break: break-all;
 }
 
 div.noComment {

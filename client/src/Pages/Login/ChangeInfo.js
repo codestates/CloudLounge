@@ -93,7 +93,7 @@ const ChangeInfo = () => {
       )
     } else if (
       changePwIndi === '사용가능한 비밀번호입니다' &&
-      changeUsernameIndi === '사용가능한 닉네임입니다' &&
+      (changeUsernameIndi === '사용가능한 닉네임입니다' || changeUsernameIndi === '') &&
       confirmPwIndi === '비밀번호가 일치합니다'
     ) {
       axios
