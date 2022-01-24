@@ -110,7 +110,7 @@ export function initializeMap(map, dispatch, setIsOverlay, setLoadStatus) {
         dispatch(notificationOn())
         dispatch(
           setNotification(
-            '위치정보 권한이 없습니다.\n 위치정보권한을 허용한후 새로고침해주세요'
+            '위치정보 권한이 없습니다.\n 정확한 위치정보를 원하신다면 \n 위치정보권한을 허용한 후\n 새로고침해주세요'
           )
         )
       })
