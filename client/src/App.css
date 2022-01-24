@@ -157,6 +157,7 @@ div.notification > button {
 
 div.notification span {
   font-size: min(25px, 5vmin);
+  white-space: pre;
 }
 
 /*loadingIndicator*/

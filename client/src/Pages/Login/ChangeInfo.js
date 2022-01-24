@@ -89,7 +89,9 @@ const ChangeInfo = () => {
     if (curPw === changePw && curPw === confirmPw) {
       dispatch(notificationOn())
       dispatch(
-        setNotification('현재 비밀번호와 변경하실 비밀번호가 같습니다. 다시 확인해주세요')
+        setNotification(
+          '현재 비밀번호와 변경하실\n 비밀번호가 같습니다.\n 다시 확인해주세요'
+        )
       )
     } else if (
       changePwIndi === '사용가능한 비밀번호입니다' &&
@@ -113,7 +115,7 @@ const ChangeInfo = () => {
           dispatch(handleLoginFalse())
           dispatch(notificationOn())
           dispatch(
-            setNotification('정보가 성공적으로 변경되었습니다. 다시 로그인해주세요')
+            setNotification('정보가 성공적으로 변경되었습니다.\n 다시 로그인해주세요')
           )
           dispatch(setNextLink('/login'))
         })
@@ -123,7 +125,7 @@ const ChangeInfo = () => {
         })
     } else {
       dispatch(notificationOn())
-      dispatch(setNotification('닉네임/변경 비밀번호를 다시 확인해주세요'))
+      dispatch(setNotification('닉네임/변경 비밀번호를\n 다시 확인해주세요'))
     }
   }
 
